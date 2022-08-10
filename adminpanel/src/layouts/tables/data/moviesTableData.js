@@ -7,7 +7,7 @@ import { Routes, Route, Navigate, useNavigate, createSearchParams } from "react-
 import { doc } from "prettier";
 
 export default function data() {
-    const Movie = ({ image, name }) => (
+    const Person = ({ image, name }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDAvatar src={image} name={name} size="sm" />
       <MDBox ml={2} lineHeight={1}>
@@ -30,7 +30,7 @@ export default function data() {
   }, []);
 
   const placeMovies = () => {
-    fetch("http://localhost:64531/api/admin/People/GetAll")
+    fetch("http://localhost:64531/api/admin/Movies/GetAll")
       .then((response) => response.json())
       .then((d) => setMovies(d));
   };
@@ -64,7 +64,8 @@ export default function data() {
   if (movies) {
     movies.forEach((element) => {
       rows.push({
-        person: <Movie  image={require(`assets/images/${element.image}`)} name={element.name} />,
+        person: <Person  image={require(`assets/images/${element.posterImage}`)}  name={element.name} />,
+
         status: (
           <MDTypography onClick={() => deleteOrRestore(element.id)} component="a" href="#" variant="caption" color="text" fontWeight="medium">
             <MDBadge badgeContent={element.isDeleted ? "Restore" : "Delete"} color={!element.isDeleted ? "error" : "success"} variant="gradient" size="sm" />
@@ -81,7 +82,8 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "movie", accessor: "movie", width: "45%", align: "left" },
+      { Header: "person", accessor: "person", width: "45%", align: "left" },
+      { Header: "profession", accessor: "profession", width: "20%", align: "left" },
       { Header: "status", accessor: "status", align: "center" },
       { Header: "action", accessor: "action", align: "center" },
     ],
