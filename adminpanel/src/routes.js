@@ -7,9 +7,8 @@ import ProfessionCreate from "layouts/CRUD/profession/professioncreate";
 import ProfessionUpdate from "layouts/CRUD/profession/professionupdate";
 
 import PersonCreate from "layouts/CRUD/person/personcreate";
+import PersonUpdate from "layouts/CRUD/person/personupdate";
 
-
-// @mui icons
 import Icon from "@mui/material/Icon";
 
 const routes = [
@@ -76,6 +75,14 @@ const routes = [
     icon: <Icon fontSize="small">login</Icon>,
     route: "/crud/person/personcreate/",
     component: <PersonCreate />,
+  },
+    {
+    type: "collapse",
+    name: "personupdate",
+    key: "personupdate",
+    icon: <Icon fontSize="small">login</Icon>,
+    route: "/crud/person/personupdate/",
+    component: <PersonUpdate />,
   },
 ];
 

@@ -28,9 +28,10 @@ import Footer from "examples/Footer";
 import DataTable from "examples/Tables/DataTable";
 
 // Data
-import authorsTableData from "layouts/tables/data/authorsTableData";
-import projectsTableData from "layouts/tables/data/projectsTableData";
+import authorsTableData from "layouts/tables/data/genresTableData";
+import projectsTableData from "layouts/tables/data/professionsTableData";
 import peopleTableData from "layouts/tables/data/peopleTableData";
+import moviesTableData from "layouts/tables/data/moviesTableData";
 
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +39,8 @@ function Tables() {
   const { columns, rows } = authorsTableData();
   const { columns: pColumns, rows: pRows } = projectsTableData();
   const { columns: peopleColumns, rows: peopleRows } = peopleTableData();
-  const navigate = useNavigate(); 
+  const { columns: movieColumns, rows: movieRows } = moviesTableData();
+  const navigate = useNavigate();
 
   return (
     <DashboardLayout>
@@ -62,7 +64,7 @@ function Tables() {
                 </MDTypography>
                 <MDTypography onClick={() => navigate("/CRUD/genre/genrecreate")} component="a" className="edit" href="#" variant="caption" color="white" fontWeight="medium">
                   Create
-                </MDTypography> 
+                </MDTypography>
               </MDBox>
               <MDBox pt={3}>
                 <DataTable
@@ -92,7 +94,7 @@ function Tables() {
                 </MDTypography>
                 <MDTypography onClick={() => navigate("/CRUD/profession/professioncreate")} component="a" className="edit" href="#" variant="caption" color="white" fontWeight="medium">
                   Create
-                </MDTypography> 
+                </MDTypography>
               </MDBox>
               <MDBox pt={3}>
                 <DataTable
@@ -122,11 +124,41 @@ function Tables() {
                 </MDTypography>
                 <MDTypography onClick={() => navigate("/CRUD/person/personcreate")} component="a" className="edit" href="#" variant="caption" color="white" fontWeight="medium">
                   Create
-                </MDTypography> 
+                </MDTypography>
               </MDBox>
               <MDBox pt={3}>
                 <DataTable
                   table={{ columns: peopleColumns, rows: peopleRows }}
+                  isSorted={false}
+                  entriesPerPage={false}
+                  showTotalEntries={false}
+                  noEndBorder
+                />
+              </MDBox>
+            </Card>
+          </Grid>
+          <Grid item xs={12}>
+            <Card>
+              <MDBox
+                mx={2}
+                mt={-3}
+                py={3}
+                px={2}
+                variant="gradient"
+                bgColor="info"
+                borderRadius="lg"
+                coloredShadow="info"
+              >
+                <MDTypography variant="h6" color="white">
+                  Movies Table
+                </MDTypography>
+                <MDTypography onClick={() => navigate("/CRUD/movie/moviecreate")} component="a" className="edit" href="#" variant="caption" color="white" fontWeight="medium">
+                  Create
+                </MDTypography>
+              </MDBox>
+              <MDBox pt={3}>
+                <DataTable
+                  table={{ columns: movieColumns, rows: movieRows }}
                   isSorted={false}
                   entriesPerPage={false}
                   showTotalEntries={false}

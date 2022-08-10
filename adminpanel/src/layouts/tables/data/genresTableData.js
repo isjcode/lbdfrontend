@@ -24,7 +24,7 @@ import { Routes, Route, Navigate, useNavigate, createSearchParams } from "react-
 import { doc } from "prettier";
 
 export default function data() {
-  const Profession = ({ name }) => (
+  const Genre = ({ name }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDBox ml={2} lineHeight={1}>
         <MDTypography display="block" variant="button" fontWeight="medium">
@@ -34,23 +34,25 @@ export default function data() {
     </MDBox>
   );
 
-  const [professions, setProfessions] = useState(null);
+  const [genres, setGenres] = useState(null);
 
   useEffect(() => {
-    placeProfessions();
+    placeGenres();
   }, []);
 
-  const placeProfessions = () => {
-    fetch("http://localhost:64531/api/Professions")
+  const placeGenres = () => {
+    fetch("http://localhost:64531/api/admin/Genres/GetAll")
       .then((response) => response.json())
-      .then((d) => setProfessions(d));
+      .then((d) => {
+        setGenres(d);
+      });
   };
 
   const navigate = useNavigate(); 
   const routeChange = (e) => { 
     const id = e.target.dataset.id;
     const params = { id: id };
-    const path = `/CRUD/profession/professionupdate`;
+    const path = `/CRUD/genre/genreupdate`;
     navigate({
       pathname: path,
       search: `?${createSearchParams(params)}`,
@@ -58,26 +60,25 @@ export default function data() {
   };
 
   const deleteOrRestore = (id) => {
-    fetch(`http://localhost:64531/api/admin/Professions/DeleteOrRestore?id=${id}`, {
+    fetch(`http://localhost:64531/api/admin/Genres/DeleteOrRestore?id=${id}`, {
       method: "POST",
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          navigate("/tables");
+        }
       })
-    .then((response) => {
-          if (response.status == 200) {
-            navigate("/tables");
-          }
-          console.log(response);
-    })
-    .then(() => {
-      placeProfessions();
-    })
+      .then(() => {
+        placeGenres();
+      });
   };
 
   const rows = [];
 
-  if (professions) {
-    professions.forEach((element) => {
+  if (genres) {
+    genres.forEach((element) => {
       rows.push({
-        genre: <Profession name={element.name}/>,
+        genre: <Genre name={element.name}/>,
         status: (
           <MDTypography onClick={() => deleteOrRestore(element.id)} component="a" href="#" variant="caption" color="text" fontWeight="medium">
             <MDBadge badgeContent={element.isDeleted ? "Restore" : "Delete"} color={!element.isDeleted ? "error" : "success"} variant="gradient" size="sm" />

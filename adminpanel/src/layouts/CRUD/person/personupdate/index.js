@@ -1,17 +1,3 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import React, { useEffect, useState } from "react";
@@ -20,7 +6,7 @@ import { useLocation, useSearchParams, useNavigate} from "react-router-dom";
 
 // Data
 
-function PersonCreate() {
+function PersonUpdate() {
   const [newName, setNewName] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [newProfessionID, setNewProfessionID] = useState(-1);
@@ -66,19 +52,20 @@ function PersonCreate() {
       formData.append("Name", newName);
       formData.append("Description", newDescription);
       formData.append("ProfessionID", newProfessionID);
+      formData.append("id", id);
       const options = {
-        method: "PUT",
+        method: "POST",
         body: formData,
       };
 
-      fetch("http://localhost:64531/api/admin/People/Create", options)
+      fetch(`http://localhost:64531/api/admin/People/Update?id=${id}`, options)
         .then((response) => {
-          if (response.status === 201) {
-            navigate("/tables");
+        if (response.status === 201) {
+          navigate("/tables");
         }
       });
     }
-  }
+  };
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -112,4 +99,4 @@ function PersonCreate() {
   );
 }
 
-export default PersonCreate;
+export default PersonUpdate;

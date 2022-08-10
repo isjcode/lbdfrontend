@@ -13,11 +13,8 @@ function ProfessionUpdate() {
     setNewName(e.target.value);
   };
 
-
-
-
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const id = searchParams.get("id");
 
   const handleSubmit = (e) => {
@@ -33,14 +30,13 @@ function ProfessionUpdate() {
 
       fetch(`http://localhost:64531/api/admin/Professions/Update?id=${id}`, {
         method: "POST",
-        mode: "cors",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(sendData),
       })
         .then((response) => {
-          if (response.status == 200) {
+          if (response.status == 204) {
             navigate("/tables");
           }
           console.log(response);
