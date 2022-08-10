@@ -24,7 +24,7 @@ import { Routes, Route, Navigate, useNavigate, createSearchParams } from "react-
 import { doc } from "prettier";
 
 export default function data() {
-  const Genre = ({ name }) => (
+  const Person = ({ name }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDBox ml={2} lineHeight={1}>
         <MDTypography display="block" variant="button" fontWeight="medium">
@@ -34,23 +34,23 @@ export default function data() {
     </MDBox>
   );
 
-  const [genres, setGenres] = useState(null);
+  const [people, setPeople] = useState(null);
 
   useEffect(() => {
-    placeGenres();
+    placePeople();
   }, []);
 
-  const placeGenres = () => {
-    fetch("http://localhost:64531/api/Genres")
+  const placePeople = () => {
+    fetch("http://localhost:64531/api/People")
       .then((response) => response.json())
-      .then((d) => setGenres(d));
-  }
+      .then((d) => setPeople(d));
+  };
 
   const navigate = useNavigate(); 
   const routeChange = (e) => { 
     const id = e.target.dataset.id;
     const params = { id: id };
-    const path = `/CRUD/genre/genreupdate`;
+    const path = `/CRUD/person/personupdate`;
     navigate({
       pathname: path,
       search: `?${createSearchParams(params)}`,
@@ -58,7 +58,7 @@ export default function data() {
   };
 
   const deleteOrRestore = (id) => {
-    fetch(`http://localhost:64531/api/admin/Genres/DeleteOrRestore?id=${id}`, {
+    fetch(`http://localhost:64531/api/admin/People/DeleteOrRestore?id=${id}`, {
       method: "POST",
       })
     .then((response) => {
@@ -68,16 +68,16 @@ export default function data() {
           console.log(response);
     })
     .then(() => {
-      placeGenres();
+      placePeople();
     })
   };
 
   const rows = [];
 
-  if (genres) {
-    genres.forEach((element) => {
+  if (people) {
+    people.forEach((element) => {
       rows.push({
-        genre: <Genre name={element.name}/>,
+        genre: <Person name={element.name}/>,
         status: (
           <MDTypography onClick={() => deleteOrRestore(element.id)} component="a" href="#" variant="caption" color="text" fontWeight="medium">
             <MDBadge badgeContent={element.isDeleted ? "Restore" : "Delete"} color={!element.isDeleted ? "error" : "success"} variant="gradient" size="sm" />
