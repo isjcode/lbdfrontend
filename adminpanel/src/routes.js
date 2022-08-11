@@ -10,6 +10,7 @@ import PersonCreate from "layouts/CRUD/person/personcreate";
 import PersonUpdate from "layouts/CRUD/person/personupdate";
 
 import MovieCreate from "layouts/CRUD/movie/moviecreate";
+import MovieUpdate from "layouts/CRUD/movie/movieupdate";
 
 import Icon from "@mui/material/Icon";
 
@@ -93,6 +94,14 @@ const routes = [
     icon: <Icon fontSize="small">login</Icon>,
     route: "/crud/movie/moviecreate/",
     component: <MovieCreate />,
+  },
+    {
+    type: "collapse",
+    name: "movieupdate",
+    key: "movieupdate",
+    icon: <Icon fontSize="small">login</Icon>,
+    route: "/crud/movie/movieupdate/",
+    component: <MovieUpdate />,
   },
 ];
 

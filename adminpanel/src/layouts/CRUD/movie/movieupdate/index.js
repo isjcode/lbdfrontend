@@ -9,7 +9,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 
 // Data
 
-function MovieCreate() {
+function MovieUpdate() {
   const [newName, setNewName] = useState("");
   const [newSynopsis, setNewSynopsis] = useState("");
   const [newYearID, setNewYearID] = useState(null);
@@ -95,12 +95,13 @@ function MovieCreate() {
       formData.append("Name", newName);
       formData.append("Synopsis", newSynopsis);
       formData.append("YearID", newYearID);
+      formData.append("ID", id);
       const options = {
-        method: "PUT",
+        method: "POST",
         body: formData,
       };
 
-      fetch("http://localhost:64531/api/admin/Movies/Create", options)
+      fetch(`http://localhost:64531/api/admin/Movies/Update?id=${id}`, options)
         .then((response) => {
             console.log(response)
         if (response.status === 201) {
@@ -205,4 +206,4 @@ function MovieCreate() {
   );
 }
 
-export default MovieCreate;
+export default MovieUpdate;

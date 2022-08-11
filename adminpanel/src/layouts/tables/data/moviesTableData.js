@@ -39,7 +39,7 @@ export default function data() {
   const routeChange = (e) => { 
     const id = e.target.dataset.id;
     const params = { id: id };
-    const path = `/CRUD/person/personupdate`;
+    const path = `/CRUD/movie/movieupdate`;
     navigate({
       pathname: path,
       search: `?${createSearchParams(params)}`,
