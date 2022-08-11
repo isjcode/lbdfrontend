@@ -152,7 +152,7 @@ function Tables() {
                 <MDTypography variant="h6" color="white">
                   Movies Table
                 </MDTypography>
-                <MDTypography onClick={() => navigate("/CRUD/person/personcreate")} component="a" className="edit" href="#" variant="caption" color="white" fontWeight="medium">
+                <MDTypography onClick={() => navigate("/CRUD/movie/moviecreate")} component="a" className="edit" href="#" variant="caption" color="white" fontWeight="medium">
                   Create
                 </MDTypography>
               </MDBox>

@@ -36,11 +36,11 @@ function ProfessionUpdate() {
         body: JSON.stringify(sendData),
       })
         .then((response) => {
-          if (response.status == 204) {
+        if (response.status === 204) {
             navigate("/tables");
-          }
+        }
           console.log(response);
-        })
+      });
     }
   };
   return (

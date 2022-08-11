@@ -103,7 +103,7 @@ function PersonCreate() {
         <div>
            <label htmlFor="professions">Choose a profession:</label>
             <select onChange={handleSelect} value={newProfessionID} id="professions" name="professions">
-              {professions.map(p => <option data-lid={p.id} value={p.name}> {p.name} </option>)}
+              {professions.map(p => <option data-id={p.id} value={p.name}> {p.name} </option>)}
             </select> 
           </div>
         <button> Create </button>

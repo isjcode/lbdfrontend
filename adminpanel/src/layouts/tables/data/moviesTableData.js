@@ -7,7 +7,7 @@ import { Routes, Route, Navigate, useNavigate, createSearchParams } from "react-
 import { doc } from "prettier";
 
 export default function data() {
-    const Person = ({ image, name }) => (
+    const Movie = ({ image, name }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDAvatar src={image} name={name} size="sm" />
       <MDBox ml={2} lineHeight={1}>
@@ -47,7 +47,7 @@ export default function data() {
   };
 
   const deleteOrRestore = (id) => {
-    fetch(`http://localhost:64531/api/admin/People/DeleteOrRestore?id=${id}`, {
+    fetch(`http://localhost:64531/api/admin/Movies/DeleteOrRestore?id=${id}`, {
       method: "POST",
     })
       .then((response) => {
@@ -63,8 +63,9 @@ export default function data() {
   const rows = [];
   if (movies) {
     movies.forEach((element) => {
+        console.log(element);
       rows.push({
-        person: <Person  image={require(`assets/images/${element.posterImage}`)}  name={element.name} />,
+        movie: <Movie  image={require(`assets/images/${element.posterImage}`)}  name={element.name} />,
 
         status: (
           <MDTypography onClick={() => deleteOrRestore(element.id)} component="a" href="#" variant="caption" color="text" fontWeight="medium">
@@ -82,8 +83,7 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "person", accessor: "person", width: "45%", align: "left" },
-      { Header: "profession", accessor: "profession", width: "20%", align: "left" },
+      { Header: "movie", accessor: "movie", width: "45%", align: "left" },
       { Header: "status", accessor: "status", align: "center" },
       { Header: "action", accessor: "action", align: "center" },
     ],
