@@ -26,6 +26,11 @@ function GenreCreate() {
   const handleChange = (e) => {
     setNewName(e.target.value);
   };
+  const token = localStorage.getItem("token");
+
+  if (token == null) {
+    navigate("authentication/sign-in");
+  }
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate(); 
@@ -39,12 +44,13 @@ function GenreCreate() {
       };
 
       console.log(JSON.stringify(sendData));
+      const myHeaders = new Headers();
+      myHeaders.append('Authorization', "Bearer " + token);
+      myHeaders.append("Content-Type", "application/json");
 
       fetch(`http://localhost:64531/api/admin/Genres/Create`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: myHeaders,
         body: JSON.stringify(sendData),
       })
         .then((response) => {

@@ -16,14 +16,25 @@ export default function data() {
     </MDBox>
   );
 
+  const token = localStorage.getItem("token");
+  const myHeaders = new Headers();
+  myHeaders.append('Authorization', "Bearer " + token);
+  myHeaders.append("Content-Type", "application/json")
+
   const [professions, setProfessions] = useState(null);
 
   useEffect(() => {
-    placeProfessions();
+    const token = localStorage.getItem("token");
+    if (token == null) {
+      navigate("/authentication/sign-in");
+    }
+    placeProfessions(token);
   }, []);
 
-  const placeProfessions = () => {
-    fetch("http://localhost:64531/api/admin/Professions/GetAll")
+  const placeProfessions = (token) => {
+    fetch("http://localhost:64531/api/admin/Professions/GetAll", {
+      headers: myHeaders,
+    })
       .then((response) => response.json())
       .then((d) => setProfessions(d));
   };
@@ -41,8 +52,9 @@ export default function data() {
 
   const deleteOrRestore = (id) => {
     fetch(`http://localhost:64531/api/admin/Professions/DeleteOrRestore?id=${id}`, {
-      method: "POST",
-      })
+        method: "POST",
+        headers: myHeaders,
+    })
     .then((response) => {
           if (response.status == 200) {
             navigate("/tables");

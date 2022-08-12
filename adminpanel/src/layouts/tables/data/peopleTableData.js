@@ -22,9 +22,16 @@ export default function data() {
   const [people, setPeople] = useState(null);
   const [professions, setProfessions] = useState([]);
 
+  const token = localStorage.getItem("token");
+  const myHeaders = new Headers();
+  myHeaders.append('Authorization', "Bearer " + token);
+  myHeaders.append("Content-Type", "application/json");
+
   useEffect(() => {
     placePeople();
-    fetch(`http://localhost:64531/api/admin/Professions/GetAll`)
+    fetch(`http://localhost:64531/api/admin/Professions/GetAll`, {
+      headers: myHeaders,
+    })
       .then((response) => response.json())
       .then((d) => {
         setProfessions(d);
@@ -32,7 +39,9 @@ export default function data() {
   }, []);
 
   const placePeople = () => {
-    fetch("http://localhost:64531/api/admin/People/GetAll")
+    fetch("http://localhost:64531/api/admin/People/GetAll", {
+      headers: myHeaders,
+    })
       .then((response) => response.json())
       .then((d) => setPeople(d));
   };
@@ -49,8 +58,11 @@ export default function data() {
   };
 
   const deleteOrRestore = (id) => {
+    const myHeaders = new Headers();
+    myHeaders.append('Authorization', "Bearer " + token);
     fetch(`http://localhost:64531/api/admin/People/DeleteOrRestore?id=${id}`, {
       method: "POST",
+      headers: myHeaders,
     })
       .then((response) => {
         if (response.status == 200) {

@@ -2,8 +2,9 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import React, { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
-import MultiSelect from  "react-multiple-select-dropdown-lite";
-import  "react-multiple-select-dropdown-lite/dist/index.css"
+import MultiSelect from "react-multiple-select-dropdown-lite";
+import "react-multiple-select-dropdown-lite/dist/index.css";
+import axios from "axios";
 
 import { useSearchParams, useNavigate } from "react-router-dom";
 
@@ -22,6 +23,11 @@ function MovieCreate() {
   const [genres, setGenres] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
 
+  const token = localStorage.getItem("token");
+  const myHeaders = new Headers();
+  myHeaders.append('Authorization', "Bearer " + token);
+  myHeaders.append("Content-Type", "application/json");
+
   const handleName = (e) => {
     setNewName(e.target.value);
   };
@@ -39,23 +45,31 @@ function MovieCreate() {
   const navigate = useNavigate(); 
   const id = searchParams.get("id");
   useEffect(() => {
-    fetch("http://localhost:64531/api/admin/Movies/GetYears")
+    fetch("http://localhost:64531/api/admin/Movies/GetYears", {
+      headers: myHeaders,
+    })
     .then((response) => response.json())
     .then((d) => {
         setYears(d);
         setNewYearID(d[0].id);
       });
-    fetch("http://localhost:64531/api/admin/People/GetAll")
+    fetch("http://localhost:64531/api/admin/People/GetAll", {
+      headers: myHeaders,
+    })
       .then((response) => response.json())
       .then((d) => {
         setPeople(d);
       });
-    fetch("http://localhost:64531/api/admin/Professions/GetAll")
+    fetch("http://localhost:64531/api/admin/Professions/GetAll", {
+      headers: myHeaders,
+    })
       .then((response) => response.json())
       .then((d) => {
           setProfessions(d);
       });
-    fetch("http://localhost:64531/api/admin/Genres/GetAll")
+    fetch("http://localhost:64531/api/admin/Genres/GetAll", {
+      headers: myHeaders,
+    })
       .then((response) => response.json())
       .then((d) => {
           setGenres(d);
@@ -98,14 +112,25 @@ function MovieCreate() {
       const options = {
         method: "PUT",
         body: formData,
+        headers: myHeaders,
       };
 
-      fetch("http://localhost:64531/api/admin/Movies/Create", options)
-        .then((response) => {
-            console.log(response)
-        if (response.status === 201) {
-            navigate("/tables");
-        }
+      axios({
+        method: "put",
+        url: "http://localhost:64531/api/admin/Movies/Create",
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" ,
+                   "Authorization": "Bearer " + token,
+      },
+      })
+        .then(function (response) {
+          //handle success
+          navigate("/tables");
+          console.log(response);
+        })
+        .catch(function (response) {
+        //handle error
+        console.log(response);
       });
     }
   };

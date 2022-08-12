@@ -34,6 +34,7 @@ import peopleTableData from "layouts/tables/data/peopleTableData";
 import moviesTableData from "layouts/tables/data/moviesTableData";
 
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Tables() {
   const { columns, rows } = authorsTableData();
@@ -42,9 +43,28 @@ function Tables() {
   const { columns: movieColumns, rows: movieRows } = moviesTableData();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token == null) {
+      navigate("/authentication/sign-in");
+    }
+    const myHeaders = new Headers();
+    myHeaders.append('Authorization', "Bearer " + token);
+    fetch("http://localhost:64531/api/admin/Accounts/CheckToken", {
+      headers: myHeaders
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch(() => {
+        localStorage.removeItem("token");
+        navigate("/authentication/sign-in");
+      });
+  }, []);
+
   return (
     <DashboardLayout>
-      <DashboardNavbar />
+      {/* <DashboardNavbar /> */}
       <MDBox pt={6} pb={3}>
         <Grid container spacing={6}>
           <Grid item xs={12}>

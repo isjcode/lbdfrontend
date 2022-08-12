@@ -33,22 +33,30 @@ export default function data() {
       </MDBox>
     </MDBox>
   );
-
+  const navigate = useNavigate();
   const [genres, setGenres] = useState(null);
+  const token = localStorage.getItem("token");
+
+  const myHeaders = new Headers();
+  myHeaders.append('Authorization', "Bearer " + token);
+  myHeaders.append("Content-Type", "application/json");
 
   useEffect(() => {
+    if (token == null) {
+      navigate("/authentication/sign-in");
+    }
     placeGenres();
   }, []);
-
-  const placeGenres = () => {
-    fetch("http://localhost:64531/api/admin/Genres/GetAll")
+    const placeGenres = () => {
+    fetch("http://localhost:64531/api/admin/Genres/GetAll", {
+      headers: myHeaders,
+    })
       .then((response) => response.json())
       .then((d) => {
         setGenres(d);
       });
   };
 
-  const navigate = useNavigate(); 
   const routeChange = (e) => { 
     const id = e.target.dataset.id;
     const params = { id: id };
@@ -62,6 +70,7 @@ export default function data() {
   const deleteOrRestore = (id) => {
     fetch(`http://localhost:64531/api/admin/Genres/DeleteOrRestore?id=${id}`, {
       method: "POST",
+      headers: myHeaders,
     })
       .then((response) => {
         if (response.status == 200) {

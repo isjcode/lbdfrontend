@@ -1,6 +1,7 @@
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import { useLocation, useSearchParams, useNavigate} from "react-router-dom";
 
@@ -15,8 +16,15 @@ function PersonUpdate() {
 
   const [professions, setProfessions] = useState([]);
 
+  const token = localStorage.getItem("token");
+  const myHeaders = new Headers();
+  myHeaders.append('Authorization', "Bearer " + token);
+  myHeaders.append("Content-Type", "application/json");
+
   useEffect(() => {
-    fetch("http://localhost:64531/api/admin/Professions/GetAll")
+    fetch("http://localhost:64531/api/admin/Professions/GetAll", {
+      headers: myHeaders,
+    })
       .then((response) => response.json())
       .then((d) => {
         setProfessions(d);
@@ -56,14 +64,26 @@ function PersonUpdate() {
       const options = {
         method: "POST",
         body: formData,
+        header: myHeaders,
       };
-
-      fetch(`http://localhost:64531/api/admin/People/Update?id=${id}`, options)
-        .then((response) => {
-        if (response.status === 201) {
-          navigate("/tables");
-        }
+      axios({
+        method: "POST",
+        url: `http://localhost:64531/api/admin/People/Update?id=${id}`,
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" ,
+                   "Authorization": "Bearer " + token,
+      },
+      })
+        .then(function (response) {
+          //handle success
+          navigate("tables");
+          console.log(response);
+        })
+        .catch(function (response) {
+        //handle error
+        console.log(response);
       });
+
     }
   };
   return (

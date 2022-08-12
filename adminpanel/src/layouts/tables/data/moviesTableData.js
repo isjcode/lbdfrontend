@@ -20,6 +20,11 @@ export default function data() {
 
   const [movies, setMovies] = useState(null);
 
+  const token = localStorage.getItem("token");
+  const myHeaders = new Headers();
+  myHeaders.append('Authorization', "Bearer " + token);
+  myHeaders.append("Content-Type", "application/json");
+
   useEffect(() => {
     placeMovies();
     fetch(`http://localhost:64531/api/admin/Movies/GetAll`)
@@ -30,7 +35,9 @@ export default function data() {
   }, []);
 
   const placeMovies = () => {
-    fetch("http://localhost:64531/api/admin/Movies/GetAll")
+    fetch("http://localhost:64531/api/admin/Movies/GetAll", {
+      headers: myHeaders,
+    })
       .then((response) => response.json())
       .then((d) => setMovies(d));
   };
@@ -49,6 +56,7 @@ export default function data() {
   const deleteOrRestore = (id) => {
     fetch(`http://localhost:64531/api/admin/Movies/DeleteOrRestore?id=${id}`, {
       method: "POST",
+      headers: myHeaders,
     })
       .then((response) => {
         if (response.status == 200) {
@@ -63,7 +71,6 @@ export default function data() {
   const rows = [];
   if (movies) {
     movies.forEach((element) => {
-        console.log(element);
       rows.push({
         movie: <Movie  image={require(`assets/images/${element.posterImage}`)}  name={element.name} />,
 

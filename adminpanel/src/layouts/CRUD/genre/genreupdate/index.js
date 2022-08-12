@@ -16,6 +16,11 @@ function GenreUpdate() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const id = searchParams.get("id");
+  const token = localStorage.getItem("token");
+
+  if (token == null) {
+    navigate("authentication/sign-in");
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,14 +30,15 @@ function GenreUpdate() {
         "name": newName,
 
       };
+      const myHeaders = new Headers();
+      myHeaders.append('Authorization', "Bearer " + token);
+      myHeaders.append("Content-Type", "application/json");
 
       console.log(JSON.stringify(sendData));
 
       fetch(`http://localhost:64531/api/admin/Genres/Update?id=${id}`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: myHeaders,
         body: JSON.stringify(sendData),
       })
         .then((response) => {

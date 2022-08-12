@@ -17,6 +17,11 @@ function ProfessionUpdate() {
   const navigate = useNavigate();
   const id = searchParams.get("id");
 
+  const token = localStorage.getItem("token");
+  const myHeaders = new Headers();
+  myHeaders.append('Authorization', "Bearer " + token);
+  myHeaders.append("Content-Type", "application/json");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newName.trim().length !== 0) {
@@ -30,9 +35,7 @@ function ProfessionUpdate() {
 
       fetch(`http://localhost:64531/api/admin/Professions/Update?id=${id}`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: myHeaders,
         body: JSON.stringify(sendData),
       })
         .then((response) => {
