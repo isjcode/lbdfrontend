@@ -95,7 +95,7 @@ const routes = [
     route: "/crud/movie/moviecreate/",
     component: <MovieCreate />,
   },
-    {
+  {
     type: "collapse",
     name: "movieupdate",
     key: "movieupdate",

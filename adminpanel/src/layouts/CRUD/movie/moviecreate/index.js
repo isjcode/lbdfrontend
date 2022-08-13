@@ -119,22 +119,19 @@ function MovieCreate() {
         method: "put",
         url: "http://localhost:64531/api/admin/Movies/Create",
         data: formData,
-        headers: { "Content-Type": "multipart/form-data" ,
+        headers: { "Content-Type": "multipart/form-data",
                    "Authorization": "Bearer " + token,
       },
       })
         .then(function (response) {
-          //handle success
           navigate("/tables");
           console.log(response);
         })
         .catch(function (response) {
-        //handle error
-        console.log(response);
+          console.log(response);
       });
     }
   };
-
 
 
 	const  handlePeople =  val  => {

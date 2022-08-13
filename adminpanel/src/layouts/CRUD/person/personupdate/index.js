@@ -76,7 +76,7 @@ function PersonUpdate() {
       })
         .then(function (response) {
           //handle success
-          navigate("tables");
+          navigate("/tables");
           console.log(response);
         })
         .catch(function (response) {

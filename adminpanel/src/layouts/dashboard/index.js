@@ -34,9 +34,32 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 // Dashboard components
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
+import { useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token == null) {
+      navigate("/authentication/sign-in");
+    }
+    const myHeaders = new Headers();
+    myHeaders.append('Authorization', "Bearer " + token);
+    fetch("http://localhost:64531/api/admin/Accounts/CheckToken", {
+      headers: myHeaders
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch(() => {
+        localStorage.removeItem("token");
+        navigate("/authentication/sign-in");
+      }); 
+  }, []);
 
   return (
     <DashboardLayout>

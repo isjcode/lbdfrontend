@@ -78,7 +78,7 @@ export default function data() {
   if (people) {
     people.forEach((element) => {
       rows.push({
-        person: <Person  image={require(`assets/images/${element.image}`)} name={element.name} />,
+        person: <Person  image={require(`assets/images/people/${element.image}`)} name={element.name} />,
         profession: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
             {professions.length > 0 && professions.find(p => p.id === element.professionID).name}

@@ -26,24 +26,17 @@ export default function data() {
   myHeaders.append("Content-Type", "application/json");
 
   useEffect(() => {
-    placeMovies();
-    fetch(`http://localhost:64531/api/admin/Movies/GetAll`)
+    fetch(`http://localhost:64531/api/admin/Movies/GetAll`, {
+      headers: myHeaders,
+    })
       .then((response) => response.json())
       .then((d) => {
         setMovies(d);
       });
   }, []);
 
-  const placeMovies = () => {
-    fetch("http://localhost:64531/api/admin/Movies/GetAll", {
-      headers: myHeaders,
-    })
-      .then((response) => response.json())
-      .then((d) => setMovies(d));
-  };
-
   const navigate = useNavigate();
-  const routeChange = (e) => { 
+  const routeChange = (e) => {
     const id = e.target.dataset.id;
     const params = { id: id };
     const path = `/CRUD/movie/movieupdate`;
@@ -72,7 +65,7 @@ export default function data() {
   if (movies) {
     movies.forEach((element) => {
       rows.push({
-        movie: <Movie  image={require(`assets/images/${element.posterImage}`)}  name={element.name} />,
+        movie: <Movie  image={require(`assets/images/movies/posterimages/${element.posterImage}`)}  name={element.name} />,
 
         status: (
           <MDTypography onClick={() => deleteOrRestore(element.id)} component="a" href="#" variant="caption" color="text" fontWeight="medium">
