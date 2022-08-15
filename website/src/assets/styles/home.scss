@@ -1,0 +1,24 @@
+$mainColor: #14181C;
+$letterColor: #727F8C;
+$errorColor: #EE7000;
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: $mainColor;
+    ul {
+        list-style-type: none;
+    }
+
+    ul, a {
+        text-decoration: none;
+        outline: none;
+    }
+
+    a {
+        color: white;
+    }
+
+
+}

@@ -1,0 +1,50 @@
+header {
+  width: 1000px;
+  height: 60px;
+  margin: auto;
+  line-height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .logo {
+  width: 30%;
+}
+
+header .logo img {
+  width: 100%;
+}
+
+header ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 300;
+  color: white;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 80%;
+  font-weight: 500;
+  text-transform: uppercase;
+  width: 70%;
+}
+
+header ul li {
+  margin-right: 3%;
+}
+
+header ul li input {
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.227);
+  text-indent: 5%;
+  height: 30px;
+  border-radius: 20px;
+}
+
+header ul li input:hover {
+  background-color: rgba(255, 255, 255, 0.948);
+}
+/*# sourceMappingURL=header.css.map */

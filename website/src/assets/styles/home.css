@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #14181C;
+}
+
+body ul {
+  list-style-type: none;
+}
+
+body ul, body a {
+  text-decoration: none;
+  outline: none;
+}
+
+body a {
+  color: white;
+}
+/*# sourceMappingURL=home.css.map */
