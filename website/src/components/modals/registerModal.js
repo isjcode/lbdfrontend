@@ -63,7 +63,7 @@ function RegisterModal({closeRegisterModal}) {
         <div className="mainModal">
             <div className="backgroundContainer">
             </div>
-            <form className="mainContainer" onSubmit={handleSubmit}>
+            <form className="mainContainerRegister" onSubmit={handleSubmit}>
                 <button className="modalCloseBtn" onClick={() => closeRegisterModal(false)}> <i className="fa-solid fa-xmark"></i> </button>
                 <div className="modalTextInput email" >
                     <label htmlFor="emailInput"> Email Address </label>

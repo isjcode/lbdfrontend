@@ -1,16 +1,15 @@
 import react, { useContext, useEffect, useState } from "react";
 import "../../assets/styles/findMovieModal.css";
-import {UserContext} from "../../UserContext";
+import { UserContext } from "../../UserContext";
 import debounce from 'lodash/debounce';
 import { nanoid } from "nanoid";
 
-function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen}) {
+function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen, setMovieID}) {
     const [ searchMovie, setSearchMovie ] = useState("");
     const [ movies, setMovies ] = useState([]);
-    const [years, setYears ] = useState([]);
+    const [ years, setYears ] = useState([]);
 
     useEffect(() => {
-        console.log("here");
         if (searchMovie.trim().length !== 0) {
             fetch(`http://localhost:64531/api/movies/findmovie?str=${searchMovie}`, {
                 method: "POST",
@@ -49,14 +48,13 @@ function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen}) {
         setSearchMovie(e.target.value);
     }
 
-    console.log(years);
      
 
     return (
         <div className="mainModal">
             <div className="backgroundContainer">
             </div>
-            <form className="mainContainer">
+            <form className="mainContainerFind">
                 <button className="modalCloseBtn" onClick={() => closeFindMovieModal(false)}> <i className="fa-solid fa-xmark"></i> </button>
                 <div className="modalTextInput">
                     <label htmlFor="moviename"> Name of Film </label>
@@ -65,6 +63,7 @@ function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen}) {
                         movies.length !== 0 ? (
                             <div className="movies">
                                 {movies.map(m => <button onClick={() => {
+                                                            setMovieID(m.id);
                                                             closeLogMovieModalOpen(true);
                                                             closeFindMovieModal(false);
                                                             }} 

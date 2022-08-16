@@ -15,7 +15,7 @@
   background-color: black;
 }
 
-.mainModal .mainContainer {
+.mainModal .mainContainerRegister {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -28,7 +28,7 @@
   opacity: 100%;
 }
 
-.mainModal .mainContainer .modalCloseBtn {
+.mainModal .mainContainerRegister .modalCloseBtn {
   display: block;
   margin-left: auto;
   outline: none;
@@ -40,7 +40,7 @@
   padding: 2% 3%;
 }
 
-.mainModal .mainContainer .modalTextInput {
+.mainModal .mainContainerRegister .modalTextInput {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,33 +52,33 @@
   margin: auto;
 }
 
-.mainModal .mainContainer .modalTextInput input, .mainModal .mainContainer .modalTextInput label {
+.mainModal .mainContainerRegister .modalTextInput input, .mainModal .mainContainerRegister .modalTextInput label {
   width: 90%;
   border-radius: 5px;
   outline: none;
   border: none;
 }
 
-.mainModal .mainContainer .modalTextInput label {
+.mainModal .mainContainerRegister .modalTextInput label {
   color: white;
   padding-left: unset;
 }
 
-.mainModal .mainContainer .modalTextInput input {
+.mainModal .mainContainerRegister .modalTextInput input {
   background-color: #BBCCDD;
 }
 
-.mainModal .mainContainer .modalTextInput input:focus {
+.mainModal .mainContainerRegister .modalTextInput input:focus {
   background-color: white;
 }
 
-.mainModal .mainContainer .username, .mainModal .mainContainer .password {
+.mainModal .mainContainerRegister .username, .mainModal .mainContainerRegister .password {
   margin: auto;
   margin-right: 40%;
   width: 50%;
 }
 
-.mainModal .mainContainer .signUpBtn {
+.mainModal .mainContainerRegister .signUpBtn {
   display: block;
   background-color: #00A11D;
   color: white;

@@ -64,7 +64,7 @@ function LoginModal({closeLoginModal}) {
         <div className="mainModal">
             <div className="backgroundContainer">
             </div>
-            <form className="mainContainer" onSubmit={handleSubmit}>
+            <form className="mainContainerRegister" onSubmit={handleSubmit}>
                 <button className="modalCloseBtn" onClick={() => closeLoginModal(false)}> <i className="fa-solid fa-xmark"></i> </button>
                 <div className="modalTextInput email">
                     <label htmlFor="emailorusername"> Email or Username </label>
