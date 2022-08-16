@@ -1,27 +1,32 @@
 header {
-  width: 1000px;
-  height: 60px;
-  margin: auto;
-  line-height: 60px;
+  width: 100%;
+  height: 70px;
+  background-color: #14181C;
+}
+
+header .headerContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 1000px;
+  height: 100%;
+  line-height: 70px;
+  margin: auto;
 }
 
-header .logo {
+header .headerContainer .logo {
   width: 30%;
 }
 
-header .logo img {
+header .headerContainer .logo img {
   width: 100%;
 }
 
-header ul {
+header .headerContainer ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   font-weight: 300;
-  color: white;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -31,11 +36,16 @@ header ul {
   width: 70%;
 }
 
-header ul li {
+header .headerContainer ul li {
   margin-right: 3%;
 }
 
-header ul li input {
+header .headerContainer ul li a {
+  color: #CCDDEE;
+  font-weight: bold;
+}
+
+header .headerContainer ul li input {
   border: none;
   outline: none;
   background-color: rgba(255, 255, 255, 0.227);
@@ -44,7 +54,47 @@ header ul li input {
   border-radius: 20px;
 }
 
-header ul li input:hover {
+header .headerContainer ul li input:hover, header .headerContainer ul li input:active, header .headerContainer ul li input:focus {
   background-color: rgba(255, 255, 255, 0.948);
+}
+
+header .headerContainer ul .logBtnContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-self: center;
+}
+
+header .headerContainer ul .logBtnContainer .logBtn {
+  width: 80px;
+  position: relative;
+  height: 25px;
+  background-color: #15BC31;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+header .headerContainer ul .logBtnContainer .logBtn .fa-plus {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 /*# sourceMappingURL=header.css.map */

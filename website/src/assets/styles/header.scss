@@ -1,38 +1,73 @@
 header {
-        width: 1000px;
-        height: 60px;
-        margin: auto;
-        line-height: 60px;
-        display: flex;
-        .logo {
-            width: 30%;
-            img {
-                width: 100%;
-            }
-        }
-
-        ul {
+        width: 100%;
+        height: 70px;
+        background-color: #14181C;
+        .headerContainer {
             display: flex;
-            font-weight: 300;
-            color: white;
-            align-items: center;
-            font-size: 80%;
-            font-weight: 500;
-            text-transform: uppercase;
-            width: 70%;
-            li {
-                margin-right: 3%;
-                input {
-                    border: none;
-                    outline: none;
-                    background-color: rgba(255, 255, 255, 0.227);
-                    text-indent: 5%;
-                    height: 30px;
-                    border-radius: 20px;
-                    &:hover {
-                        background-color: rgba(255, 255, 255, 0.948);
+            width: 1000px;
+            height: 100%;
+            line-height: 70px;
+            margin: auto;
+            .logo {
+                width: 30%;
+                img {
+                    width: 100%;
+                }
+            }
+
+            ul {
+                display: flex;
+                font-weight: 300;
+                align-items: center;
+                font-size: 80%;
+                font-weight: 500;
+                text-transform: uppercase;
+                width: 70%;
+                li {
+                    a {
+                        color: #CCDDEE;
+                        font-weight: bold;
+                    }
+                    margin-right: 3%;
+                    input {
+                        border: none;
+                        outline: none;
+                        background-color: rgba(255, 255, 255, 0.227);
+                        text-indent: 5%;
+                        height: 30px;
+                        border-radius: 20px;
+                        &:hover, &:active, &:focus {
+                            background-color: rgba(255, 255, 255, 0.948);
+                        }
+                    }
+                }
+                .logBtnContainer {
+                    display: flex;
+                    align-items: center;
+                    justify-self: center;
+
+                    .logBtn {
+                        width: 80px;
+                        position: relative;
+                        height: 25px;
+                        background-color: #15BC31;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border: none;
+                        outline: none;
+                        color: white;
+                        font-weight: 700;
+                        cursor: pointer;
+                        border-radius: 4px;
+                        .fa-plus {
+                            position: absolute;
+                            left: 10%;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
                     }
                 }
             }
         }
-    }
+}

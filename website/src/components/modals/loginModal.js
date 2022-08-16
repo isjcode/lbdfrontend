@@ -1,8 +1,11 @@
-import react, { useState } from "react";
+import jwtDecode from "jwt-decode";
+import react, { useContext, useState } from "react";
 import "../../assets/styles/registerModal.css";
+import {UserContext} from "../../UserContext";
 
 function LoginModal({closeLoginModal}) {
     const [inputs, setInputs] = useState({});
+    const { user, setUser } = useContext(UserContext);
 
     const handleChange = (e) => {
         const name = e.target.name;
@@ -44,6 +47,9 @@ function LoginModal({closeLoginModal}) {
         })
         .then((data) => {
             localStorage.setItem("token", data.token);
+            localStorage.setItem("userData", JSON.stringify(data.userData));
+            setUser(data.userData);
+
         })
         .catch((error) => {
             errorElement.textContent = genericErrorMessage;

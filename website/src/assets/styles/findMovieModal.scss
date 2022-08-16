@@ -1,0 +1,88 @@
+$errorColor: #fc8e2f;
+
+.mainModal {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;    
+    .backgroundContainer {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 80%;
+        text-decoration: none;
+        background-color: black;
+    }
+    .mainContainer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        height: 200px;
+        transform: translate(-50%, -50%);
+        background-color: #445566;
+        opacity: 100%;
+        .modalCloseBtn {
+            display: block;
+            margin-left: auto;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: white;
+            font-size: 20px;
+            padding: 2% 3%;
+        }
+
+        .modalTextInput {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            margin: auto;
+            input, label {
+                width: 90%;
+                border-radius: 5px;
+                outline: none;
+                border: none;
+            }
+            label {
+                color: white;
+                padding-left: unset;
+            }
+
+            input {
+                background-color: #BBCCDD;
+                padding: 2%;
+                margin-top: 2%;
+                &:focus {
+                    background-color: white;
+                }
+            }
+
+            .movies {
+                width: 100%;
+                height: 150px; 
+                overflow-y: scroll;
+                border: 1px white;
+                background-color: #667788;
+                padding-top: 1%;
+                .movie {
+                    width: 90%;
+                    border: 1px white;
+                    outline: none;
+                    background-color: transparent;
+                    color: white;
+                    font-size: 15px;
+                    text-align: left;
+                    cursor: pointer;
+
+                    &:hover, &:focus, &:active {
+                        background-color: #00B020;
+
+                    }
+                }
+            }
+        }
+    }
+}    

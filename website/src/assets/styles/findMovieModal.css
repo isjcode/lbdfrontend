@@ -1,0 +1,99 @@
+.mainModal {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mainModal .backgroundContainer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 80%;
+  text-decoration: none;
+  background-color: black;
+}
+
+.mainModal .mainContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 200px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #445566;
+  opacity: 100%;
+}
+
+.mainModal .mainContainer .modalCloseBtn {
+  display: block;
+  margin-left: auto;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+  padding: 2% 3%;
+}
+
+.mainModal .mainContainer .modalTextInput {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+  margin: auto;
+}
+
+.mainModal .mainContainer .modalTextInput input, .mainModal .mainContainer .modalTextInput label {
+  width: 90%;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.mainModal .mainContainer .modalTextInput label {
+  color: white;
+  padding-left: unset;
+}
+
+.mainModal .mainContainer .modalTextInput input {
+  background-color: #BBCCDD;
+  padding: 2%;
+  margin-top: 2%;
+}
+
+.mainModal .mainContainer .modalTextInput input:focus {
+  background-color: white;
+}
+
+.mainModal .mainContainer .modalTextInput .movies {
+  width: 100%;
+  height: 150px;
+  overflow-y: scroll;
+  border: 1px white;
+  background-color: #667788;
+  padding-top: 1%;
+}
+
+.mainModal .mainContainer .modalTextInput .movies .movie {
+  width: 90%;
+  border: 1px white;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mainModal .mainContainer .modalTextInput .movies .movie:hover, .mainModal .mainContainer .modalTextInput .movies .movie:focus, .mainModal .mainContainer .modalTextInput .movies .movie:active {
+  background-color: #00B020;
+}
+/*# sourceMappingURL=findMovieModal.css.map */
