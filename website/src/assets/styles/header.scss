@@ -4,7 +4,7 @@ header {
         background-color: #14181C;
         .headerContainer {
             display: flex;
-            width: 1000px;
+            width: 1100px; 
             height: 100%;
             line-height: 70px;
             margin: auto;
@@ -27,6 +27,7 @@ header {
                     a {
                         color: #CCDDEE;
                         font-weight: bold;
+                        white-space: nowrap;
                     }
                     margin-right: 3%;
                     input {

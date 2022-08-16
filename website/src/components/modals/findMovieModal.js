@@ -4,7 +4,7 @@ import {UserContext} from "../../UserContext";
 import debounce from 'lodash/debounce';
 import { nanoid } from "nanoid";
 
-function FindMovieModal({closeFindMovieModal}) {
+function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen}) {
     const [ searchMovie, setSearchMovie ] = useState("");
     const [ movies, setMovies ] = useState([]);
     const [years, setYears ] = useState([]);
@@ -64,7 +64,11 @@ function FindMovieModal({closeFindMovieModal}) {
                     {
                         movies.length !== 0 ? (
                             <div className="movies">
-                                {movies.map(m => <button key={nanoid()} className="movie"> {m.name} {years && `(${years.find(y => y.id == m.yearID).yearNumber})`} </button>)}
+                                {movies.map(m => <button onClick={() => {
+                                                            closeLogMovieModalOpen(true);
+                                                            closeFindMovieModal(false);
+                                                            }} 
+                                        key={nanoid()} className="movie"> {m.name} {years && `(${years.find(y => y.id == m.yearID).yearNumber})`} </button>)}
                             </div>
                         )
                         :

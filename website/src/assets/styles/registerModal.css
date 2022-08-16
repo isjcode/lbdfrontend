@@ -24,6 +24,7 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   background-color: #445566;
+  border-radius: 5px;
   opacity: 100%;
 }
 
