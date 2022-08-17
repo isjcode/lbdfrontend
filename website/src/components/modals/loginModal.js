@@ -46,7 +46,6 @@ function LoginModal({closeLoginModal}) {
             }
         })
         .then((data) => {
-            localStorage.setItem("token", data.token);
             localStorage.setItem("userData", JSON.stringify(data.userData));
             setUser(data.userData);
 

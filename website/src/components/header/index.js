@@ -7,10 +7,13 @@ import RegisterModal from "../../components/modals/registerModal";
 import LoginModal from "../../components/modals/loginModal";
 import FindMovieModal from "../../components/modals/findMovieModal";
 import LogMovieModal from "../../components/modals/logMovieModal";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
     const [search, setSearch] = useState("");
     const { user, setUser } = useContext(UserContext);
+    
+    const navigate = useNavigate();
 
     const [registerModalOpen, setRegisterModalOpen] = useState(false);
     const [loginModalOpen, setLoginModalOpen] = useState(false);
@@ -22,12 +25,20 @@ function Header() {
     const handleSearch = (e) => {
         setSearch(e.target.value);
     }
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        if (search.trim().length !== 0) {
+            navigate("/search", {state: {searchString: search}});
+        }
+    }
+    
     return (
         <header>
             <div className="headerContainer">
-            <a href="#" className="logo">
+            <Link to="/" className="logo">
                 <img alt="site logo" src={logo} ></img>
-            </a>
+            </Link>
             <ul>
                 {
                     user === null ? (
@@ -60,11 +71,19 @@ function Header() {
                     <a href="#"> journal </a>
                 </li>
                 <li>
-                    <input type="text" value={search} onChange={handleSearch}/> 
+                    <div className="search">
+                        <input type="text" value={search} onChange={handleSearch}/> 
+                        <button onClick={handleClick} className="searchBtn"> <i className="fa-solid fa-magnifying-glass"></i> </button>
+                    </div>
                 </li>
-                <li className="logBtnContainer">
-                    <button onClick={() => setFindMovieModalOpen(true)} className="logBtn"> <i className="fa-solid fa-plus"></i> LOG </button>
-                </li>
+                {
+                    user !== null ?
+                        <li className="logBtnContainer">
+                            <button onClick={() => setFindMovieModalOpen(true)} className="logBtn"> <i className="fa-solid fa-plus"></i> LOG </button>
+                        </li>
+                    :
+                        null
+                }
             </ul>
             </div>
             {registerModalOpen && <RegisterModal closeRegisterModal={setRegisterModalOpen}/>}
