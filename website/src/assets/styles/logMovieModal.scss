@@ -5,9 +5,10 @@ $errorColor: #fc8e2f;
     top: 0;
     width: 100%;
     height: 100%;    
-    .backgroundContainer {
-        position: absolute;
+    .backgroundContainerLog {
+        position: fixed;
         top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         opacity: 80%;
@@ -15,7 +16,8 @@ $errorColor: #fc8e2f;
         background-color: black;
     }
     .mainContainerLog {
-        position: absolute;
+        z-index: 1000000;
+        position: fixed;
         top: 50%;
         left: 50%;
         width: 800px;
@@ -33,7 +35,7 @@ $errorColor: #fc8e2f;
             // align-items: center;
             img {
                 display: block;
-                margin-top: 15%;
+                margin-top: 19%;
                 height: 50%;
             }
         }

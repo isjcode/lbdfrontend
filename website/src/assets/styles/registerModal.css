@@ -1,22 +1,24 @@
 .mainModal {
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 }
 
-.mainModal .backgroundContainer {
-  position: absolute;
+.mainModal .backgroundContainerRegister {
+  position: fixed;
   top: 0;
+  left: 0;
+  background-color: black;
   width: 100%;
   height: 100%;
   opacity: 80%;
   text-decoration: none;
-  background-color: black;
 }
 
 .mainModal .mainContainerRegister {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   width: 400px;

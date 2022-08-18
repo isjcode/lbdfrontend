@@ -1,7 +1,5 @@
-import react, { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../../assets/styles/findMovieModal.css";
-import { UserContext } from "../../UserContext";
-import debounce from 'lodash/debounce';
 import { nanoid } from "nanoid";
 
 function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen, setMovieID}) {
@@ -21,6 +19,7 @@ function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen, setMovieID
                 return response.json();
             })
             .then((data) => {
+                console.log(data);
                 setMovies(data);
             })
             .catch((error) => {
@@ -48,11 +47,9 @@ function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen, setMovieID
         setSearchMovie(e.target.value);
     }
 
-     
-
     return (
         <div className="mainModal">
-            <div className="backgroundContainer">
+            <div className="backgroundContainerFind">
             </div>
             <form className="mainContainerFind">
                 <button className="modalCloseBtn" onClick={() => closeFindMovieModal(false)}> <i className="fa-solid fa-xmark"></i> </button>
@@ -63,11 +60,11 @@ function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen, setMovieID
                         movies.length !== 0 ? (
                             <div className="movies">
                                 {movies.map(m => <button onClick={() => {
-                                                            setMovieID(m.id);
+                                                            setMovieID(m.ID);
                                                             closeLogMovieModalOpen(true);
                                                             closeFindMovieModal(false);
                                                             }} 
-                                        key={nanoid()} className="movie"> {m.name} {years && `(${years.find(y => y.id == m.yearID).yearNumber})`} </button>)}
+                                        key={nanoid()} className="movie"> {m.Name} {years && `(${years.find(y => y.id == m.yearID).yearNumber})`} </button>)}
                             </div>
                         )
                         :

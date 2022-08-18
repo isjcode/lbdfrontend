@@ -1,4 +1,5 @@
 import Header from "../../components/header";
+import Footer from "../../components/footer";
 import "../../assets/styles/home.css";
 import { useContext, useState } from "react";
 import { UserContext } from "../../UserContext";
@@ -9,6 +10,7 @@ function Home() {
     return (
         <div className="mainContainer">
             <Header />
+            <Footer />
         </div>
     )
 }

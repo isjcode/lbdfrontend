@@ -5,9 +5,10 @@ $errorColor: #fc8e2f;
     top: 0;
     width: 100%;
     height: 100%;    
-    .backgroundContainer {
-        position: absolute;
+    .backgroundContainerFind {
+        position: fixed;
         top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         opacity: 80%;
@@ -15,8 +16,8 @@ $errorColor: #fc8e2f;
         background-color: black;
     }
     .mainContainerFind {
-        position: absolute;
-        top: 50%;
+        position: fixed;
+        top: 40%;
         left: 50%;
         width: 600px;
         height: 200px;
@@ -69,6 +70,7 @@ $errorColor: #fc8e2f;
                 background-color: #667788;
                 padding-top: 1%;
                 .movie {
+                    background-color: red;
                     width: 90%;
                     border: 1px white;
                     outline: none;

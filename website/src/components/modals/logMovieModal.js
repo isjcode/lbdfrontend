@@ -8,7 +8,7 @@ function LogMovieModal({closeLogMovieModal, movieID}) {
     const [ rating, setRating ] = useState(null);
     const [ movie, setMovie ] = useState(null);
     const { user, setUser } = useContext(UserContext);
-
+    console.log(user.token);
     useEffect(() => {
         fetch(`http://localhost:64531/api/movies/getbyid?id=${movieID}`, {
                 method: "GET",
@@ -41,16 +41,16 @@ function LogMovieModal({closeLogMovieModal, movieID}) {
             MovieID: movieID,
             OwnerID: user.id,
         }
+        console.log("Bearer " + user.token);
         fetch("http://localhost:64531/api/reviews/create", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer " + user.token,
+                "Authorization": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjZlZGJkOGVlLWJmYzUtNDMyMi1hOWY1LWNiMWViYWY4ZmQ5MCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJoZWxsb28iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJoZWxsb0BnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJNZW1iZXIiLCJleHAiOjE2NjA4NTE2NTQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjQ1MzEiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjY0NTMxIn0.ZJ5Hc6fYTPhGpqL8FV-3K54h75MqQMP8JlFj23UFiOpjF4p3FHuApsyeFJrbgYunzW7ieoon8hXj9xbDCrULXA"
             },
         body: JSON.stringify(data),
         })
         .then((response) => {
-            console.log(response);
             if (response.status === 201) {
                 closeLogMovieModal(false);
             }
@@ -62,13 +62,14 @@ function LogMovieModal({closeLogMovieModal, movieID}) {
     }
 
 
+
     return (
         <div className="mainModal">
-            <div className="backgroundContainer">
+            <div className="backgroundContainerLog">
             </div>
             <form className="mainContainerLog" onSubmit={handleSubmit}>
                 <div className="left">
-                    <img src={movie && require(`../../assets/images/movies/posterimages/${movie.posterImage}`)}></img>
+                    <img src={movie && require(`../../assets/images/movies/posterimages/${movie.PosterImage}`)}></img>
                 </div>
                 <div className="right">
                     <button className="modalCloseBtn" onClick={() => {

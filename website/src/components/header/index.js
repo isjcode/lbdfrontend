@@ -7,13 +7,14 @@ import RegisterModal from "../../components/modals/registerModal";
 import LoginModal from "../../components/modals/loginModal";
 import FindMovieModal from "../../components/modals/findMovieModal";
 import LogMovieModal from "../../components/modals/logMovieModal";
-import { Link, useNavigate } from "react-router-dom";
+import { createSearchParams, Link, useNavigate } from "react-router-dom";
 
 function Header() {
     const [search, setSearch] = useState("");
     const { user, setUser } = useContext(UserContext);
     
     const navigate = useNavigate();
+    const params = { str: search };
 
     const [registerModalOpen, setRegisterModalOpen] = useState(false);
     const [loginModalOpen, setLoginModalOpen] = useState(false);
@@ -29,12 +30,15 @@ function Header() {
     const handleClick = (e) => {
         e.preventDefault();
         if (search.trim().length !== 0) {
-            navigate("/search", {state: {searchString: search}});
+            navigate({
+                pathname: "/search",
+                search: `${createSearchParams(params)}`,
+            });
         }
     }
     
     return (
-        <header>
+        <header className={user === null ? "wide-width" : "normal-width"}>
             <div className="headerContainer">
             <Link to="/" className="logo">
                 <img alt="site logo" src={logo} ></img>

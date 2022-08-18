@@ -61,7 +61,7 @@ function LoginModal({closeLoginModal}) {
 
     return (
         <div className="mainModal">
-            <div className="backgroundContainer">
+            <div className="backgroundContainerRegister">
             </div>
             <form className="mainContainerRegister" onSubmit={handleSubmit}>
                 <button className="modalCloseBtn" onClick={() => closeLoginModal(false)}> <i className="fa-solid fa-xmark"></i> </button>
