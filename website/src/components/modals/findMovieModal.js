@@ -18,7 +18,6 @@ function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen, setMovieID
                 return response.json();
             })
             .then((data) => {
-                console.log(data);
                 setMovies(data);
             })
             .catch((error) => {

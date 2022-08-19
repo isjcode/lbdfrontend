@@ -43,13 +43,15 @@ function LogMovieModal({closeLogMovieModal, movieID}) {
         }
         console.log(user);
         console.log("Bearer " + user.token);
+        const headers = {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + user.token,
+        }
+        console.log(headers);
         fetch("http://localhost:64531/api/reviews/create", {
             method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + user.token,
-            },
-        body: JSON.stringify(data),
+            headers,
+            body: JSON.stringify(data),
         })
         .then((response) => {
             if (response.status === 201) {

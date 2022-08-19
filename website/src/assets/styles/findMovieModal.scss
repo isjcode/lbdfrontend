@@ -17,6 +17,7 @@ $errorColor: #fc8e2f;
     }
     .mainContainerFind {
         position: fixed;
+        z-index: 1000;
         top: 40%;
         left: 50%;
         width: 600px;

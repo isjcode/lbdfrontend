@@ -17,6 +17,7 @@ $errorColor: #fc8e2f;
         text-decoration: none;
     }
     .mainContainerRegister {
+        z-index: 1000;
         position: fixed;
         top: 50%;
         left: 50%;

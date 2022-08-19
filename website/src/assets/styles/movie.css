@@ -5,30 +5,41 @@
 
 .mainContainer .movie-page-wrapper {
   width: 920px;
-  margin: auto;
   height: 500px;
-  margin-top: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: auto;
 }
 
 .mainContainer .movie-page-wrapper .movie-poster {
   position: -webkit-sticky;
   position: sticky;
+  top: 100px;
   display: block;
-  height: 220px;
+  height: 250px;
   border-radius: 7px;
   width: 20%;
 }
 
-.mainContainer .movie-page-wrapper .descriptionandbox {
+.mainContainer .movie-page-wrapper .inner-page-wrapper {
   width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-left: auto;
+  height: 200px;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .descriptionandbox {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -40,39 +51,40 @@
   height: max-content;
 }
 
-.mainContainer .movie-page-wrapper .descriptionandbox .description {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .descriptionandbox .description {
   width: 70%;
   padding: 0 5%;
   color: #99AABB;
 }
 
-.mainContainer .movie-page-wrapper .descriptionandbox .description h3 {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .descriptionandbox .description h3 {
   margin-left: 5%;
   font-size: 20px;
 }
 
-.mainContainer .movie-page-wrapper .descriptionandbox .description p {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .descriptionandbox .description p {
   width: 70%;
   font-size: 14px;
   margin-left: 5%;
   margin-top: 5%;
 }
 
-.mainContainer .movie-page-wrapper .descriptionandbox .box {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .descriptionandbox .box {
   width: 30%;
   height: 100px;
   border-radius: 4px;
   background-color: #445566;
 }
 
-.mainContainer .container {
-  width: 50%;
+.mainContainer .movie-page-wrapper .inner-page-wrapper .container {
+  width: 90%;
   height: 250px;
   background-color: transparent;
-  margin: 5% 25% 0;
+  margin: auto;
+  margin-bottom: 50%;
 }
 
-.mainContainer .tab-list {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .container .tab-list {
   height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -84,7 +96,7 @@
   background-color: transparent;
 }
 
-.mainContainer .tabs {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .container .tabs {
   width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -101,18 +113,18 @@
   cursor: pointer;
 }
 
-.mainContainer .tabs:not(:last-child) {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .container .tabs:not(:last-child) {
   border-right: 2px solid rgba(0, 0, 0, 0.3);
 }
 
-.mainContainer .active-tabs {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .container .active-tabs {
   background: transparent;
   color: #15BC31;
   font-weight: bold;
   border-bottom: 1px solid white;
 }
 
-.mainContainer .active-tabs::before {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .container .active-tabs::before {
   content: "";
   display: block;
   position: absolute;
@@ -124,14 +136,14 @@
   height: 4px;
 }
 
-.mainContainer .content {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .container .content {
   background-color: transparent;
   display: none;
   padding: 10px;
   color: white;
 }
 
-.mainContainer .content a {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .container .content a {
   background-color: #14181C;
   display: block;
   color: #99AABB;
@@ -142,15 +154,22 @@
   cursor: pointer;
 }
 
-.mainContainer .content a:hover {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .container .content a:hover {
   color: #15BC31;
 }
 
-.mainContainer .active-content {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .container .active-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews {
+  width: 100%;
+  height: 100px;
+  margin-top: 10%;
+  color: #99AABB;
 }
 /*# sourceMappingURL=movie.css.map */
