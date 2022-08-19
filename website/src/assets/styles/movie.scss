@@ -5,39 +5,126 @@ $hoverColor: #15BC31;
     margin: 0;
     padding: 0;
 }
+.mainContainer {
 
 .movie-page-wrapper {
     width: 920px;
     margin: auto;
-    height: max-content;
+    height: 500px;
     margin-top: 50px;
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     .movie-poster {
         position: sticky;
         display: block;
         height: 220px;
         border-radius: 7px;
+        width: 20%;
     }
-    .description {
-        width: 50%;
-        padding: 0 5%;
-        color: $letterColor;
-        h3 {
-            margin-left: 5%;
-            font-size: 20px;
-        }
-        p {
+    .descriptionandbox {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        height: max-content;
+        .description {
             width: 70%;
+            padding: 0 5%;
+            color: $letterColor;
+            h3 {
+                margin-left: 5%;
+                font-size: 20px;
+            }
+            p {
+                width: 70%;
             font-size: 14px;
             margin-left: 5%;
             margin-top: 5%;
+            }
+        }
+
+        .box {
+            width: 30%;
+            height: 100px;
+            border-radius: 4px;
+            background-color: #445566;
         }
     }
-
-    .box {
-        width: 200px;
-        height: 100px;
-        border-radius: 4px;
-        background-color: #445566;
-    }
 }
+    .container {
+        width: 50%;
+        height: 250px;
+        background-color: transparent;
+        margin: 5% 25% 0;
+    }
+
+        .tab-list {
+            height: 50px;
+            display: flex;
+            list-style: none;
+            font-size: 18px;
+            padding: 0;
+            margin: 0;
+            background-color: transparent;
+        }
+
+        .tabs {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            position: relative;
+            color: $hoverColor;
+            cursor: pointer;
+        }
+
+        .tabs:not(:last-child) {
+            border-right: 2px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .active-tabs {
+            background: transparent;
+            color: $hoverColor;
+            font-weight: bold;
+            border-bottom: 1px solid white;
+        }
+
+        .active-tabs::before {
+            content: "";
+                display: block;
+                position: absolute;
+                top: -4px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: calc(100% + 2px);
+                height: 4px;
+            }
+
+        .content {
+            background-color: transparent;
+            display: none;
+            padding: 10px;
+            color: white;
+
+            a {
+                background-color: #14181C;
+                display: block;
+                color: $letterColor;
+                border-radius: 4px;
+                padding: 1% 2%;
+                font-size: 13px;
+                margin: 1%;
+                cursor: pointer;
+                &:hover {
+                    color: $hoverColor;
+                }
+            }
+        }
+
+        .active-content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+    }
