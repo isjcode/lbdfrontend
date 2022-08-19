@@ -36,6 +36,12 @@ function Header() {
             });
         }
     }
+
+    const handleSignOut = (e) => {
+        e.preventDefault();
+        setUser(null);
+        localStorage.removeItem("userData");
+    }
     
     return (
         <header className={user === null ? "wide-width" : "normal-width"}>
@@ -57,8 +63,13 @@ function Header() {
                     )
                     :
                     (
-                        <li>
-                            <a href="#"> {user.username} </a>
+                        <li className="user-name">
+                            <a href="#"> {user.username} <i className="fa-solid fa-chevron-down"></i> </a>
+                            <div className="user-dropdown">
+                                <div>
+                                    <a onClick={handleSignOut} href="#"> Sign Out </a>
+                                </div>
+                            </div>
                         </li>
                     )
                 }

@@ -7,6 +7,7 @@ import "../../assets/styles/movie.css";
 function Movie() {
     const [years, setYears] = useState([]);
     const [movie, setMovie] = useState(null);
+    const [people, setPeople] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams(); 
 
     useEffect(() => {
@@ -26,17 +27,18 @@ function Movie() {
         .catch((error) => {
             console.error('Error:', error);
         });
-        fetch(`http://localhost:64531/api/movies/getyears`, {
+         fetch(`http://localhost:64531/api/people/getmoviepeople?id=${searchParams.get("id")}`, {
             method: "GET",
             headers: {
             'Content-Type': 'application/json',
-            },
-            })
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                setYears(data);
+        },
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            setPeople(data);
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -49,7 +51,7 @@ function Movie() {
             <div className="movie-page-wrapper">
                 <img className="movie-poster" src={movie && require(`../../assets/images/movies/posterimages/${movie.PosterImage}`)}/>
                 <div className="description">
-                    <h3> {movie && movie.Name} </h3>
+                    <h3> {movie && movie.Name} ({movie && movie.YearNumber})</h3>
                     <p> {movie && movie.Synopsis} </p>
                 </div>
                 <div className="box">

@@ -5,7 +5,6 @@ import { nanoid } from "nanoid";
 function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen, setMovieID}) {
     const [ searchMovie, setSearchMovie ] = useState("");
     const [ movies, setMovies ] = useState([]);
-    const [ years, setYears ] = useState([]);
 
     useEffect(() => {
         if (searchMovie.trim().length !== 0) {
@@ -26,21 +25,6 @@ function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen, setMovieID
                 console.error('Error:', error);
             });
         }
-        fetch(`http://localhost:64531/api/movies/getyears`, {
-            method: "GET",
-            headers: {
-            'Content-Type': 'application/json',
-        },
-        })
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            setYears(data.result);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
     }, [searchMovie]);
 
     const handleChange = (e) => {
@@ -64,7 +48,7 @@ function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen, setMovieID
                                                             closeLogMovieModalOpen(true);
                                                             closeFindMovieModal(false);
                                                             }} 
-                                        key={nanoid()} className="movie"> {m.Name} {years && `(${years.find(y => y.id == m.yearID).yearNumber})`} </button>)}
+                                        key={nanoid()} className="movie"> {m.Name} {m.YearNumber} </button>)}
                             </div>
                         )
                         :

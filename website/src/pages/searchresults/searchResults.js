@@ -36,7 +36,7 @@ function SearchResults() {
                 currentItems.map((item) => (
                 <div data-id={item.ID} key={nanoid()} className="found-movie">
                     <img onClick={handleClick} data-id={item.ID} src={require(`../../assets/images/movies/posterimages/${item.PosterImage}`)} />
-                    <h1 onClick={handleClick} data-id={item.ID}> {item.Name} </h1>
+                    <h1 onClick={handleClick} data-id={item.ID}> {item.Name} ({item.YearNumber})</h1>
                 </div>
                 ))}
             </>
@@ -53,6 +53,7 @@ function SearchResults() {
             return response.json();
         })
         .then((data) => {
+            console.log(data);
             setCurrentItems(data.Items);
             setPageCount(data.TotalPage);
         })
