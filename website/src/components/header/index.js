@@ -66,8 +66,11 @@ function Header() {
                         <li className="user-name">
                             <a href="#"> {user.username} <i className="fa-solid fa-chevron-down"></i> </a>
                             <div className="user-dropdown">
-                                <div>
-                                    <a onClick={handleSignOut} href="#"> Sign Out </a>
+                                <div className="dropdown-tab">
+                                    <Link to="/"> Home </Link>
+                                </div>
+                                <div className="dropdown-tab" onClick={handleSignOut}> 
+                                    <Link to="/"> Sign Out </Link>
                                 </div>
                             </div>
                         </li>

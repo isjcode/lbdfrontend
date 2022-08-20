@@ -6,6 +6,13 @@
   width: 1000px;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 header {
   position: relative;
   width: 100%;
@@ -64,6 +71,8 @@ header .headerContainer ul {
   font-weight: 500;
   text-transform: uppercase;
   width: 70%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 header .headerContainer ul .user-name {
@@ -75,13 +84,49 @@ header .headerContainer ul .user-name .user-dropdown {
   left: 0;
   display: none;
   position: absolute;
+  color: #99AABB;
   width: 100%;
   height: 100px;
   background-color: #445566;
   border-radius: 5px;
 }
 
-header .headerContainer ul .user-name .user-dropdown div {
+header .headerContainer ul .user-name .user-dropdown .dropdown-tab {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5% 0;
+  height: 100%;
+}
+
+header .headerContainer ul .user-name .user-dropdown .dropdown-tab div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+header .headerContainer ul .user-name .user-dropdown .dropdown-tab div a {
+  color: #99AABB;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -92,12 +137,10 @@ header .headerContainer ul .user-name .user-dropdown div {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10%;
-  font-size: 10px;
-  height: 20%;
+  cursor: pointer;
 }
 
-header .headerContainer ul .user-name .user-dropdown div:hover a {
+header .headerContainer ul .user-name .user-dropdown .dropdown-tab div a:hover {
   color: white;
 }
 
@@ -105,6 +148,8 @@ header .headerContainer ul .user-name:hover .user-dropdown {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 header .headerContainer ul li {
