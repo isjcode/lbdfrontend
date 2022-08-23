@@ -87,14 +87,14 @@ export default function data() {
   if (genres) {
     genres.forEach((element) => {
       rows.push({
-        genre: <Genre name={element.name}/>,
+        genre: <Genre name={element.Name}/>,
         status: (
-          <MDTypography onClick={() => deleteOrRestore(element.id)} component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            <MDBadge badgeContent={element.isDeleted ? "Restore" : "Delete"} color={!element.isDeleted ? "error" : "success"} variant="gradient" size="sm" />
+          <MDTypography onClick={() => deleteOrRestore(element.ID)} component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            <MDBadge badgeContent={element.isDeleted ? "Restore" : "Delete"} color={!element.IsDeleted ? "error" : "success"} variant="gradient" size="sm" />
           </MDTypography>
         ),
         action: (
-          <MDTypography onClick={routeChange} data-id={element.id} component="a" className="edit" href="#" variant="caption" color="text" fontWeight="medium">
+          <MDTypography onClick={routeChange} data-id={element.ID} component="a" className="edit" href="#" variant="caption" color="text" fontWeight="medium">
             Edit
           </MDTypography>
         ),

@@ -2,6 +2,7 @@ import "./assets/styles/App.css";
 import Home from "./pages/home";
 import SearchResults from "./pages/searchresults/searchResults";
 import Movie from "./pages/movie/movie";
+import Review from "./pages/review";
 import { BrowserRouter , Routes, Route } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { useEffect, useState } from "react";
@@ -27,6 +28,7 @@ function App() {
               <Route path="/" exact element={<Home />} /> 
               <Route path="/search" element={<SearchResults />} />
               <Route path="/movie" element={<Movie />} />
+              <Route path="/review" element={<Review />} />
             </Routes>
           </UserContext.Provider>
       </BrowserRouter>

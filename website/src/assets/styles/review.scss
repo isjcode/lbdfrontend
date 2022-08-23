@@ -1,0 +1,33 @@
+$letterColor: #99AABB;
+$hoverColor: #15BC31;
+
+
+.mainContainer {
+    color: $letterColor;
+    .reviewContainer {
+        width: 900px;
+        margin: auto;
+        height: max-content;
+        .review-body {
+            height: max-content;
+            font-weight: 800;
+            margin-top: 20px;
+        }
+
+
+        padding: 1%;
+        border: 1px solid $hoverColor;
+    }
+    .comments {
+        margin-top: 100px;
+        h1 {
+            text-align: center;
+        }
+
+        .comment {
+            width: 100%;
+            height: 100px;
+            background-color: red;
+        }
+    }
+}

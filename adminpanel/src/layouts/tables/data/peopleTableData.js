@@ -78,19 +78,19 @@ export default function data() {
   if (people) {
     people.forEach((element) => {
       rows.push({
-        person: <Person  image={require(`assets/images/people/${element.image}`)} name={element.name} />,
+        person: <Person  image={require(`assets/images/people/${element.Image}`)} name={element.Name} />,
         profession: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            {professions.length > 0 && professions.find(p => p.id === element.professionID).name}
+            {professions.length > 0 && professions.find(p => p.id === element.professionID).Name}
           </MDTypography>
         ),
         status: (
-          <MDTypography onClick={() => deleteOrRestore(element.id)} component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            <MDBadge badgeContent={element.isDeleted ? "Restore" : "Delete"} color={!element.isDeleted ? "error" : "success"} variant="gradient" size="sm" />
+          <MDTypography onClick={() => deleteOrRestore(element.ID)} component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            <MDBadge badgeContent={element.IsDeleted ? "Restore" : "Delete"} color={!element.IsDeleted ? "error" : "success"} variant="gradient" size="sm" />
           </MDTypography>
         ),
         action: (
-          <MDTypography  onClick={routeChange} data-id={element.id} component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          <MDTypography  onClick={routeChange} data-id={element.ID} component="a" href="#" variant="caption" color="text" fontWeight="medium">
             Edit
           </MDTypography>
         ),

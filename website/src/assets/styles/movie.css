@@ -4,8 +4,9 @@
 }
 
 .mainContainer .movie-page-wrapper {
-  width: 920px;
-  height: 500px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,7 +36,9 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-left: auto;
-  height: 200px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
 }
 
 .mainContainer .movie-page-wrapper .inner-page-wrapper .descriptionandbox {
@@ -169,7 +172,116 @@
 .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews {
   width: 100%;
   height: 100px;
-  margin-top: 10%;
+  margin-top: 15%;
   color: #99AABB;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review-header {
+  margin-left: 2%;
+  margin-bottom: 4%;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user {
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user img {
+  width: 10%;
+  margin-right: 7.5%;
+  margin-left: 2%;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .comments {
+  margin-right: 10%;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .comments .fa-comment {
+  cursor: pointer;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user p {
+  width: 50%;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user p span {
+  font-weight: 900;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user p span:hover {
+  color: #15BC31;
+  cursor: pointer;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score > .rating-score-item, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-input > label {
+  display: inline-block;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score > .rating-score-item:after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-input > label:after {
+  font-family: "FontAwesome";
+  font-size: 1em;
+  color: #FFC600;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='1'] > .rating-score-item:nth-child(-n + 1):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='2'] > .rating-score-item:nth-child(-n + 2):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='3'] > .rating-score-item:nth-child(-n + 3):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='4'] > .rating-score-item:nth-child(-n + 4):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='5'] > .rating-score-item:nth-child(-n + 5):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='0.5'] > .rating-score-item:nth-child(-n + 0):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='1.5'] > .rating-score-item:nth-child(-n + 1):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='2.5'] > .rating-score-item:nth-child(-n + 2):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='3.5'] > .rating-score-item:nth-child(-n + 3):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='4.5'] > .rating-score-item:nth-child(-n + 4):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-input > input:checked ~ label:after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-input:hover > input + label:hover:after,
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-input:hover > input + label:hover ~ input + label:after {
+  content: "\f005";
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='0.5'] > .rating-score-item:nth-child(1):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='1.5'] > .rating-score-item:nth-child(2):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='2.5'] > .rating-score-item:nth-child(3):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='3.5'] > .rating-score-item:nth-child(4):after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score[data-rating='4.5'] > .rating-score-item:nth-child(5):after {
+  content: "\f123";
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score > .rating-score-item:after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-input > label:after, .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-input:hover > input + label:after {
+  content: "\f006";
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-score {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-input {
+  border: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .rating-input > input {
+  display: none;
+}
+
+.mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-body {
+  margin-left: 19.7%;
 }
 /*# sourceMappingURL=movie.css.map */

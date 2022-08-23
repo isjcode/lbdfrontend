@@ -65,15 +65,15 @@ export default function data() {
   if (movies) {
     movies.forEach((element) => {
       rows.push({
-        movie: <Movie  image={require(`assets/images/movies/posterimages/${element.posterImage}`)}  name={element.name} />,
+        movie: <Movie  image={require(`assets/images/movies/posterimages/${element.PosterImage}`)}  name={element.Name} />,
 
         status: (
-          <MDTypography onClick={() => deleteOrRestore(element.id)} component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            <MDBadge badgeContent={element.isDeleted ? "Restore" : "Delete"} color={!element.isDeleted ? "error" : "success"} variant="gradient" size="sm" />
+          <MDTypography onClick={() => deleteOrRestore(element.ID)} component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            <MDBadge badgeContent={element.IsDeleted ? "Restore" : "Delete"} color={!element.IsDeleted ? "error" : "success"} variant="gradient" size="sm" />
           </MDTypography>
         ),
         action: (
-          <MDTypography  onClick={routeChange} data-id={element.id} component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          <MDTypography  onClick={routeChange} data-id={element.ID} component="a" href="#" variant="caption" color="text" fontWeight="medium">
             Edit
           </MDTypography>
         ),

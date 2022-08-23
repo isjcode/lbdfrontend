@@ -27,7 +27,7 @@ function SearchResults() {
             pathname: "/movie",
             search: `${createSearchParams(params)}`,
         });
-        }
+    }
 
     function Items({ currentItems }) {
         return (
