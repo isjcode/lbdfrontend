@@ -6,38 +6,112 @@ import "../../assets/styles/review.css";
 import "react-tabs/style/react-tabs.css";
 import ReactPaginate from "react-paginate";
 import { nanoid } from "nanoid";
-
+import { useContext } from "react";
+import { UserContext } from "../../UserContext";
 
 function Review() {
-    const [ movieID, setMovieID ] = useState(null);
-    const [ review, setReview ] = useState(null);
+    const [movieID, setMovieID] = useState(null);
+    const [review, setReview] = useState(null);
     const [searchParams, setSearchParams] = useSearchParams();
+    const { user, setUser } = useContext(UserContext);
+    const [commentBody, setCommentBody] = useState("");
+    const [comments, setComments] = useState([]);
 
-    function Items({ currentItems }) {
-        return (
-            <div className="comment">
-
-            </div>
-        );
-    }
     useEffect(() => {
-        fetch(`http://localhost:64531/api/reviews/getreview?reviewID=${searchParams.get("id")}`, {
-            method: "GET",
+        fetch(
+            `http://localhost:64531/api/reviews/getreview?reviewID=${searchParams.get(
+                "id"
+            )}`,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        )
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                setReview(data);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+        requestComments();
+    }, []);
+    const requestComments = () => {
+        fetch(
+            `http://localhost:64531/api/comments/getreviewcomments?reviewID=${searchParams.get(
+                "id"
+            )}`,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        )
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                setComments(data);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const data = {
+            OwnerId: user.id,
+            Body: commentBody,
+            ReviewId: review.Id,
+        };
+        fetch("http://localhost:64531/api/comments/create", {
+            method: "PUT",
             headers: {
-            'Content-Type': 'application/json',
-        },
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + user.token,
+            },
+            body: JSON.stringify(data),
         })
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            setReview(data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    }, [])
+            .then((response) => {
+                if (response.status == 201) {
+                    requestComments();
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    };
 
+    const handleDelete = (e) => {
+        e.preventDefault();
+        const id = e.target.getAttribute("data-id");
+        fetch(
+            `http://localhost:64531/api/comments/deletecomment?commentID=${id}`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + user.token,
+                },
+            }
+        )
+            .then((response) => {
+                if (response.status == 200) {
+                    requestComments();
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+        requestComments();
+    };
 
     return (
         <div className="mainContainer">
@@ -48,6 +122,38 @@ function Review() {
             </div>
             <div className="comments">
                 <h1> Comments </h1>
+                {comments.map((c) => (
+                    <div className="comment">
+                        {" "}
+                        <div className="left">
+                            {" "}
+                            <img src={""} />{" "}
+                            <span>
+                                {" "}
+                                {c.Username}{" "}
+                                {c.Username == user.username && (
+                                    <i
+                                        data-id={c.Id}
+                                        onClick={handleDelete}
+                                        className="fa-solid fa-trash"
+                                    ></i>
+                                )}{" "}
+                            </span>{" "}
+                        </div>{" "}
+                        <div className="comment-body"> {c.Body} </div>{" "}
+                    </div>
+                ))}
+                <form onSubmit={handleSubmit} className="add-comment">
+                    <textarea
+                        value={commentBody}
+                        onChange={(e) => setCommentBody(e.target.value)}
+                        placeholder={`Add a comment as ${
+                            user && user.username
+                        }`}
+                        className="add-comment"
+                    ></textarea>
+                    <button> POST </button>
+                </form>
             </div>
             <Footer />
         </div>

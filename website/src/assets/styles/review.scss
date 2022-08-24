@@ -8,6 +8,7 @@ $hoverColor: #15BC31;
         width: 900px;
         margin: auto;
         height: max-content;
+
         .review-body {
             height: max-content;
             font-weight: 800;
@@ -17,17 +18,76 @@ $hoverColor: #15BC31;
 
         padding: 1%;
         border: 1px solid $hoverColor;
+        border-radius: 4px;
     }
+
     .comments {
-        margin-top: 100px;
+        width: 900px;
+        margin: auto;
+        margin-top: 150px;
+
         h1 {
             text-align: center;
         }
 
         .comment {
-            width: 100%;
+            display: flex;
             height: 100px;
-            background-color: red;
+            width: 100%;
+            margin: 2% 0;
+            border-top: 1px solid $letterColor;
+
+            .left {
+                width: 20%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                .fa-trash {
+                    display: inline-block;
+                    &:hover {
+                        color: $hoverColor;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .comment-body {
+                width: 80%;
+                word-wrap: break-word;
+                height: 100px;
+                padding: 2%;
+                outline: none;
+                padding: 1%;
+                border-radius: 4px;
+            }
         }
+
+        .add-comment {
+            textarea {
+                width: 50%;
+                height: 100%;
+                background-color: $letterColor;
+                border: none;
+                outline: none;
+                margin: auto;
+                display: block;
+                padding: 1%;
+            }
+        }
+
+        button {
+            margin-top: 10px;
+            border: none;
+            outline: none;
+            border-radius: 4px;
+            background-color: #15BC31;
+            display: block;
+            margin-left: auto;
+            font-weight: bold;
+            color: white;
+            padding: 2% 4%;
+            cursor: pointer;
+        }
+
     }
 }

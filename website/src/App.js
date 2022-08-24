@@ -3,6 +3,7 @@ import Home from "./pages/home";
 import SearchResults from "./pages/searchresults/searchResults";
 import Movie from "./pages/movie/movie";
 import Review from "./pages/review";
+import User from "./pages/user";
 import { BrowserRouter , Routes, Route } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { useEffect, useState } from "react";
@@ -29,6 +30,7 @@ function App() {
               <Route path="/search" element={<SearchResults />} />
               <Route path="/movie" element={<Movie />} />
               <Route path="/review" element={<Review />} />
+              <Route path="/user/:username" element={<User />} />
             </Routes>
           </UserContext.Provider>
       </BrowserRouter>
