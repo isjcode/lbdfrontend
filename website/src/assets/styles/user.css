@@ -12,13 +12,11 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: 120px;
-  background-color: red;
 }
 
 .mainContainer .profile-container .first .left {
   height: 100%;
   width: 20%;
-  background-color: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -30,12 +28,15 @@
 }
 
 .mainContainer .profile-container .first .left div {
-  padding-left: 10%;
+  padding-left: 25%;
 }
 
 .mainContainer .profile-container .first .left div h1 {
   color: white;
-  margin-top: 10%;
+}
+
+.mainContainer .profile-container .first .left div .following {
+  background-color: #15BC31;
 }
 
 .mainContainer .profile-container .first .left div button {
@@ -60,8 +61,7 @@
 
 .mainContainer .profile-container .first .right {
   height: 100%;
-  width: 40%;
-  background-color: blue;
+  width: 35%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -74,6 +74,8 @@
 }
 
 .mainContainer .profile-container .first .right .stat {
+  width: 60px;
+  font-size: 15px;
   text-align: center;
 }
 /*# sourceMappingURL=user.css.map */

@@ -11,12 +11,10 @@ $hoverColor: #15BC31;
             display: flex;
             justify-content: space-between;
             height: 120px;
-            background-color: red;
 
             .left {
                 height: 100%;
                 width: 20%;
-                background-color: black;
                 display: flex;
 
                 img {
@@ -25,10 +23,12 @@ $hoverColor: #15BC31;
                 }
 
                 div {
-                    padding-left: 10%;
+                    padding-left: 25%;
                     h1 {
                         color: white;
-                        margin-top: 10%;
+                    }
+                    .following {
+                        background-color: #15BC31;
                     }
                     button {
                         margin-top: 20%;
@@ -51,12 +51,13 @@ $hoverColor: #15BC31;
 
             .right {
                 height: 100%;
-                width: 40%;
-                background-color: blue;
+                width: 35%;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 .stat {
+                    width: 60px;
+                    font-size: 15px;
                     text-align: center;
                 }
             }
