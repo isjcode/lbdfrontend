@@ -1,0 +1,23 @@
+.container .reviews {
+  width: 100%;
+  height: 500px;
+  margin-top: 50px;
+}
+
+.container .reviews .review-card-small {
+  cursor: pointer;
+  height: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container .reviews .review-card-small img {
+  width: 7%;
+  height: 70%;
+}
+
+.container .reviews .review-card-small div {
+  margin-left: 5%;
+}
+/*# sourceMappingURL=reviews.css.map */

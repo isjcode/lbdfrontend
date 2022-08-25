@@ -79,7 +79,7 @@
   background-color: #445566;
 }
 
-.mainContainer .movie-page-wrapper .inner-page-wrapper .container {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .movie-page-container {
   width: 90%;
   height: 250px;
   background-color: transparent;
@@ -87,7 +87,7 @@
   margin-bottom: 50%;
 }
 
-.mainContainer .movie-page-wrapper .inner-page-wrapper .container .tab-list {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .movie-page-container .tab-list {
   height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -99,7 +99,7 @@
   background-color: transparent;
 }
 
-.mainContainer .movie-page-wrapper .inner-page-wrapper .container .tabs {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .movie-page-container .tabs {
   width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -116,18 +116,18 @@
   cursor: pointer;
 }
 
-.mainContainer .movie-page-wrapper .inner-page-wrapper .container .tabs:not(:last-child) {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .movie-page-container .tabs:not(:last-child) {
   border-right: 2px solid rgba(0, 0, 0, 0.3);
 }
 
-.mainContainer .movie-page-wrapper .inner-page-wrapper .container .active-tabs {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .movie-page-container .active-tabs {
   background: transparent;
   color: #15BC31;
   font-weight: bold;
   border-bottom: 1px solid white;
 }
 
-.mainContainer .movie-page-wrapper .inner-page-wrapper .container .active-tabs::before {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .movie-page-container .active-tabs::before {
   content: "";
   display: block;
   position: absolute;
@@ -139,14 +139,14 @@
   height: 4px;
 }
 
-.mainContainer .movie-page-wrapper .inner-page-wrapper .container .content {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .movie-page-container .content {
   background-color: transparent;
   display: none;
   padding: 10px;
   color: white;
 }
 
-.mainContainer .movie-page-wrapper .inner-page-wrapper .container .content a {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .movie-page-container .content a {
   background-color: #14181C;
   display: block;
   color: #99AABB;
@@ -157,11 +157,11 @@
   cursor: pointer;
 }
 
-.mainContainer .movie-page-wrapper .inner-page-wrapper .container .content a:hover {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .movie-page-container .content a:hover {
   color: #15BC31;
 }
 
-.mainContainer .movie-page-wrapper .inner-page-wrapper .container .active-content {
+.mainContainer .movie-page-wrapper .inner-page-wrapper .movie-page-container .active-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

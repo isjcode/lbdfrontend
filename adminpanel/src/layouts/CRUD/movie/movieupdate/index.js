@@ -36,7 +36,7 @@ function MovieUpdate() {
   };
 
   const handleYear = (e) => {
-    const id = years.find(y => y.yearNumber == e.target.value).id;
+    const id = years.find(y => y.YearNumber == e.target.value).ID;
     setNewYearID(id);
   };
 
@@ -91,8 +91,8 @@ function MovieUpdate() {
         return;
       }
 
-      const selectedGenreIDs = selectedGenres.split(",").map(p => genres.find(e => e.name == p).id);
-      const selectedPeopleIDs = selectedPeople.split(",").map(p => people.find(e => e.name == p).id);
+      const selectedGenreIDs = selectedGenres.split(",").map(p => genres.find(e => e.Name == p).ID);
+      const selectedPeopleIDs = selectedPeople.split(",").map(p => people.find(e => e.Name == p).ID);
 
 
       console.log("dsa");
@@ -143,8 +143,8 @@ function MovieUpdate() {
   	const peopleOptions = people.map(p => {
         const professionObj = professions.find(profession => profession.id === p.professionID);
         return {
-            label: `${p.name} (${professionObj !== undefined ? professionObj.name : ""})`,
-            value: p.name
+            label: `${p.Name} (${professionObj !== undefined ? professionObj.Name : ""})`,
+            value: p.Name
         }
     });
 
@@ -153,12 +153,11 @@ function MovieUpdate() {
 	};
   	const genreOptions = genres.map(p => {
         return {
-            label: `${p.name}`,
-            value: p.name
+            label: `${p.Name}`,
+            value: p.Name
         }
     });
 
-    console.log(newYearID);
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -216,11 +215,11 @@ function MovieUpdate() {
         <div>
            <label htmlFor="years">Choose a year:</label>
             <select onChange={handleYear} value={"haha"} id="years" name="years">
-              {years.map(p => <option key={nanoid()} data-id={p.id} value={p.yearNumber}> {p.yearNumber} </option>)}
+              {years.map(p => <option key={nanoid()} data-id={p.id} value={p.YearNumber}> {p.YearNumber} </option>)}
             </select> 
             <div>
                 <h1>
-                    Movie made in {years.find(y => y.id == newYearID) != undefined ? years.find(y => y.id == newYearID).yearNumber : ""}
+                    Movie made in {years.find(y => y.ID == newYearID) != undefined ? years.find(y => y.ID == newYearID).YearNumber : ""}
                 </h1>
             </div>
           </div>

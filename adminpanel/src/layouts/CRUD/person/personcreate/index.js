@@ -41,6 +41,7 @@ function PersonCreate() {
     })
       .then((response) => response.json())
       .then((d) => {
+        console.log(d);
         setProfessions(d);
         setNewProfessionID(d[0].id);
       });
@@ -130,7 +131,7 @@ function PersonCreate() {
         <div>
            <label htmlFor="professions">Choose a profession:</label>
             <select onChange={handleSelect} value={newProfessionID} id="professions" name="professions">
-              {professions.map(p => <option data-id={p.id} value={p.name}> {p.name} </option>)}
+              {professions.map(p => <option data-id={p.id} value={p.Name}> {p.Name} </option>)}
             </select> 
           </div>
         <button> Create </button>

@@ -37,7 +37,7 @@ function MovieCreate() {
   };
 
   const handleYear = (e) => {
-    const id = years.find(y => y.yearNumber == e.target.value).id;
+    const id = years.find(y => y.YearNumber == e.target.value).ID;
     setNewYearID(id);
   };
 
@@ -58,6 +58,7 @@ function MovieCreate() {
     })
       .then((response) => response.json())
       .then((d) => {
+        console.log(d);
         setPeople(d);
       });
     fetch("http://localhost:64531/api/admin/Professions/GetAll", {
@@ -65,6 +66,7 @@ function MovieCreate() {
     })
       .then((response) => response.json())
       .then((d) => {
+          console.log(d);
           setProfessions(d);
       });
     fetch("http://localhost:64531/api/admin/Genres/GetAll", {
@@ -72,31 +74,33 @@ function MovieCreate() {
     })
       .then((response) => response.json())
       .then((d) => {
+          console.log(d);
           setGenres(d);
       });
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("here0");
     if (newName.trim().length !== 0 && newSynopsis.trim().length !== 0) {
       const formData = new FormData();
       if (newYearID == -1) {
-        setNewYearID(years[0].id);
+        setNewYearID(years[0].Id);
       }
       if (selectedPeople.trim().length === 0) {
         console.log("You have to pick people.");
         return;
       }
      if (selectedGenres.trim().length === 0) {
-        console.log("You have to pick people.");
+        console.log("You have to pick genres.");
         return;
       }
+      console.log("here");
 
-      const selectedGenreIDs = selectedGenres.split(",").map(p => genres.find(e => e.name == p).id);
-      const selectedPeopleIDs = selectedPeople.split(",").map(p => people.find(e => e.name == p).id);
+      const selectedGenreIDs = selectedGenres.split(",").map(p => genres.find(e => e.Name == p).ID);
+      const selectedPeopleIDs = selectedPeople.split(",").map(p => people.find(e => e.Name == p).ID);
 
 
-      console.log("dsa");
       for (const element of selectedGenreIDs) {
         formData.append("Genres", element);
       }
@@ -140,8 +144,8 @@ function MovieCreate() {
   	const peopleOptions = people.map(p => {
         const professionObj = professions.find(profession => profession.id === p.professionID);
         return {
-            label: `${p.name} (${professionObj !== undefined ? professionObj.name : ""})`,
-            value: p.name
+            label: `${p.Name} (${professionObj !== undefined ? professionObj.Name : ""})`,
+            value: p.Name
         }
     });
 
@@ -150,12 +154,11 @@ function MovieCreate() {
 	};
   	const genreOptions = genres.map(p => {
         return {
-            label: `${p.name}`,
-            value: p.name
+            label: `${p.Name}`,
+            value: p.Name
         }
     });
 
-    console.log(newYearID);
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -213,11 +216,11 @@ function MovieCreate() {
         <div>
            <label htmlFor="years">Choose a year:</label>
             <select onChange={handleYear} value={"haha"} id="years" name="years">
-              {years.map(p => <option key={nanoid()} data-id={p.id} value={p.yearNumber}> {p.yearNumber} </option>)}
+              {years.map(p => <option key={nanoid()} data-id={p.id} value={p.YearNumber}> {p.YearNumber} </option>)}
             </select> 
             <div>
                 <h1>
-                    Movie made in {years.find(y => y.id == newYearID) != undefined ? years.find(y => y.id == newYearID).yearNumber : ""}
+                    Movie made in {years.find(y => y.id == newYearID) != undefined ? years.find(y => y.id == newYearID).YearNumber : ""}
                 </h1>
             </div>
           </div>

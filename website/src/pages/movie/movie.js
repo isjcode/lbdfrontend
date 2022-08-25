@@ -202,7 +202,7 @@ function Movie() {
             </div>
             <div className="box"></div>
           </div>
-          <div className="container">
+          <div className="movie-page-container">
             <ul className="tab-list">
               <li
                 className={`tabs ${getActiveClass(1, "active-tabs")}`}

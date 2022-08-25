@@ -1,19 +1,24 @@
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { nanoid } from "nanoid";
-import { useLocation, useParams } from "react-router-dom";
+import { createSearchParams, Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import defaultuser from "../../assets/images/users/defaultuser.jpg";
 import "../../assets/styles/user.css";
+import "react-tabs/style/react-tabs.css";
 import { UserContext } from "../../UserContext";
 import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import UserTabs from "../../components/usertabs/UserTabs";
 
 function User() {
     const { user, setUser } = useContext(UserContext);
     const userName = useParams().username;
     const [following, setFollowing] = useState(false);
     const [userStats, setUserStats] = useState(null);
+    const [recentReviews, setRecentReviews] = useState([]);
+
+    const navigate = useNavigate();
     useEffect(() => {
         if (!user) {
             return;
@@ -36,13 +41,36 @@ function User() {
             .catch((error) => {
                 console.error("Error:", error);
             });
+        if (userName !== user.username) {
+            fetch(
+                `http://localhost:64531/api/accounts/checkfollow?followerUsername=${
+                    user && user.username
+                }&followeeUsername=${userName}`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: "Bearer " + user.token,
+                    },
+                }
+            )
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    setFollowing(data);
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        }
         fetch(
-            `http://localhost:64531/api/accounts/checkfollow?followerUsername=${user && user.username}&followeeUsername=${userName}`,
+            `http://localhost:64531/api/reviews/getrecentreviews?userName=${userName}`,
             {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": "Bearer " + user.token,
+                    Authorization: "Bearer " + user.token,
                 },
             }
         )
@@ -50,14 +78,12 @@ function User() {
                 return response.json();
             })
             .then((data) => {
-                setFollowing(data);
+                setRecentReviews(data);
             })
             .catch((error) => {
                 console.error("Error:", error);
             });
-    }, [user]);
-
-    console.log(following);
+    }, [user, following]);
 
     const handleFollow = (e) => {
         e.preventDefault();
@@ -75,12 +101,31 @@ function User() {
                 return response.json();
             })
             .then((data) => {
-                console.log(data);
+                setFollowing(data);
             })
             .catch((error) => {
                 console.error("Error:", error);
             });
     };
+
+    const [ToggleState, setToggleState] = useState(1);
+
+    const toggleTab = (index) => {
+        setToggleState(index);
+    };
+
+    const getActiveClass = (index, className) =>
+        ToggleState === index ? className : "";
+    const handleReviewClick = (e) => {
+        e.preventDefault();
+        const id = e.target.getAttribute("data-id");
+        const params = { id: e.target.getAttribute("data-id") };
+        navigate({
+        pathname: "/review",
+        search: `${createSearchParams(params)}`,
+        });
+
+    }
 
     return (
         <div className="mainContainer">
@@ -94,18 +139,20 @@ function User() {
                             {user ? (
                                 userName === user.username ? (
                                     <button> Edit Profile </button>
+                                ) : following ? (
+                                    <button
+                                        className="following"
+                                        onClick={handleFollow}
+                                    >
+                                        Following
+                                    </button>
                                 ) : (
-                                    following ? (
-                                        <button className="following" onClick={handleFollow}>
-                                            Following
-                                        </button>
-                                    )
-                                    :
-                                    (
-                                        <button className="following" onClick={handleFollow}>
-                                            Follow
-                                        </button>
-                                    )
+                                    <button
+                                        className="not-following"
+                                        onClick={handleFollow}
+                                    >
+                                        Follow
+                                    </button>
                                 )
                             ) : null}
                         </div>
@@ -128,6 +175,24 @@ function User() {
                             <p> Following </p>
                         </div>
                     </div>
+                </div>
+                <UserTabs />
+
+                <div className="recent-activity">
+                    {recentReviews.map(r => {
+                        return (
+                            <div key={nanoid()} className="review-card">
+                                <img data-id={r.Id} onClick={handleReviewClick}  src={require(`../../assets/images/movies/posterimages/${r.Image}`)} />
+                                <ul className="rating-score" data-rating={`${r.Rating / 2}`}>
+                                    <li key={nanoid()} className="rating-score-item"></li>
+                                    <li key={nanoid()} className="rating-score-item"></li>
+                                    <li key={nanoid()} className="rating-score-item"></li>
+                                    <li key={nanoid()} className="rating-score-item"></li>
+                                    <li key={nanoid()} className="rating-score-item"></li>
+                                </ul>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
             <Footer />
