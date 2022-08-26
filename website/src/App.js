@@ -6,6 +6,10 @@ import Review from "./pages/review";
 import User from "./pages/user";
 import UserFilms from "./pages/user/films";
 import UserReviews from "./pages/user/reviews";
+import UserFollowers from "./pages/user/followers";
+import UserFollowees from "./pages/user/followees";
+import NewList from "./pages/user/newlist";
+import UserLists from "./pages/user/lists";
 import { BrowserRouter , Routes, Route } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { useEffect, useState } from "react";
@@ -35,7 +39,10 @@ function App() {
               <Route path="/user/:username" element={<User />} />
               <Route path="/user/:username/films" element={<UserFilms />} />
               <Route path="/user/:username/reviews" element={<UserReviews />} />
-              <Route path="/user/:username/lists" element={<UserReviews />} />
+              <Route path="/user/:username/lists" element={<UserLists />} />
+              <Route path="/user/:username/followers" element={<UserFollowers />} />
+              <Route path="/user/:username/followees" element={<UserFollowees />} />
+              <Route path="/user/:username/newlist" element={<NewList />} />
             </Routes>
           </UserContext.Provider>
       </BrowserRouter>

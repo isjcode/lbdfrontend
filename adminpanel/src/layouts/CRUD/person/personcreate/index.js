@@ -43,7 +43,7 @@ function PersonCreate() {
       .then((d) => {
         console.log(d);
         setProfessions(d);
-        setNewProfessionID(d[0].id);
+        setNewProfessionID(d[0].ID);
       });
   }, []);
 
