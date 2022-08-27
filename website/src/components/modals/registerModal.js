@@ -34,7 +34,7 @@ function RegisterModal({closeRegisterModal}) {
             ConfirmPassword: inputs.password,
         };
 
-        fetch("http://localhost:64531/api/accounts/register", {
+        fetch("http://mackenzythorpe-001-site1.btempurl.com/api/accounts/register", {
             method: "POST",
             headers: {
             'Content-Type': 'application/json',

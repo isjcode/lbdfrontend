@@ -43,7 +43,7 @@ function Reviews() {
                             >
                                 <img
                                     data-id={r.Id}
-                                    src={require(`../../assets/images/movies/posterimages/${r.Image}`)}
+                                    src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${r.Image}`}
                                 />
                                 <div data-id={r.Id}>
                                     <h1 data-id={r.Id}> {r.MovieName} </h1>
@@ -57,7 +57,7 @@ function Reviews() {
     }
     const requestPages = (index = 1) => {
         fetch(
-            `http://localhost:64531/api/reviews/getalluserreviews?userName=${userName}&i=${index}`,
+            `http://mackenzythorpe-001-site1.btempurl.com/api/reviews/getalluserreviews?userName=${userName}&i=${index}`,
             {
                 method: "GET",
                 headers: {

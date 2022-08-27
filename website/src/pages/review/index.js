@@ -19,7 +19,7 @@ function Review() {
 
     useEffect(() => {
         fetch(
-            `http://localhost:64531/api/reviews/getreview?reviewID=${searchParams.get(
+            `http://mackenzythorpe-001-site1.btempurl.com/api/reviews/getreview?reviewID=${searchParams.get(
                 "id"
             )}`,
             {
@@ -43,7 +43,7 @@ function Review() {
     }, []);
     const requestComments = () => {
         fetch(
-            `http://localhost:64531/api/comments/getreviewcomments?reviewID=${searchParams.get(
+            `http://mackenzythorpe-001-site1.btempurl.com/api/comments/getreviewcomments?reviewID=${searchParams.get(
                 "id"
             )}`,
             {
@@ -71,7 +71,7 @@ function Review() {
             Body: commentBody,
             ReviewId: review.Id,
         };
-        fetch("http://localhost:64531/api/comments/create", {
+        fetch("http://mackenzythorpe-001-site1.btempurl.com/api/comments/create", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -93,7 +93,7 @@ function Review() {
         e.preventDefault();
         const id = e.target.getAttribute("data-id");
         fetch(
-            `http://localhost:64531/api/comments/deletecomment?commentID=${id}`,
+            `http://mackenzythorpe-001-site1.btempurl.com/api/comments/deletecomment?commentID=${id}`,
             {
                 method: "POST",
                 headers: {

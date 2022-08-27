@@ -13,16 +13,24 @@ $hoverColor: #15BC31;
             .lists {
                 height: 100%;
                 width: 80%;
+                .list {
+                    cursor: pointer;
+                    border: 1px solid $hoverColor;
+                    padding: 1%;
+                    margin: 10px 0;
+                }
             }
 
             .new-list {
                 height: 30px;
                 width: 150px;
-                border: none;
+                
                 outline: none;
                 color: $letterColor;
+                border: none;
                 background-color: #445566;
                 border-radius: 4px;
+
                 cursor: pointer;
             }
         }

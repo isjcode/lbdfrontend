@@ -38,7 +38,7 @@ function Movie() {
                   onClick={handleUserClick}
                   data-id={item.Id}
                 >
-                  <img onClick={handleUserClick} data-id={item.Id} src={""} />
+                  <img onClick={handleUserClick} data-id={item.Id} src={`http://mackenzythorpe-001-site1.btempurl.com/images/users/${item.OwnerImage}`} />
                   <p>
                     Review by <span> {item.Username} </span>
                   <span className="comments">
@@ -74,7 +74,7 @@ function Movie() {
 
   useEffect(() => {
     fetch(
-      `http://localhost:64531/api/movies/getbyid?id=${searchParams.get("id")}`,
+      `http://mackenzythorpe-001-site1.btempurl.com/api/movies/getbyid?id=${searchParams.get("id")}`,
       {
         method: "GET",
         headers: {
@@ -92,7 +92,7 @@ function Movie() {
         console.error("Error:", error);
       });
     fetch(
-      `http://localhost:64531/api/people/getmoviepeople?id=${searchParams.get(
+      `http://mackenzythorpe-001-site1.btempurl.com/api/people/getmoviepeople?id=${searchParams.get(
         "id"
       )}`,
       {
@@ -112,7 +112,7 @@ function Movie() {
         console.error("Error:", error);
       });
     fetch(
-      `http://localhost:64531/api/movies/getmoviegenres?id=${searchParams.get(
+      `http://mackenzythorpe-001-site1.btempurl.com/api/movies/getmoviegenres?id=${searchParams.get(
         "id"
       )}`,
       {
@@ -150,7 +150,7 @@ function Movie() {
   const requestPages = (index = 1) => {
     console.log(index);
     fetch(
-      `http://localhost:64531/api/reviews/getmoviereviews?movieID=${searchParams.get(
+      `http://mackenzythorpe-001-site1.btempurl.com/api/reviews/getmoviereviews?movieID=${searchParams.get(
         "id"
       )}&i=${index}`,
       {
@@ -188,7 +188,7 @@ function Movie() {
           className="movie-poster"
           src={
             movie &&
-            require(`../../assets/images/movies/posterimages/${movie.PosterImage}`)
+            `http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${movie.PosterImage}`
           }
         />
         <div className="inner-page-wrapper">

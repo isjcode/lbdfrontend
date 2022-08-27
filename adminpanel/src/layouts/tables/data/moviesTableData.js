@@ -26,7 +26,7 @@ export default function data() {
   myHeaders.append("Content-Type", "application/json");
 
   useEffect(() => {
-    fetch(`http://localhost:64531/api/admin/Movies/GetAll`, {
+    fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/Movies/GetAll`, {
       headers: myHeaders,
     })
       .then((response) => response.json())
@@ -47,7 +47,7 @@ export default function data() {
   };
 
   const deleteOrRestore = (id) => {
-    fetch(`http://localhost:64531/api/admin/Movies/DeleteOrRestore?id=${id}`, {
+    fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/Movies/DeleteOrRestore?id=${id}`, {
       method: "POST",
       headers: myHeaders,
     })
@@ -65,7 +65,7 @@ export default function data() {
   if (movies) {
     movies.forEach((element) => {
       rows.push({
-        movie: <Movie  image={require(`assets/images/movies/posterimages/${element.PosterImage}`)}  name={element.Name} />,
+        movie: <Movie  image={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${element.PosterImage}`}  name={element.Name} />,
 
         status: (
           <MDTypography onClick={() => deleteOrRestore(element.ID)} component="a" href="#" variant="caption" color="text" fontWeight="medium">

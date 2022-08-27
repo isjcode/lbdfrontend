@@ -38,7 +38,7 @@ function UserFollowees() {
 
     const requestPages = (index = 1) => {
         fetch(
-            `http://localhost:64531/api/accounts/getuserfollowees?userName=${userName}&i=${index}`,
+            `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/getuserfollowees?userName=${userName}&i=${index}`,
             {
                 method: "GET",
                 headers: {

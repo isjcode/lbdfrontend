@@ -22,7 +22,7 @@ function PersonUpdate() {
   myHeaders.append("Content-Type", "application/json");
 
   useEffect(() => {
-    fetch("http://localhost:64531/api/admin/Professions/GetAll", {
+    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Professions/GetAll", {
       headers: myHeaders,
     })
       .then((response) => response.json())
@@ -68,7 +68,7 @@ function PersonUpdate() {
       };
       axios({
         method: "POST",
-        url: `http://localhost:64531/api/admin/People/Update?id=${id}`,
+        url: `http://mackenzythorpe-001-site1.btempurl.com/api/admin/People/Update?id=${id}`,
         data: formData,
         headers: { "Content-Type": "multipart/form-data" ,
                    "Authorization": "Bearer " + token,

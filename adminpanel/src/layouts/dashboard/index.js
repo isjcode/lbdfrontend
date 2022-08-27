@@ -49,7 +49,7 @@ function Dashboard() {
     }
     const myHeaders = new Headers();
     myHeaders.append('Authorization', "Bearer " + token);
-    fetch("http://localhost:64531/api/admin/Accounts/CheckToken", {
+    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Accounts/CheckToken", {
       headers: myHeaders
     })
       .then((response) => {

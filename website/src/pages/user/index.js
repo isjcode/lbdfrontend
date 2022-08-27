@@ -24,7 +24,7 @@ function User() {
             return;
         }
         fetch(
-            `http://localhost:64531/api/accounts/getuser?userName=${userName}`,
+            `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/getuser?userName=${userName}`,
             {
                 method: "GET",
                 headers: {
@@ -36,6 +36,7 @@ function User() {
                 return response.json();
             })
             .then((data) => {
+                console.log(data);
                 setUserStats(data);
             })
             .catch((error) => {
@@ -43,7 +44,7 @@ function User() {
             });
         if (userName !== user.username) {
             fetch(
-                `http://localhost:64531/api/accounts/checkfollow?followerUsername=${
+                `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/checkfollow?followerUsername=${
                     user && user.username
                 }&followeeUsername=${userName}`,
                 {
@@ -65,7 +66,7 @@ function User() {
                 });
         }
         fetch(
-            `http://localhost:64531/api/reviews/getrecentreviews?userName=${userName}`,
+            `http://mackenzythorpe-001-site1.btempurl.com/api/reviews/getrecentreviews?userName=${userName}`,
             {
                 method: "GET",
                 headers: {
@@ -88,7 +89,7 @@ function User() {
     const handleFollow = (e) => {
         e.preventDefault();
         fetch(
-            `http://localhost:64531/api/accounts/follow?followerUsername=${user.username}&followeeUsername=${userName}`,
+            `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/follow?followerUsername=${user.username}&followeeUsername=${userName}`,
             {
                 method: "POST",
                 headers: {
@@ -127,18 +128,23 @@ function User() {
 
     }
 
+    const handleEditProfile = (e) => {
+        e.preventDefault();
+        navigate(`/user/${userName}/settings`);
+    }
+
     return (
         <div className="mainContainer">
             <Header />
             <div className="profile-container">
                 <div className="first">
                     <div className="left">
-                        <img src={defaultuser} />
+                        <img src={userStats && `http://mackenzythorpe-001-site1.btempurl.com/images/users/${userStats.Image}`} />
                         <div>
                             <h1> {userName} </h1>
                             {user ? (
                                 userName === user.username ? (
-                                    <button> Edit Profile </button>
+                                    <button onClick={handleEditProfile}> Edit Profile </button>
                                 ) : following ? (
                                     <button
                                         className="following"
@@ -182,7 +188,7 @@ function User() {
                     {recentReviews.map(r => {
                         return (
                             <div key={nanoid()} className="review-card">
-                                <img data-id={r.Id} onClick={handleReviewClick}  src={require(`../../assets/images/movies/posterimages/${r.Image}`)} />
+                                <img data-id={r.Id} onClick={handleReviewClick}  src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${r.Image}`} />
                                 <ul className="rating-score" data-rating={`${r.Rating / 2}`}>
                                     <li key={nanoid()} className="rating-score-item"></li>
                                     <li key={nanoid()} className="rating-score-item"></li>

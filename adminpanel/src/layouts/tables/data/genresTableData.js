@@ -48,7 +48,7 @@ export default function data() {
     placeGenres();
   }, []);
     const placeGenres = () => {
-    fetch("http://localhost:64531/api/admin/Genres/GetAll", {
+    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Genres/GetAll", {
       headers: myHeaders,
     })
       .then((response) => response.json())
@@ -68,7 +68,7 @@ export default function data() {
   };
 
   const deleteOrRestore = (id) => {
-    fetch(`http://localhost:64531/api/admin/Genres/DeleteOrRestore?id=${id}`, {
+    fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/Genres/DeleteOrRestore?id=${id}`, {
       method: "POST",
       headers: myHeaders,
     })

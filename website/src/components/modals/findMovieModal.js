@@ -8,7 +8,7 @@ function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen, setMovieID
 
     useEffect(() => {
         if (searchMovie.trim().length !== 0) {
-            fetch(`http://localhost:64531/api/movies/findmovie?str=${searchMovie}`, {
+            fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/movies/findmovie?str=${searchMovie}`, {
                 method: "POST",
                 headers: {
                 'Content-Type': 'application/json',

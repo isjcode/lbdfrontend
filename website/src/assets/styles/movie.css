@@ -200,6 +200,7 @@
   width: 10%;
   margin-right: 7.5%;
   margin-left: 2%;
+  border-radius: 50%;
 }
 
 .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews .review .review-user .comments {

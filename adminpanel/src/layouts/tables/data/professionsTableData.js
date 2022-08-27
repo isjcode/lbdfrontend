@@ -32,7 +32,7 @@ export default function data() {
   }, []);
 
   const placeProfessions = (token) => {
-    fetch("http://localhost:64531/api/admin/Professions/GetAll", {
+    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Professions/GetAll", {
       headers: myHeaders,
     })
       .then((response) => response.json())
@@ -51,7 +51,7 @@ export default function data() {
   };
 
   const deleteOrRestore = (id) => {
-    fetch(`http://localhost:64531/api/admin/Professions/DeleteOrRestore?id=${id}`, {
+    fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/Professions/DeleteOrRestore?id=${id}`, {
         method: "POST",
         headers: myHeaders,
     })

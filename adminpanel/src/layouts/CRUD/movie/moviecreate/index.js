@@ -45,7 +45,8 @@ function MovieCreate() {
   const navigate = useNavigate(); 
   const id = searchParams.get("id");
   useEffect(() => {
-    fetch("http://localhost:64531/api/admin/Movies/GetYears", {
+    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Movies/GetYears", {
+    // fetch("http://localhost:64531/api/admin/Movies/GetYears", {
       headers: myHeaders,
     })
     .then((response) => response.json())
@@ -53,28 +54,28 @@ function MovieCreate() {
         setYears(d);
         setNewYearID(d[0].id);
       });
-    fetch("http://localhost:64531/api/admin/People/GetAll", {
+    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/People/GetAll", {
+    // fetch("http://localhost:64531/api/admin/People/GetAll", {
       headers: myHeaders,
     })
       .then((response) => response.json())
       .then((d) => {
-        console.log(d);
         setPeople(d);
       });
-    fetch("http://localhost:64531/api/admin/Professions/GetAll", {
+    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Professions/GetAll", {
+    // fetch("http://localhost:64531/api/admin/Professions/GetAll", {
       headers: myHeaders,
     })
       .then((response) => response.json())
       .then((d) => {
-          console.log(d);
           setProfessions(d);
       });
-    fetch("http://localhost:64531/api/admin/Genres/GetAll", {
+    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Genres/GetAll", {
+    // fetch("http://localhost:64531/api/admin/Genres/GetAll", {
       headers: myHeaders,
     })
       .then((response) => response.json())
       .then((d) => {
-          console.log(d);
           setGenres(d);
       });
   }, []);
@@ -108,6 +109,13 @@ function MovieCreate() {
         formData.append("People", element);
       }
 
+      console.log(posterImage);
+      console.log(backgroundImage);
+      console.log(newName);
+      console.log(newSynopsis);
+      console.log(newYearID);
+      console.log(selectedGenreIDs);
+      console.log(selectedPeopleIDs);
       formData.append("PosterImage", posterImage);
       formData.append("BackgroundImage", backgroundImage);
       formData.append("Name", newName);
@@ -121,7 +129,8 @@ function MovieCreate() {
 
       axios({
         method: "put",
-        url: "http://localhost:64531/api/admin/Movies/Create",
+        url: "http://mackenzythorpe-001-site1.btempurl.com/api/admin/Movies/Create",
+        // url: "http://localhost:64531/api/admin/Movies/Create",
         data: formData,
         headers: { "Content-Type": "multipart/form-data",
                    "Authorization": "Bearer " + token,
@@ -129,7 +138,6 @@ function MovieCreate() {
       })
         .then(function (response) {
           navigate("/tables");
-          console.log(response);
         })
         .catch(function (response) {
           console.log(response);
@@ -142,7 +150,7 @@ function MovieCreate() {
 		setSelectedPeople(val)
 	};
   	const peopleOptions = people.map(p => {
-        const professionObj = professions.find(profession => profession.id === p.professionID);
+        const professionObj = professions.find(profession => profession.ID === p.ProfessionID);
         return {
             label: `${p.Name} (${professionObj !== undefined ? professionObj.Name : ""})`,
             value: p.Name
@@ -158,6 +166,7 @@ function MovieCreate() {
             value: p.Name
         }
     });
+
 
   return (
     <DashboardLayout>
@@ -198,7 +207,6 @@ function MovieCreate() {
         <div>
           <label> PosterImage 
               <input onChange={(event) => {
-                console.log(event.target.files[0]);
                 setPosterImage(event.target.files[0]);
               }}
                 type="file" name="posterImage" accept="image/jpeg" />
@@ -207,7 +215,6 @@ function MovieCreate() {
         <div>
         <label> BackgroundImage 
             <input onChange={(event) => {
-                console.log(event.target.files[0]);
                 setBackgroundImage(event.target.files[0]);
               }}
                 type="file" name="posterImage" accept="image/jpeg" />
@@ -220,7 +227,7 @@ function MovieCreate() {
             </select> 
             <div>
                 <h1>
-                    Movie made in {years.find(y => y.id == newYearID) != undefined ? years.find(y => y.id == newYearID).YearNumber : ""}
+                    Movie made in {years.find(y => y.ID == newYearID) != undefined ? years.find(y => y.ID == newYearID).YearNumber : ""}
                 </h1>
             </div>
           </div>

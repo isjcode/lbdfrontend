@@ -15,12 +15,19 @@
   width: 80%;
 }
 
+.mainContainer .container .lists-container .lists .list {
+  cursor: pointer;
+  border: 1px solid #15BC31;
+  padding: 1%;
+  margin: 10px 0;
+}
+
 .mainContainer .container .lists-container .new-list {
   height: 30px;
   width: 150px;
-  border: none;
   outline: none;
   color: #99AABB;
+  border: none;
   background-color: #445566;
   border-radius: 4px;
   cursor: pointer;

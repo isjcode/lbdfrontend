@@ -33,7 +33,7 @@ function ProfessionUpdate() {
 
       console.log(JSON.stringify(sendData));
 
-      fetch(`http://localhost:64531/api/admin/Professions/Update?id=${id}`, {
+      fetch(`api/admin/Professions/Update?id=${id}`, {
         method: "POST",
         headers: myHeaders,
         body: JSON.stringify(sendData),

@@ -36,7 +36,7 @@ function PersonCreate() {
   myHeaders.append("Content-Type", "application/json");
 
   useEffect(() => {
-    fetch("http://localhost:64531/api/admin/Professions/GetAll", {
+    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Professions/GetAll", {
       headers: myHeaders,
     })
       .then((response) => response.json())
@@ -55,7 +55,7 @@ function PersonCreate() {
   };
 
   const handleSelect = (e) => {
-    const id = professions.find(a => a.name === e.target.value).id;
+    const id = professions.find(a => a.Name === e.target.value).ID;
     setNewProfessionID(id);
   };
 
@@ -69,7 +69,7 @@ function PersonCreate() {
     if (newName.trim().length !== 0 && newDescription.trim().length !== 0) {
       const formData = new FormData();
       if (newProfessionID == -1) {
-        setNewProfessionID(professions[0].id);
+        setNewProfessionID(professions[0].ID);
       }
 
       formData.append("File", selectedImage);
@@ -83,7 +83,7 @@ function PersonCreate() {
       };
       axios({
         method: "put",
-        url: "http://localhost:64531/api/admin/People/Create",
+        url: "http://mackenzythorpe-001-site1.btempurl.com/api/admin/People/Create",
         data: formData,
         headers: { "Content-Type": "multipart/form-data" ,
                    "Authorization": "Bearer " + token,
@@ -99,6 +99,8 @@ function PersonCreate() {
         console.log(response);
       });
 
+      console.log(professions);
+
       // fetch("http://localhost:64531/api/admin/People/Create", {
       //   method: "PUT",
       //   headers: myHeaders,
@@ -106,6 +108,7 @@ function PersonCreate() {
       // });
     }
   };
+
 
   return (
     <DashboardLayout>
@@ -131,8 +134,9 @@ function PersonCreate() {
         <div>
            <label htmlFor="professions">Choose a profession:</label>
             <select onChange={handleSelect} value={newProfessionID} id="professions" name="professions">
-              {professions.map(p => <option data-id={p.id} value={p.Name}> {p.Name} </option>)}
+              {professions.map(p => <option data-id={p.ID} value={p.Name}> {p.Name} </option>)}
             </select> 
+            {(professions && professions.find(p => p.ID === newProfessionID)) && <h1> Profession: {professions.find(p => p.ID === newProfessionID).Name}</h1> }
           </div>
         <button> Create </button>
       </form>

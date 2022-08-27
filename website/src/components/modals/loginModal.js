@@ -29,7 +29,7 @@ function LoginModal({closeLoginModal}) {
             Password: inputs.password,
         };
 
-        fetch("http://localhost:64531/api/accounts/login", {
+        fetch("http://mackenzythorpe-001-site1.btempurl.com/api/accounts/login", {
             method: "POST",
             headers: {
             'Content-Type': 'application/json',
@@ -46,6 +46,7 @@ function LoginModal({closeLoginModal}) {
             }
         })
         .then((data) => {
+            console.log(data);
             localStorage.setItem("userData", JSON.stringify(data.userData));
             setUser(data.userData);
 

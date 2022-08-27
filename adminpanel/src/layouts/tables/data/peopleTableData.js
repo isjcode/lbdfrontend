@@ -29,7 +29,7 @@ export default function data() {
 
   useEffect(() => {
     placePeople();
-    fetch(`http://localhost:64531/api/admin/Professions/GetAll`, {
+    fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/Professions/GetAll`, {
       headers: myHeaders,
     })
       .then((response) => response.json())
@@ -39,7 +39,7 @@ export default function data() {
   }, []);
 
   const placePeople = () => {
-    fetch("http://localhost:64531/api/admin/People/GetAll", {
+    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/People/GetAll", {
       headers: myHeaders,
     })
       .then((response) => response.json())
@@ -60,7 +60,7 @@ export default function data() {
   const deleteOrRestore = (id) => {
     const myHeaders = new Headers();
     myHeaders.append('Authorization', "Bearer " + token);
-    fetch(`http://localhost:64531/api/admin/People/DeleteOrRestore?id=${id}`, {
+    fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/People/DeleteOrRestore?id=${id}`, {
       method: "POST",
       headers: myHeaders,
     })
@@ -78,10 +78,10 @@ export default function data() {
   if (people) {
     people.forEach((element) => {
       rows.push({
-        person: <Person  image={require(`assets/images/people/${element.Image}`)} name={element.Name} />,
+        person: <Person  image={`http://mackenzythorpe-001-site1.btempurl.com/images/people/${element.Image}`} name={element.Name} />,
         profession: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            {professions.length > 0 && professions.find(p => p.id === element.professionID).Name}
+            {professions.find(p => p.ID == element.ProfessionID) && professions.find(p => p.ID == element.ProfessionID).Name}
           </MDTypography>
         ),
         status: (

@@ -48,7 +48,7 @@ function GenreCreate() {
       myHeaders.append('Authorization', "Bearer " + token);
       myHeaders.append("Content-Type", "application/json");
 
-      fetch(`http://localhost:64531/api/admin/Genres/Create`, {
+      fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/Genres/Create`, {
         method: "PUT",
         headers: myHeaders,
         body: JSON.stringify(sendData),

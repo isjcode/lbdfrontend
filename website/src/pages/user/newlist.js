@@ -29,7 +29,7 @@ function NewList() {
 
     useEffect(() => {
         if (search.trim().length !== 0) {
-            fetch(`http://localhost:64531/api/movies/findmovie?str=${search}`, {
+            fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/movies/findmovie?str=${search}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -72,7 +72,7 @@ function NewList() {
             OwnerUsername: user.username,
             movies: addedMovies.map(m => m.ID)
         }
-        fetch("http://localhost:64531/api/lists/createlist", {
+        fetch("http://mackenzythorpe-001-site1.btempurl.com/api/lists/createlist", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -134,7 +134,7 @@ function NewList() {
                             ? addedMovies.map((m) => (
                                   <div data-id={m.ID} key={nanoid()} className="list-movie">
                                       <img
-                                          src={require(`../../assets/images/movies/posterimages/${m.PosterImage}`)}
+                                          src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${m.PosterImage}`}
                                       />
                                       <h1>
                                           {" "}

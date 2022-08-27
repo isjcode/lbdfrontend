@@ -30,12 +30,13 @@ function SearchResults() {
     }
 
     function Items({ currentItems }) {
+        console.log(currentItems);
         return (
             <>
             {currentItems &&
                 currentItems.map((item) => (
                 <div data-id={item.ID} key={nanoid()} className="found-movie">
-                    <img onClick={handleClick} data-id={item.ID} src={require(`../../assets/images/movies/posterimages/${item.PosterImage}`)} />
+                    <img onClick={handleClick} data-id={item.ID} src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${item.PosterImage}`} />
                     <h1 onClick={handleClick} data-id={item.ID}> {item.Name} ({item.YearNumber})</h1>
                 </div>
                 ))}
@@ -43,7 +44,7 @@ function SearchResults() {
         );
     }
     const requestPages = (index = 1) => { 
-        fetch(`http://localhost:64531/api/movies/searchmovies?s=${searchParams.get("str")}&i=${index}`, {
+        fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/movies/searchmovies?s=${searchParams.get("str")}&i=${index}`, {
             method: "GET",
             headers: {
             'Content-Type': 'application/json',
@@ -64,7 +65,7 @@ function SearchResults() {
 
     useEffect(() => {
         requestPages();
-        fetch(`http://localhost:64531/api/movies/getyears`, {
+        fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/movies/getyears`, {
             method: "GET",
             headers: {
             'Content-Type': 'application/json',
@@ -91,6 +92,10 @@ function SearchResults() {
     return (
         <div className="mainContainer">
             <Header />
+            <div className="search-choice">
+                <button> Users </button>
+                <button> Movies </button>
+            </div>
             <Items currentItems={currentItems} />
             <ReactPaginate
                 breakLabel="..."
