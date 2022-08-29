@@ -13,6 +13,8 @@ import List from "./pages/user/list";
 import UserSettings from "./pages/user/usersettings";
 import UserLists from "./pages/user/lists";
 import UserNews from "./pages/user/usernews";
+import NewNews from "./pages/user/newnews";
+import News from "./pages/news";
 import { BrowserRouter , Routes, Route } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { useEffect, useState } from "react";
@@ -49,6 +51,8 @@ function App() {
               <Route path="/user/:username/list" element={<List />} />
               <Route path="/user/:username/settings" element={<UserSettings />} />
               <Route path="/user/:username/news" element={<UserNews />} />
+              <Route path="/user/:username/news/new" element={<NewNews />} />
+              <Route path="/news" element={<News />} />
             </Routes>
           </UserContext.Provider>
       </BrowserRouter>

@@ -152,7 +152,7 @@ function NewList() {
                             type="text"
                             placeholder="Enter a list name"
                         />
-                        <button> Save </button>
+                        <button className="save-list-button"> Save </button>
                     </form>
                 </div>
                 <Footer />

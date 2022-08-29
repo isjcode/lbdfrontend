@@ -61,15 +61,15 @@ $hoverColor: #15BC31;
                 color: $letterColor;
             }
 
-            button {
+            .save-list-button {
                 width: 80px;
                 height: 40px;
-                margin-left: 20px;
                 border: none;
                 outline: none;
                 border-radius: 4px;
                 background-color: #15BC31;
                 color: white;
+                margin-top: 40px;
                 cursor: pointer;
             }
         }

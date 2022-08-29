@@ -20,9 +20,6 @@ function User() {
 
     const navigate = useNavigate();
     useEffect(() => {
-        if (!user) {
-            return;
-        }
         fetch(
             `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/getuser?userName=${userName}`,
             {
@@ -33,6 +30,7 @@ function User() {
             }
         )
             .then((response) => {
+                console.log(response);
                 return response.json();
             })
             .then((data) => {
@@ -42,6 +40,9 @@ function User() {
             .catch((error) => {
                 console.error("Error:", error);
             });
+        if (!user) {
+            return;
+        }
         if (userName !== user.username) {
             fetch(
                 `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/checkfollow?followerUsername=${
@@ -71,7 +72,6 @@ function User() {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + user.token,
                 },
             }
         )

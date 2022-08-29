@@ -31,6 +31,7 @@ function UserNews() {
     const navigate = useNavigate();
     const { user, setUser } = useContext(UserContext);
 
+
     const handleDelete = (e) => {
         e.preventDefault();
         const id = e.target.getAttribute("data-id");
@@ -42,8 +43,9 @@ function UserNews() {
             },
         })
             .then((response) => {
+                console.log(response);
                 if (response.status === 200) {
-                    navigate(`/user/${user.username}/news`)
+                    requestPages();
                 }
             })
             .catch((error) => {
@@ -54,8 +56,8 @@ function UserNews() {
     function Items({ currentItems }) {
         return (
             currentItems && currentItems.map(n => (
-                <div   className="news-article">
-                    <button data-id={n.Id} onClick={handleDelete} className="delete-button"> X </button>
+                <div onClick={handleClick} key={nanoid()}  className="news-article">
+                    {user && user.username == userName ? <button data-id={n.Id} onClick={handleDelete} className="delete-news-button"> X </button> : null}
                     <img data-id={n.Id} src={`http://mackenzythorpe-001-site1.btempurl.com/images/news/${n.Image}`} />
                     <h1 data-id={n.Id} > {n.Title} </h1>
                     <p data-id={n.Id}> {n.Body} </p>
@@ -103,6 +105,12 @@ function UserNews() {
         const newOffset = (event.selected * itemsPerPage) % currentItems.length;
         setItemOffset(newOffset);
     };
+
+    const handleNewNews = (e) => {
+        e.preventDefault();
+        navigate(`/user/${user.userName}/news/new`);
+    }
+
     return (
         <div className="mainContainer">
             <Header />
@@ -112,7 +120,7 @@ function UserNews() {
                     <div className="news">
                         <Items currentItems={currentItems} />
                     </div>
-                    <button className="create-news"> New Article </button>
+                    <button onClick={handleNewNews} className="create-news"> New Article </button>
                 </div>
                 <ReactPaginate
                     breakLabel="..."

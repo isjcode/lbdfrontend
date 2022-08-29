@@ -64,7 +64,7 @@
   position: relative;
 }
 
-.container .news-container .news .news-article .delete-button {
+.container .news-container .news .news-article .delete-news-button {
   position: absolute;
   right: 0;
   background-color: #2a343f;
@@ -103,5 +103,6 @@
   border: none;
   outline: none;
   border-radius: 4px;
+  cursor: pointer;
 }
 /*# sourceMappingURL=usernews.css.map */

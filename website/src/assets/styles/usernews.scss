@@ -44,7 +44,7 @@ $hoverColor: #15BC31;
                 margin-right: 5%;
                 position: relative;
 
-                .delete-button {
+                .delete-news-button {
                     position: absolute;
                     right: 0;
                     background-color: #2a343f;
@@ -84,6 +84,7 @@ $hoverColor: #15BC31;
             border: none;
             outline: none;
             border-radius: 4px;
+            cursor: pointer;
         }
     }
 
