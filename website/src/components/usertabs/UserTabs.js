@@ -25,6 +25,9 @@ function UserTabs() {
             <div className={currentTab === "followees" ? "tab active" : "tab"}>
                 <Link to={`/user/${userName}/followees`}> Followees </Link>
             </div>
+            <div className={currentTab === "news" ? "tab active" : "tab"}>
+                <Link to={`/user/${userName}/news`}> News </Link>
+            </div>
         </div>
     );
 }

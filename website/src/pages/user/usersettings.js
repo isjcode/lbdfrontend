@@ -17,23 +17,19 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import UserTabs from "../../components/usertabs/UserTabs";
+import axios from "axios";
 
 function UserSettings() {
     const { user, setUser } = useContext(UserContext);
     const [ToggleState, setToggleState] = useState(1);
-    const [img, setImg] = useState(null);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
+    const [image, setImage] = useState(null);
+    const navigate = useNavigate();
 
-    const readImage = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        let file = e.dataTransfer.files[0];
-
-        let reader = new FileReader();
-
-        reader.readAsDataURL(file);
-
-        reader.onload = () => setImg(reader.result);
+    const onImageChange = (e) => {
+        setImage(e.target.files[0]);
     };
 
     const toggleTab = (index) => {
@@ -45,8 +41,89 @@ function UserSettings() {
 
     const handleSaveImage = (e) => {
         e.preventDefault();
-        
-    }    
+        const formData = new FormData();
+        formData.append("UserName", user.username);
+        formData.append("Image", image);
+        if (image === null) {
+            return;
+        }
+
+        axios({
+            method: "post",
+            url: "http://mackenzythorpe-001-site1.btempurl.com/api/accounts/changeuseravatar",
+            data: formData,
+            headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: "Bearer " + user.token,
+            },
+        })
+            .then(function (response) {
+                console.log(response);
+                if (response.status === 200) {
+                    navigate(`/user/${user.username}`);
+                }
+            })
+            .catch(function (response) {
+                console.log(response);
+            });
+    };
+
+    const loginAgain = () => {
+        const data = {
+            EmailOrUsername: email,
+            Password: password,
+        };
+        fetch(
+            "http://mackenzythorpe-001-site1.btempurl.com/api/accounts/login",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+        )
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                localStorage.setItem("userData", JSON.stringify(data.userData));
+                setUser(data.userData);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const body = {
+            UserName: username,
+            Password: password,
+            Email: email,
+        };
+        fetch(
+            `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/changeusercredentials?userName=${user.username}`,
+            {
+                method: "POST",
+                headers: {
+                    Authorization: "Bearer " + user.token,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(body),
+            }
+        )
+            .then((response) => {
+                console.log(response);
+                if (response.ok) {
+                    loginAgain();
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    };
 
     return (
         <div className="mainContainer">
@@ -74,7 +151,44 @@ function UserSettings() {
                             "active-content"
                         )}`}
                     >
-                        Haha
+                        <form
+                            onSubmit={handleSubmit}
+                            className="change-credentials"
+                        >
+                            <label htmlFor="email"> Email </label>
+                            <input
+                                id="email"
+                                type="email"
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
+                                placeholder="Enter a new email"
+                                className="email"
+                                required
+                            />
+                            <label htmlFor="username"> Username </label>
+                            <input
+                                minLength="6"
+                                id="username"
+                                type="text"
+                                onChange={(e) => setUsername(e.target.value)}
+                                value={username}
+                                placeholder="Enter a new username"
+                                className="username"
+                                required
+                            />
+                            <label htmlFor="password"> Password </label>
+                            <input
+                                minLength="6"
+                                id="password"
+                                type="password"
+                                onChange={(e) => setPassword(e.target.value)}
+                                value={password}
+                                placeholder="Enter a new password"
+                                className="password"
+                                required
+                            />
+                            <button className="save"> Save </button>
+                        </form>
                     </div>
                     <div
                         className={`content ${getActiveClass(
@@ -82,17 +196,21 @@ function UserSettings() {
                             "active-content"
                         )}`}
                     >
-                        <div className="Upload">
-                            <div
-                                className="Drag"
-                                onDragOver={(e) => e.preventDefault()}
-                                onDrop={readImage}
+                        <div className="save-image">
+                            <input
+                                type="file"
+                                accept="image/jpeg"
+                                onChange={onImageChange}
+                            />
+                            <button
+                                className="save-image-button"
+                                onClick={handleSaveImage}
                             >
-                                {img ? <img src={img} /> : "Drag an image here"}
-                            </div>
+                                {" "}
+                                Save{" "}
+                            </button>
                         </div>
                     </div>
-                        <button onClick={handleSaveImage} className="save-image-button"> Save </button>
                 </div>
             </div>
             <Footer />
