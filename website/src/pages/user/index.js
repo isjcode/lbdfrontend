@@ -1,7 +1,13 @@
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { nanoid } from "nanoid";
-import { createSearchParams, Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+    createSearchParams,
+    Link,
+    useLocation,
+    useNavigate,
+    useParams,
+} from "react-router-dom";
 import defaultuser from "../../assets/images/users/defaultuser.jpg";
 import "../../assets/styles/user.css";
 import "react-tabs/style/react-tabs.css";
@@ -18,8 +24,10 @@ function User() {
     const [userStats, setUserStats] = useState(null);
     const [recentReviews, setRecentReviews] = useState([]);
 
+
     const navigate = useNavigate();
     useEffect(() => {
+        console.log("hre");
         fetch(
             `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/getuser?userName=${userName}`,
             {
@@ -30,20 +38,37 @@ function User() {
             }
         )
             .then((response) => {
-                console.log(response);
                 return response.json();
             })
             .then((data) => {
-                console.log(data);
                 setUserStats(data);
             })
             .catch((error) => {
                 console.error("Error:", error);
             });
-        if (!user) {
+        fetch(
+            `http://mackenzythorpe-001-site1.btempurl.com/api/reviews/getrecentreviews?userName=${userName}`,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        )
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                setRecentReviews(data);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+
+             if (!user) {
             return;
         }
-        if (userName !== user.username) {
+        if (user.username !== userName) {
             fetch(
                 `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/checkfollow?followerUsername=${
                     user && user.username
@@ -66,25 +91,7 @@ function User() {
                     console.error("Error:", error);
                 });
         }
-        fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/reviews/getrecentreviews?userName=${userName}`,
-            {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-        )
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                setRecentReviews(data);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-    }, [user, following]);
+    }, [user, following, userName]);
 
     const handleFollow = (e) => {
         e.preventDefault();
@@ -122,16 +129,15 @@ function User() {
         const id = e.target.getAttribute("data-id");
         const params = { id: e.target.getAttribute("data-id") };
         navigate({
-        pathname: "/review",
-        search: `${createSearchParams(params)}`,
+            pathname: "/review",
+            search: `${createSearchParams(params)}`,
         });
-
-    }
+    };
 
     const handleEditProfile = (e) => {
         e.preventDefault();
         navigate(`/user/${userName}/settings`);
-    }
+    };
 
     return (
         <div className="mainContainer">
@@ -139,12 +145,20 @@ function User() {
             <div className="profile-container">
                 <div className="first">
                     <div className="left">
-                        <img src={userStats && `http://mackenzythorpe-001-site1.btempurl.com/images/users/${userStats.Image}`} />
+                        <img
+                            src={
+                                userStats &&
+                                `http://mackenzythorpe-001-site1.btempurl.com/images/users/${userStats.Image}`
+                            }
+                        />
                         <div>
                             <h1> {userName} </h1>
                             {user ? (
                                 userName === user.username ? (
-                                    <button onClick={handleEditProfile}> Edit Profile </button>
+                                    <button onClick={handleEditProfile}>
+                                        {" "}
+                                        Edit Profile{" "}
+                                    </button>
                                 ) : following ? (
                                     <button
                                         className="following"
@@ -185,19 +199,41 @@ function User() {
                 <UserTabs />
 
                 <div className="recent-activity">
-                    {recentReviews.map(r => {
+                    {recentReviews.map((r) => {
                         return (
                             <div key={nanoid()} className="review-card">
-                                <img data-id={r.Id} onClick={handleReviewClick}  src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${r.Image}`} />
-                                <ul className="rating-score" data-rating={`${r.Rating / 2}`}>
-                                    <li key={nanoid()} className="rating-score-item"></li>
-                                    <li key={nanoid()} className="rating-score-item"></li>
-                                    <li key={nanoid()} className="rating-score-item"></li>
-                                    <li key={nanoid()} className="rating-score-item"></li>
-                                    <li key={nanoid()} className="rating-score-item"></li>
+                                <img
+                                    data-id={r.Id}
+                                    onClick={handleReviewClick}
+                                    src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${r.Image}`}
+                                />
+                                <ul
+                                    className="rating-score"
+                                    data-rating={`${r.Rating / 2}`}
+                                >
+                                    <li
+                                        key={nanoid()}
+                                        className="rating-score-item"
+                                    ></li>
+                                    <li
+                                        key={nanoid()}
+                                        className="rating-score-item"
+                                    ></li>
+                                    <li
+                                        key={nanoid()}
+                                        className="rating-score-item"
+                                    ></li>
+                                    <li
+                                        key={nanoid()}
+                                        className="rating-score-item"
+                                    ></li>
+                                    <li
+                                        key={nanoid()}
+                                        className="rating-score-item"
+                                    ></li>
                                 </ul>
                             </div>
-                        )
+                        );
                     })}
                 </div>
             </div>

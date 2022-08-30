@@ -43,6 +43,11 @@ function Header() {
         localStorage.removeItem("userData");
     };
 
+    const handleProfileClick = (e) => {
+        e.preventDefault();
+        navigate(`/user/${user.username}`);
+    }
+
     return (
         <header className={user === null ? "wide-width" : "normal-width"}>
             <div className="headerContainer">
@@ -83,7 +88,7 @@ function Header() {
                                     <Link to="/"> Home </Link>
                                 </div>
                                 <div className="dropdown-tab">
-                                    <Link to={`/user/${user.username}`}> Profile </Link>
+                                    <Link onClick={handleProfileClick} to={`/user/${user.username}`}> Profile </Link>
                                 </div>
                                 <div
                                     className="dropdown-tab"
