@@ -109,9 +109,6 @@ function Header() {
                         <a href="#"> members </a>
                     </li>
                     <li>
-                        <a href="#"> journal </a>
-                    </li>
-                    <li>
                         <div className="search">
                             <input
                                 type="text"
