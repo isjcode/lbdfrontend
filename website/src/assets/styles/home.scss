@@ -232,7 +232,14 @@ body {
             flex-wrap: wrap;
             justify-content: space-between;
             overflow: hidden;
-            margin-top: 100px;
+            margin-top: 130px;
+
+            h3 {
+                width: 100%;
+                border-bottom: 1px solid $letterColor;
+                padding-bottom: 10px;
+            }
+
             .recent-news-single {
                 width: 30%;
                 height: 300px;

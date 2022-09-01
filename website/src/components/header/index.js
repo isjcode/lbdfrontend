@@ -85,9 +85,6 @@ function Header() {
                             </a>
                             <div className="user-dropdowns">
                                 <div className="dropdown-tab">
-                                    <Link to="/"> Home </Link>
-                                </div>
-                                <div className="dropdown-tab">
                                     <Link onClick={handleProfileClick} to={`/user/${user.username}`}> Profile </Link>
                                 </div>
                                 <div
@@ -100,10 +97,10 @@ function Header() {
                         </li>
                     )}
                     <li>
-                        <a href="#"> films </a>
+                        <Link to="/"> Home </Link>
                     </li>
                     <li>
-                        <a href="#"> lists </a>
+                        <Link to="/films"> Films </Link>
                     </li>
                     <li>
                         <a href="#"> members </a>

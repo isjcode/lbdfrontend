@@ -41,13 +41,13 @@ function FindMovieModal({closeFindMovieModal, closeLogMovieModalOpen, setMovieID
                     <input name="moviename" value={searchMovie || ""} onChange={handleChange} type="text" id="moviename" required /> 
                     {
                         movies.length !== 0 ? (
-                            <div className="movies">
+                            <div className="findmovie-movies">
                                 {movies.map(m => <button onClick={() => {
                                                             setMovieID(m.ID);
                                                             closeLogMovieModalOpen(true);
                                                             closeFindMovieModal(false);
                                                             }} 
-                                        key={nanoid()} className="movie"> {m.Name} {m.YearNumber} </button>)}
+                                        key={nanoid()} className="find-movie"> {m.Name} {m.YearNumber} </button>)}
                             </div>
                         )
                         :

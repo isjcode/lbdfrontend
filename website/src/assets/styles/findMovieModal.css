@@ -76,17 +76,21 @@
   background-color: white;
 }
 
-.mainModal .mainContainerFind .modalTextInput .movies {
+.mainModal .mainContainerFind .modalTextInput .findmovie-movies {
   width: 100%;
   height: 150px;
   overflow-y: scroll;
   border: 1px white;
   background-color: #667788;
   padding-top: 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-.mainModal .mainContainerFind .modalTextInput .movies .movie {
-  background-color: red;
+.mainModal .mainContainerFind .modalTextInput .findmovie-movies .find-movie {
   width: 90%;
   border: 1px white;
   outline: none;
@@ -97,7 +101,7 @@
   cursor: pointer;
 }
 
-.mainModal .mainContainerFind .modalTextInput .movies .movie:hover, .mainModal .mainContainerFind .modalTextInput .movies .movie:focus, .mainModal .mainContainerFind .modalTextInput .movies .movie:active {
+.mainModal .mainContainerFind .modalTextInput .findmovie-movies .find-movie:hover, .mainModal .mainContainerFind .modalTextInput .findmovie-movies .find-movie:focus, .mainModal .mainContainerFind .modalTextInput .findmovie-movies .find-movie:active {
   background-color: #00B020;
 }
 /*# sourceMappingURL=findMovieModal.css.map */

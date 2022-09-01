@@ -1,7 +1,7 @@
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import "../../assets/styles/home.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../UserContext";
 import { nanoid } from "nanoid";
 import { createSearchParams, useNavigate } from "react-router-dom";
@@ -11,7 +11,7 @@ function Home() {
     const [home, setHome] = useState(null);
     const navigate = useNavigate();
 
-    useState(() => {
+    useEffect(() => {
         fetch(
             `http://mackenzythorpe-001-site1.btempurl.com/api/home`,
             // `http://localhost:64531/api/home`,
@@ -184,6 +184,7 @@ function Home() {
                     <RecentLists />
                 </div>
                 <div className="recent-news">
+                    <h3> Recent stories from our members... </h3>
                     <RecentNews />
                 </div>
             </div>

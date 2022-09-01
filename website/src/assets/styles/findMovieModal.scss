@@ -63,15 +63,16 @@ $errorColor: #fc8e2f;
                 }
             }
 
-            .movies {
+            .findmovie-movies {
                 width: 100%;
                 height: 150px; 
                 overflow-y: scroll;
                 border: 1px white;
                 background-color: #667788;
                 padding-top: 1%;
-                .movie {
-                    background-color: red;
+                display: flex;
+                flex-wrap: wrap;
+                .find-movie {
                     width: 90%;
                     border: 1px white;
                     outline: none;
