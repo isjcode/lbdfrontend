@@ -103,7 +103,7 @@ function Header() {
                         <Link to="/films"> Films </Link>
                     </li>
                     <li>
-                        <a href="#"> members </a>
+                        <Link to="/members"> members </Link>
                     </li>
                     <li>
                         <div className="search">

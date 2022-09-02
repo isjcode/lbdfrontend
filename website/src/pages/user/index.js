@@ -41,6 +41,7 @@ function User() {
                 return response.json();
             })
             .then((data) => {
+                console.log(data);
                 setUserStats(data);
             })
             .catch((error) => {

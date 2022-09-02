@@ -5,6 +5,7 @@ import Footer from "../../components/footer";
 import { nanoid } from "nanoid";
 import ReactPaginate from 'react-paginate';
 import "../../assets/styles/searchResults.css";
+import { isCompositeComponent } from "react-dom/test-utils";
 
 function SearchResults() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -54,7 +55,6 @@ function SearchResults() {
             return response.json();
         })
         .then((data) => {
-            console.log(data);
             setCurrentItems(data.Items);
             setPageCount(data.TotalPage);
         })
@@ -83,11 +83,14 @@ function SearchResults() {
     }, [searchParams.get("str")]);
 
     const handlePageClick = (event) => {
+        console.log("here");
 
         requestPages(event.selected + 1);
         const newOffset = (event.selected * itemsPerPage) % currentItems.length;
         setItemOffset(newOffset);
     };
+
+    console.log(currentItems);
 
     return (
         <div className="mainContainer">

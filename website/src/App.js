@@ -16,6 +16,7 @@ import UserNews from "./pages/user/usernews";
 import Films from "./pages/films/films";
 import NewNews from "./pages/user/newnews";
 import News from "./pages/news";
+import Members from "./pages/members/members";
 import { BrowserRouter , Routes, Route } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { useEffect, useState } from "react";
@@ -55,6 +56,7 @@ function App() {
               <Route path="/user/:username/news/new" element={<NewNews />} />
               <Route path="/news" element={<News />} />
               <Route path="/films" element={<Films />} />
+              <Route path="/members" element={<Members />} />
             </Routes>
           </UserContext.Provider>
       </BrowserRouter>
