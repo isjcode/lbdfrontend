@@ -2,6 +2,7 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {nanoid} from "nanoid";
 
 import { useLocation, useSearchParams, useNavigate} from "react-router-dom";
 
@@ -27,8 +28,9 @@ function PersonUpdate() {
     })
       .then((response) => response.json())
       .then((d) => {
+        console.log(d);
         setProfessions(d);
-        setNewProfessionID(d[0].id);
+        setNewProfessionID(d[0].ID);
       });
   }, []);
 
@@ -40,9 +42,13 @@ function PersonUpdate() {
   };
 
   const handleSelect = (e) => {
-    const id = professions.find(a => a.name === e.target.value).id;
+    const id = professions.find(a => a.Name === e.target.value).ID;
     setNewProfessionID(id);
   };
+
+  useEffect(() => {
+    console.log(newProfessionID);
+  }, [newProfessionID])
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate(); 
@@ -54,8 +60,9 @@ function PersonUpdate() {
     if (newName.trim().length !== 0 && newDescription.trim().length !== 0) {
       const formData = new FormData();
       if (newProfessionID == -1) {
-        setNewProfessionID(professions[0].id);
+        setNewProfessionID(professions[0].ID);
       }
+
       formData.append("File", selectedImage);
       formData.append("Name", newName);
       formData.append("Description", newDescription);
@@ -69,6 +76,7 @@ function PersonUpdate() {
       axios({
         method: "POST",
         url: `http://mackenzythorpe-001-site1.btempurl.com/api/admin/People/Update?id=${id}`,
+        // url: `http://localhost:64531/api/admin/People/Update?id=${id}`,
         data: formData,
         headers: { "Content-Type": "multipart/form-data" ,
                    "Authorization": "Bearer " + token,
@@ -88,7 +96,6 @@ function PersonUpdate() {
   };
   return (
     <DashboardLayout>
-      <DashboardNavbar />
       <form onSubmit={handleSubmit}>
         <div>
           <label value="Name" htmlFor="new-name"> Name </label> 
@@ -110,10 +117,10 @@ function PersonUpdate() {
         <div>
            <label htmlFor="professions">Choose a profession:</label>
             <select onChange={handleSelect} value={newProfessionID} id="professions" name="professions">
-              {professions.map(p => <option data-lid={p.id} value={p.name}> {p.name} </option>)}
+              {professions.map(p => <option key={nanoid()} data-lid={p.ID} value={p.Name}> {p.Name} </option>)}
             </select> 
           </div>
-        <button> Create </button>
+        <button> update </button>
       </form>
     </DashboardLayout>
   );

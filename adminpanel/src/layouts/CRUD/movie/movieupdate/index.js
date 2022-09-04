@@ -157,7 +157,6 @@ function MovieUpdate() {
 
   return (
     <DashboardLayout>
-      <DashboardNavbar />
       <form onSubmit={handleSubmit}>
         <div>
           <label value="Name" htmlFor="new-name"> Name </label> 
@@ -218,7 +217,7 @@ function MovieUpdate() {
                 </h1>
             </div>
           </div>
-        <button> Create </button>
+        <button> Update </button>
       </form>
     </DashboardLayout>
   );

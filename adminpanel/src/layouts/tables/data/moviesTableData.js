@@ -7,7 +7,7 @@ import { Routes, Route, Navigate, useNavigate, createSearchParams } from "react-
 import { doc } from "prettier";
 
 export default function data() {
-    const Movie = ({ image, name }) => (
+  const Movie = ({ image, name }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDAvatar src={image} name={name} size="sm" />
       <MDBox ml={2} lineHeight={1}>
@@ -22,10 +22,14 @@ export default function data() {
 
   const token = localStorage.getItem("token");
   const myHeaders = new Headers();
-  myHeaders.append('Authorization', "Bearer " + token);
+  myHeaders.append("Authorization", "Bearer " + token);
   myHeaders.append("Content-Type", "application/json");
 
   useEffect(() => {
+    placeMovies();
+  }, []);
+
+  const placeMovies = () => {
     fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/Movies/GetAll`, {
       headers: myHeaders,
     })
@@ -33,7 +37,7 @@ export default function data() {
       .then((d) => {
         setMovies(d);
       });
-  }, []);
+  };
 
   const navigate = useNavigate();
   const routeChange = (e) => {
@@ -47,12 +51,15 @@ export default function data() {
   };
 
   const deleteOrRestore = (id) => {
-    fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/Movies/DeleteOrRestore?id=${id}`, {
-      method: "POST",
-      headers: myHeaders,
-    })
+    fetch(
+      `http://mackenzythorpe-001-site1.btempurl.com/api/admin/Movies/DeleteOrRestore?id=${id}`,
+      {
+        method: "POST",
+        headers: myHeaders,
+      }
+    )
       .then((response) => {
-        if (response.status == 200) {
+        if (response.status == 204) {
           navigate("/tables");
         }
         console.log(response);
@@ -65,15 +72,40 @@ export default function data() {
   if (movies) {
     movies.forEach((element) => {
       rows.push({
-        movie: <Movie  image={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${element.PosterImage}`}  name={element.Name} />,
+        movie: (
+          <Movie
+            image={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${element.PosterImage}`}
+            name={element.Name}
+          />
+        ),
 
         status: (
-          <MDTypography onClick={() => deleteOrRestore(element.ID)} component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            <MDBadge badgeContent={element.IsDeleted ? "Restore" : "Delete"} color={!element.IsDeleted ? "error" : "success"} variant="gradient" size="sm" />
+          <MDTypography
+            onClick={() => deleteOrRestore(element.ID)}
+            component="a"
+            href="#"
+            variant="caption"
+            color="text"
+            fontWeight="medium"
+          >
+            <MDBadge
+              badgeContent={element.IsDeleted ? "Restore" : "Delete"}
+              color={!element.IsDeleted ? "error" : "success"}
+              variant="gradient"
+              size="sm"
+            />
           </MDTypography>
         ),
         action: (
-          <MDTypography  onClick={routeChange} data-id={element.ID} component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          <MDTypography
+            onClick={routeChange}
+            data-id={element.ID}
+            component="a"
+            href="#"
+            variant="caption"
+            color="text"
+            fontWeight="medium"
+          >
             Edit
           </MDTypography>
         ),
@@ -87,6 +119,6 @@ export default function data() {
       { Header: "status", accessor: "status", align: "center" },
       { Header: "action", accessor: "action", align: "center" },
     ],
-    rows: rows
+    rows: rows,
   };
 }

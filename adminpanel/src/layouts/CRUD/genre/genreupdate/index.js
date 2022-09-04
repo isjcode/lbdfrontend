@@ -51,7 +51,6 @@ function GenreUpdate() {
   };
   return (
     <DashboardLayout>
-      <DashboardNavbar />
       <form onSubmit={handleSubmit}>
         <label value="Name" htmlFor="new-name"> Name </label> 
         <input id="new-name" onChange={handleChange} value={newName}  placeholder="New name." /> 

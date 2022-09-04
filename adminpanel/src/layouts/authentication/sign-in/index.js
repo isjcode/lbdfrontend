@@ -66,7 +66,7 @@ function Basic() {
       })
       .then((data) => {
         localStorage.setItem("token", data.token);
-        navigate("/dashboard");
+        navigate("/tables");
       })
       .catch(() => {
         console.log("Login failed.");

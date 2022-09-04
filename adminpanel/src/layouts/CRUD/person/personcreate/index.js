@@ -112,7 +112,6 @@ function PersonCreate() {
 
   return (
     <DashboardLayout>
-      <DashboardNavbar />
       <form onSubmit={handleSubmit}>
         <div>
           <label value="Name" htmlFor="new-name"> Name </label> 

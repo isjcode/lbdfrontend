@@ -16,7 +16,7 @@ Coded by www.creative-tim.com
 import { useEffect } from "react";
 
 // react-router-dom components
-import { useLocation, NavLink } from "react-router-dom";
+import { useLocation, NavLink, useNavigate } from "react-router-dom";
 
 // prop-types is a library for typechecking of props.
 import PropTypes from "prop-types";
@@ -52,6 +52,12 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
   const { miniSidenav, transparentSidenav, whiteSidenav, darkMode, sidenavColor } = controller;
   const location = useLocation();
   const collapseName = location.pathname.replace("/", "");
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    navigate("/authentication/sign-in");
+  };
 
   let textColor = "white";
 
@@ -83,7 +89,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
     return () => window.removeEventListener("resize", handleMiniSidenav);
   }, [dispatch, location]);
 
-  const dontShow = ["genreupdate", "genrecreate", "professionupdate", "professioncreate", "personcreate", "personupdate", "moviecreate", "movieupdate"];
+  const dontShow = ["genreupdate", "professionupdate", "personupdate","movieupdate", "sign-in", "dashboard"];
   // Render all the routes from the routes.js (All the visible items on the Sidenav)
   const renderRoutes = routes.map(({ type, name, icon, title, noCollapse, key, href, route }) => {
     if (dontShow.includes(key)) {
@@ -158,6 +164,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
         }
       />
       <List>{renderRoutes}</List>
+      <button onClick={handleSignOut} > Sign Out </button>
     </SidenavRoot>
   );
 }

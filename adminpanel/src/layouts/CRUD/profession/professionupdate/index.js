@@ -33,7 +33,7 @@ function ProfessionUpdate() {
 
       console.log(JSON.stringify(sendData));
 
-      fetch(`api/admin/Professions/Update?id=${id}`, {
+      fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/Professions/Update?id=${id}`, {
         method: "POST",
         headers: myHeaders,
         body: JSON.stringify(sendData),
@@ -48,7 +48,6 @@ function ProfessionUpdate() {
   };
   return (
     <DashboardLayout>
-      <DashboardNavbar />
       <form onSubmit={handleSubmit}>
         <label value="Name" htmlFor="new-name"> Name </label> 
         <input id="new-name" onChange={handleChange} value={newName}  placeholder="New name." /> 

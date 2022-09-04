@@ -151,7 +151,7 @@ export default function App() {
       {layout === "vr" && <Configurator />}
       <Routes history={history}>
         {getRoutes(routes)}
-        <Route path="*" element={<Navigate to="/dashboard" />} />
+        <Route path="*" element={<Navigate to="/tables" />} />
       </Routes>
     </ThemeProvider>
   );

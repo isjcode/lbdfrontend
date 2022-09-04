@@ -44,7 +44,6 @@ function Tables() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(token);
     if (token == null) {
       navigate("/authentication/sign-in");
     }

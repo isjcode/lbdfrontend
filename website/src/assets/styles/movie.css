@@ -81,7 +81,9 @@
 
 .mainContainer .movie-page-wrapper .inner-page-wrapper .movie-page-container {
   width: 90%;
-  height: 250px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   background-color: transparent;
   margin: auto;
   margin-bottom: 50%;
@@ -171,7 +173,9 @@
 
 .mainContainer .movie-page-wrapper .inner-page-wrapper .reviews {
   width: 100%;
-  height: 100px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   margin-top: 15%;
   color: #99AABB;
 }
