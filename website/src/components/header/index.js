@@ -31,7 +31,7 @@ function Header() {
         e.preventDefault();
         if (search.trim().length !== 0) {
             navigate({
-                pathname: "/search",
+                pathname: "/search/movies",
                 search: `${createSearchParams(params)}`,
             });
         }

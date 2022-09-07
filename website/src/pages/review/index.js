@@ -71,14 +71,17 @@ function Review() {
             Body: commentBody,
             ReviewId: review.Id,
         };
-        fetch("http://mackenzythorpe-001-site1.btempurl.com/api/comments/create", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + user.token,
-            },
-            body: JSON.stringify(data),
-        })
+        fetch(
+            "http://mackenzythorpe-001-site1.btempurl.com/api/comments/create",
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + user.token,
+                },
+                body: JSON.stringify(data),
+            }
+        )
             .then((response) => {
                 if (response.status == 201) {
                     requestComments();
@@ -117,19 +120,52 @@ function Review() {
         <div className="mainContainer">
             <Header />
             <div className="reviewContainer">
-                <p> Review by {review && review.Username}</p>
-                <p className="review-body"> {review && review.Body} </p>
+                <img
+                    src={
+                        review &&
+                        `http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${review.Image}`
+                    }
+                />
+                <div className="right">
+                    <p className="review-owner">
+                        {" "}
+                        Review by {review && review.Username}{" "}
+                        <ul
+                            className="rating-score"
+                            data-rating={`${review && review.Rating / 2}`}
+                        >
+                            <li
+                                key={nanoid()}
+                                className="rating-score-item"
+                            ></li>
+                            <li
+                                key={nanoid()}
+                                className="rating-score-item"
+                            ></li>
+                            <li
+                                key={nanoid()}
+                                className="rating-score-item"
+                            ></li>
+                            <li
+                                key={nanoid()}
+                                className="rating-score-item"
+                            ></li>
+                            <li
+                                key={nanoid()}
+                                className="rating-score-item"
+                            ></li>
+                        </ul>{" "}
+                    </p>
+                    <p className="review-body"> {review && review.Body} </p>
+                </div>
             </div>
             <div className="comments">
                 <h1> Comments </h1>
                 {comments.map((c) => (
                     <div className="comment">
-                        {" "}
                         <div className="left">
-                            {" "}
-                            <img src={""} />{" "}
+                            <img src={review && `http://mackenzythorpe-001-site1.btempurl.com/images/users/${review.OwnerImage}`}/>
                             <span>
-                                {" "}
                                 {c.Username}{" "}
                                 {c.Username == user.username && (
                                     <i

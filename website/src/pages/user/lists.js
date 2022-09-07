@@ -34,9 +34,29 @@ function UserLists() {
                 {currentItems &&
                     currentItems.map((list) => {
                         return (
-                            <div onClick={handleListClick} data-id={list.Id} className="list">
-                                <h1 data-id={list.Id} className="name"> {list.Name} </h1>
-                                <h2 data-id={list.Id}> {list.MovieCount} movies </h2>
+                            <div
+                                onClick={handleListClick}
+                                data-id={list.Id}
+                                className="list"
+                            >
+                                {user && user.username == userName ? (
+                                    <button
+                                        data-id={list.Id}
+                                        onClick={handleDelete}
+                                        className="delete-news-button"
+                                    >
+                                        {" "}
+                                        X{" "}
+                                    </button>
+                                ) : null}
+                                <h1 data-id={list.Id} className="name">
+                                    {" "}
+                                    {list.Name}{" "}
+                                </h1>
+                                <h2 data-id={list.Id}>
+                                    {" "}
+                                    {list.MovieCount} movies{" "}
+                                </h2>
                             </div>
                         );
                     })}
@@ -44,15 +64,40 @@ function UserLists() {
         );
     }
 
+    const handleDelete = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const id = e.target.getAttribute("data-id");
+        fetch(
+            `http://mackenzythorpe-001-site1.btempurl.com/api/lists?id=${id}`,
+            {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + user.token,
+                },
+            }
+        )
+            .then((response) => {
+                console.log(response);
+                if (response.status === 200) {
+                    requestPages();
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    };
+
     const handleListClick = (e) => {
         e.preventDefault();
         const id = e.target.getAttribute("data-id");
-        const params = { id:  e.target.getAttribute("data-id")};
+        const params = { id: e.target.getAttribute("data-id") };
         navigate({
             pathname: `/user/${user.username}/list`,
             search: `${createSearchParams(params)}`,
         });
-    }
+    };
 
     const requestPages = (index = 1) => {
         fetch(

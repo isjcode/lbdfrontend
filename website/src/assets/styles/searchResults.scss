@@ -7,6 +7,26 @@ $hoverColor: #15BC31;
     header {
         margin-bottom: 3%;
     }
+
+    .redirect-page {
+        cursor: pointer;
+    }
+
+    .search-choice {
+        margin-left: 2%;
+        margin-bottom: 2%;
+        button {
+            background-color: $letterColor;
+            border: none;
+            outline: none;
+            padding: 1%;
+            color: white;
+            border-radius: 4px;
+            margin-right: 2%;
+
+        }
+    }
+
     .found-movie {
         margin-left: 2%;
         width: 89.5%;

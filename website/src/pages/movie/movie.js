@@ -228,7 +228,6 @@ function Movie() {
                             </h3>
                             <p> {movie && movie.Synopsis} </p>
                         </div>
-                        <div className="box"></div>
                     </div>
                     <div className="movie-page-container">
                         <ul className="tab-list">
@@ -277,9 +276,8 @@ function Movie() {
                                 )}`}
                             >
                                 {genres.map((p) => (
-                                    <a
+                                    <a className="deactive-genre"
                                         key={nanoid()}
-                                        onClick={handlePersonClick}
                                     >
                                         {" "}
                                         {p.Name}{" "}

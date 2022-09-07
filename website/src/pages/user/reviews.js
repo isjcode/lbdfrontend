@@ -26,8 +26,35 @@ function Reviews() {
     const [itemOffset, setItemOffset] = useState(0);
     const userName = useParams().username;
     const itemsPerPage = 1;
+    const { user, setUser } = useContext(UserContext);
 
     const navigate = useNavigate();
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const id = e.target.getAttribute("data-id");
+        fetch(
+            `http://mackenzythorpe-001-site1.btempurl.com/api/reviews/deletereview?id=${id}`,
+            {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + user.token,
+                },
+            }
+        )
+            .then((response) => {
+                console.log(response);
+                if (response.status === 200) {
+                    requestPages();
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    };
 
     function Items({ currentItems }) {
         return (
@@ -41,6 +68,16 @@ function Reviews() {
                                 key={nanoid()}
                                 className="review-card-small"
                             >
+                                {user && user.username == userName ? (
+                                    <button
+                                        data-id={r.Id}
+                                        onClick={handleDelete}
+                                        className="delete-news-button"
+                                    >
+                                        {" "}
+                                        X{" "}
+                                    </button>
+                                ) : null}
                                 <img
                                     data-id={r.Id}
                                     src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${r.Image}`}
@@ -118,8 +155,8 @@ function Reviews() {
                         activeLinkClassName="active-link"
                     />
                 </div>
+                <Footer />
             </div>
-            <Footer />
         </div>
     );
 }

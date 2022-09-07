@@ -34,6 +34,7 @@ function UserNews() {
 
     const handleDelete = (e) => {
         e.preventDefault();
+        e.stopPropagation();
         const id = e.target.getAttribute("data-id");
         fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/news/deletenews?id=${id}`, {
             method: "DELETE",

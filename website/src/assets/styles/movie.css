@@ -15,6 +15,14 @@
   margin: auto;
 }
 
+.mainContainer .movie-page-wrapper .deactive-genre {
+  cursor: unset !important;
+}
+
+.mainContainer .movie-page-wrapper .deactive-genre:hover {
+  color: unset !important;
+}
+
 .mainContainer .movie-page-wrapper .movie-poster {
   position: -webkit-sticky;
   position: sticky;

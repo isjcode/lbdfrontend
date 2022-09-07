@@ -16,6 +16,13 @@ $star-background: #fc0;
         flex-wrap: wrap;
         margin: auto;
 
+        .deactive-genre {
+            cursor: unset !important;
+            &:hover {
+                color: unset !important;
+            }
+        }
+
         .movie-poster {
             position: sticky;
             top: 100px;

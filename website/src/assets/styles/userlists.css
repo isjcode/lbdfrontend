@@ -20,6 +20,22 @@
   border: 1px solid #15BC31;
   padding: 1%;
   margin: 10px 0;
+  position: relative;
+}
+
+.mainContainer .container .lists-container .lists .list .delete-news-button {
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+  padding: 1%;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.mainContainer .container .lists-container .lists .list .delete-news-button:hover {
+  color: red;
 }
 
 .mainContainer .container .lists-container .new-list {

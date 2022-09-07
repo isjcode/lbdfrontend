@@ -1,6 +1,7 @@
 import "./assets/styles/App.css";
 import Home from "./pages/home";
-import SearchResults from "./pages/searchresults/searchResults";
+import SearchMovieResults from "./pages/searchmovieresults/searchMovieResults";
+import SearchUserResults from "./pages/searchuserresults/searchUserResults";
 import Movie from "./pages/movie/movie";
 import Review from "./pages/review";
 import User from "./pages/user";
@@ -41,7 +42,8 @@ function App() {
           <UserContext.Provider value={{user, setUser}}>
             <Routes>
               <Route path="/" exact element={<Home />} /> 
-              <Route path="/search" element={<SearchResults />} />
+              <Route path="/search/movies" element={<SearchMovieResults />} />
+              <Route path="/search/users" element={<SearchUserResults />} />
               <Route path="/movie" element={<Movie />} />
               <Route path="/review" element={<Review />} />
               <Route path="/user/:username" element={<User />} />
@@ -59,6 +61,7 @@ function App() {
               <Route path="/films" element={<Films />} />
               <Route path="/members" element={<Members />} />
               <Route path="/people" element={<People />} />
+              <Route path="*" element={<Home />} />
             </Routes>
           </UserContext.Provider>
       </BrowserRouter>

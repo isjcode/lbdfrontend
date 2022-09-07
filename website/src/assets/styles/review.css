@@ -8,9 +8,54 @@
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   padding: 1%;
   border: 1px solid #15BC31;
   border-radius: 4px;
+}
+
+.mainContainer .reviewContainer img {
+  width: 20%;
+  margin-right: 2%;
+}
+
+.mainContainer .reviewContainer .rating-score > .rating-score-item {
+  display: inline-block;
+}
+
+.mainContainer .reviewContainer .rating-score > .rating-score-item:after {
+  font-family: "FontAwesome";
+  font-size: 1em;
+  color: #99AABB;
+}
+
+.mainContainer .reviewContainer .rating-score[data-rating='1'] > .rating-score-item:nth-child(-n + 1):after, .mainContainer .reviewContainer .rating-score[data-rating='2'] > .rating-score-item:nth-child(-n + 2):after, .mainContainer .reviewContainer .rating-score[data-rating='3'] > .rating-score-item:nth-child(-n + 3):after, .mainContainer .reviewContainer .rating-score[data-rating='4'] > .rating-score-item:nth-child(-n + 4):after, .mainContainer .reviewContainer .rating-score[data-rating='5'] > .rating-score-item:nth-child(-n + 5):after, .mainContainer .reviewContainer .rating-score[data-rating='0.5'] > .rating-score-item:nth-child(-n + 0):after, .mainContainer .reviewContainer .rating-score[data-rating='1.5'] > .rating-score-item:nth-child(-n + 1):after, .mainContainer .reviewContainer .rating-score[data-rating='2.5'] > .rating-score-item:nth-child(-n + 2):after, .mainContainer .reviewContainer .rating-score[data-rating='3.5'] > .rating-score-item:nth-child(-n + 3):after, .mainContainer .reviewContainer .rating-score[data-rating='4.5'] > .rating-score-item:nth-child(-n + 4):after {
+  content: "\f005";
+}
+
+.mainContainer .reviewContainer .rating-score[data-rating='0.5'] > .rating-score-item:nth-child(1):after, .mainContainer .reviewContainer .rating-score[data-rating='1.5'] > .rating-score-item:nth-child(2):after, .mainContainer .reviewContainer .rating-score[data-rating='2.5'] > .rating-score-item:nth-child(3):after, .mainContainer .reviewContainer .rating-score[data-rating='3.5'] > .rating-score-item:nth-child(4):after, .mainContainer .reviewContainer .rating-score[data-rating='4.5'] > .rating-score-item:nth-child(5):after {
+  content: "\f123";
+}
+
+.mainContainer .reviewContainer .rating-score > .rating-score-item:after {
+  content: "\f006";
+}
+
+.mainContainer .reviewContainer .rating-score {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 0;
+  padding: 0;
 }
 
 .mainContainer .reviewContainer .review-body {
@@ -19,6 +64,7 @@
   height: max-content;
   font-weight: 800;
   margin-top: 20px;
+  width: 78%;
 }
 
 .mainContainer .comments {
@@ -59,6 +105,12 @@
 .mainContainer .comments .comment .left .fa-trash:hover {
   color: #15BC31;
   cursor: pointer;
+}
+
+.mainContainer .comments .comment .left img {
+  width: 30%;
+  margin-right: 5%;
+  border-radius: 50%;
 }
 
 .mainContainer .comments .comment .comment-body {
