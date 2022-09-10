@@ -160,7 +160,7 @@ function Home() {
     return (
         <div className="mainContainer">
             <Header />
-            <div className="home-container">
+            {/* <div className="home-container">
                 <div className="recent-reviews">
                     <h1> Here are some recent reviews from our members... </h1>
                     <RecentReviews />
@@ -188,7 +188,7 @@ function Home() {
                     <RecentNews />
                 </div>
             </div>
-            <Footer />
+            <Footer /> */}
         </div>
     );
 }

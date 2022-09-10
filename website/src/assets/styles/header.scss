@@ -15,6 +15,10 @@ $hoverColor: #15BC31;
     box-sizing: border-box;
 }
 
+.mobile-header {
+    display: none;
+}
+
 header {
     position: relative;
     width: 100%;
@@ -173,4 +177,63 @@ header {
             }
         }
     }
+}
+
+@media only screen and (max-width: 700px) {
+    header {
+        display: none;
+    }
+
+    .mainContainer {
+        width: 100vw;
+    }
+
+    .mobile-header {
+        width: 100%;
+        align-items: center;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+
+        a {
+            width: 50%;
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .sidemenu-icon {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+
+            .fa-bars {
+                cursor: pointer;
+            }
+        }
+
+    }
+        .sidemenu {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: #1D242B;
+
+            .fa-xmark {
+                cursor: pointer;
+                display: block;
+                font-size: 30px;
+                margin-left: auto;
+                width: 10%;
+                padding: 3%;
+                margin-right: 4%;
+            }
+        }
 }

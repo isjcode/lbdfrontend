@@ -18,7 +18,7 @@ function RegisterModal({closeRegisterModal}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const errorElement = document.getElementsByClassName("errorOutput")[0];
-        const genericErrorMessage = "Your credentials don’t match. It’s probably attributable to human error.";
+        const genericErrorMessage = "Something went wrong.";
         errorElement.textContent = "";
 
         if (inputs.username.trim().length < 6) {
