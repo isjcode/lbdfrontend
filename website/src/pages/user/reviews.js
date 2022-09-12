@@ -36,7 +36,7 @@ function Reviews() {
 
         const id = e.target.getAttribute("data-id");
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/reviews/deletereview?id=${id}`,
+            `http://destroyer123-001-site1.btempurl.com/api/reviews/deletereview?id=${id}`,
             {
                 method: "DELETE",
                 headers: {
@@ -80,7 +80,7 @@ function Reviews() {
                                 ) : null}
                                 <img
                                     data-id={r.Id}
-                                    src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${r.Image}`}
+                                    src={`http://destroyer123-001-site1.btempurl.com/images/movies/posterimages/${r.Image}`}
                                 />
                                 <div data-id={r.Id}>
                                     <h1 data-id={r.Id}> {r.MovieName} </h1>
@@ -94,7 +94,7 @@ function Reviews() {
     }
     const requestPages = (index = 1) => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/reviews/getalluserreviews?userName=${userName}&i=${index}`,
+            `http://destroyer123-001-site1.btempurl.com/api/reviews/getalluserreviews?userName=${userName}&i=${index}`,
             {
                 method: "GET",
                 headers: {

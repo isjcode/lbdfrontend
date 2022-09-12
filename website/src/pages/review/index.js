@@ -19,7 +19,7 @@ function Review() {
 
     useEffect(() => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/reviews/getreview?reviewID=${searchParams.get(
+            `http://destroyer123-001-site1.btempurl.com/api/reviews/getreview?reviewID=${searchParams.get(
                 "id"
             )}`,
             {
@@ -43,7 +43,7 @@ function Review() {
     }, []);
     const requestComments = () => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/comments/getreviewcomments?reviewID=${searchParams.get(
+            `http://destroyer123-001-site1.btempurl.com/api/comments/getreviewcomments?reviewID=${searchParams.get(
                 "id"
             )}`,
             {
@@ -72,7 +72,7 @@ function Review() {
             ReviewId: review.Id,
         };
         fetch(
-            "http://mackenzythorpe-001-site1.btempurl.com/api/comments/create",
+            "http://destroyer123-001-site1.btempurl.com/api/comments/create",
             {
                 method: "PUT",
                 headers: {
@@ -96,7 +96,7 @@ function Review() {
         e.preventDefault();
         const id = e.target.getAttribute("data-id");
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/comments/deletecomment?commentID=${id}`,
+            `http://destroyer123-001-site1.btempurl.com/api/comments/deletecomment?commentID=${id}`,
             {
                 method: "POST",
                 headers: {
@@ -123,7 +123,7 @@ function Review() {
                 <img
                     src={
                         review &&
-                        `http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${review.Image}`
+                        `http://destroyer123-001-site1.btempurl.com/images/movies/posterimages/${review.Image}`
                     }
                 />
                 <div className="right">
@@ -164,7 +164,7 @@ function Review() {
                 {comments.map((c) => (
                     <div className="comment">
                         <div className="left">
-                            <img src={review && `http://mackenzythorpe-001-site1.btempurl.com/images/users/${review.OwnerImage}`}/>
+                            <img src={review && `http://destroyer123-001-site1.btempurl.com/images/users/${review.OwnerImage}`}/>
                             <span>
                                 {c.Username}{" "}
                                 {c.Username == user.username && (

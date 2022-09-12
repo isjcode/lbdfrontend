@@ -42,7 +42,7 @@ function UserFilms() {
                             <img
                                 onClick={handleClick}
                                 data-id={item.MovieID}
-                                src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${item.Image}`}
+                                src={`http://destroyer123-001-site1.btempurl.com/images/movies/posterimages/${item.Image}`}
                             />
                             <ul
                                 className="rating-score"
@@ -61,7 +61,7 @@ function UserFilms() {
     }
     const requestPages = (index = 1) => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/reviews/getuserreviews?userName=${userName}&i=${index}`,
+            `http://destroyer123-001-site1.btempurl.com/api/reviews/getuserreviews?userName=${userName}&i=${index}`,
             {
                 method: "GET",
                 headers: {

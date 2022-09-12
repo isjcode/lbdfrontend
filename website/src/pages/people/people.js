@@ -16,7 +16,7 @@ function People() {
 
     useEffect(() => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/people/getpersonpage?id=${searchParams.get("id")}`,
+            `http://destroyer123-001-site1.btempurl.com/api/people/getpersonpage?id=${searchParams.get("id")}`,
             {
                 method: "GET",
                 headers: {
@@ -56,13 +56,13 @@ function People() {
                     {personPage && personPage.movies.map(m => {
                     return (
                         <div onClick={handleMovieClick} data-id={m.ID} key={nanoid()} className="person-movie">
-                            <img data-id={m.ID} src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${m.PosterImage}`} />
+                            <img data-id={m.ID} src={`http://destroyer123-001-site1.btempurl.com/images/movies/posterimages/${m.PosterImage}`} />
                         </div>
                         )})
                     }
                 </div>
                 <div className="person-info">
-                    <img src={personPage && `http://mackenzythorpe-001-site1.btempurl.com/images/people/${personPage.person.Image}`} />
+                    <img src={personPage && `http://destroyer123-001-site1.btempurl.com/images/people/${personPage.person.Image}`} />
                     <p> {personPage && personPage.person.Description} </p>
                 </div>
             </div>

@@ -159,3 +159,25 @@ $errorColor: #fc8e2f;
     }
 
 }    
+
+@media only screen and (max-width: 700px) {
+    .mainModal {
+        .mainContainerLog {
+            z-index: 78324643782674326867423646832;
+            width: 90%;
+            .left {
+                display: none;
+            }
+            text-align: center;
+
+            .right {
+                width: 90%;
+                align-self: center;
+
+                .rate {
+                    margin-left: 20%;
+                }
+            }
+        }
+    }
+}

@@ -36,7 +36,7 @@ function UserNews() {
         e.preventDefault();
         e.stopPropagation();
         const id = e.target.getAttribute("data-id");
-        fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/news/deletenews?id=${id}`, {
+        fetch(`http://destroyer123-001-site1.btempurl.com/api/news/deletenews?id=${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -59,7 +59,7 @@ function UserNews() {
             currentItems && currentItems.map(n => (
                 <div onClick={handleClick} key={nanoid()}  className="news-article">
                     {user && user.username == userName ? <button data-id={n.Id} onClick={handleDelete} className="delete-news-button"> X </button> : null}
-                    <img data-id={n.Id} src={`http://mackenzythorpe-001-site1.btempurl.com/images/news/${n.Image}`} />
+                    <img data-id={n.Id} src={`http://destroyer123-001-site1.btempurl.com/images/news/${n.Image}`} />
                     <h1 data-id={n.Id} > {n.Title} </h1>
                     <p data-id={n.Id}> {n.Body} </p>
                 </div>
@@ -68,7 +68,7 @@ function UserNews() {
     }
     const requestPages = (index = 1) => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/news/getusernews?userName=${userName}&i=${index}`,
+            `http://destroyer123-001-site1.btempurl.com/api/news/getusernews?userName=${userName}&i=${index}`,
             {
                 method: "GET",
                 headers: {

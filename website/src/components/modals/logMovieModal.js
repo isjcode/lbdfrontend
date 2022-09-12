@@ -10,7 +10,7 @@ function LogMovieModal({closeLogMovieModal, movieID}) {
     const { user, setUser } = useContext(UserContext);
     console.log(user.token);
     useEffect(() => {
-        fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/movies/getbyid?id=${movieID}`, {
+        fetch(`http://destroyer123-001-site1.btempurl.com/api/movies/getbyid?id=${movieID}`, {
                 method: "GET",
                 headers: {
                 "Content-Type": "application/json",
@@ -48,7 +48,7 @@ function LogMovieModal({closeLogMovieModal, movieID}) {
             "Authorization": "Bearer " + user.token,
         }
         console.log(headers);
-        fetch("http://mackenzythorpe-001-site1.btempurl.com/api/reviews/create", {
+        fetch("http://destroyer123-001-site1.btempurl.com/api/reviews/create", {
             method: "PUT",
             headers,
             body: JSON.stringify(data),
@@ -72,7 +72,7 @@ function LogMovieModal({closeLogMovieModal, movieID}) {
             </div>
             <form className="mainContainerLog" onSubmit={handleSubmit}>
                 <div className="left">
-                    <img src={movie && `http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${movie.PosterImage}`}></img>
+                    <img src={movie && `http://destroyer123-001-site1.btempurl.com/images/movies/posterimages/${movie.PosterImage}`}></img>
                 </div>
                 <div className="right">
                     <button className="modalCloseBtn" onClick={() => {

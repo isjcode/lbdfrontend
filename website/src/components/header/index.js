@@ -49,7 +49,13 @@ function Header() {
         e.preventDefault();
         navigate(`/user/${user.username}`);
     };
+    const handleSideMenuClick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setSideMenu(prevState => !prevState);
 
+
+    }
     return (
         <>
             <header className={user === null ? "wide-width" : "normal-width"}>
@@ -151,16 +157,103 @@ function Header() {
                 <Link to="/" className="mobile-logo">
                     <img alt="site logo" src={mobilelogo}></img>
                 </Link>
-                <div onClick={() => setSideMenu(prevState => !prevState)} className="sidemenu-icon">
+                <div
+                    onClick={handleSideMenuClick}
+                    className="sidemenu-icon"
+                >
                     <i class="fa-solid fa-bars"></i>
                 </div>
-
             </header>
-            {sideMenu && 
-            <div className="sidemenu">
-                <i onClick={() => setSideMenu(prevState => !prevState)} class="fa-solid fa-xmark"></i>
-            </div>
-}
+            {sideMenu && (
+                <div className="sidemenu">
+                    <i
+                        onClick={() => setSideMenu((prevState) => !prevState)}
+                        class="fa-solid fa-xmark"
+                    ></i>
+                    <ul>
+                        {user === null ? (
+                            <>
+                                <li>
+                                    <a
+                                        href="#"
+                                        onClick={() => setLoginModalOpen(true)}
+                                    >
+                                        {" "}
+                                        sign in{" "}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        onClick={() =>
+                                            setRegisterModalOpen(true)
+                                        }
+                                        href="#"
+                                    >
+                                        {" "}
+                                        create account{" "}
+                                    </a>
+                                </li>
+                            </>
+                        ) : (
+                            <li className="user-name">
+                                <div className="user-dropdowns">
+                                    <div className="dropdown-tab">
+                                        <Link
+                                            onClick={handleProfileClick}
+                                            to={`/user/${user.username}`}
+                                        >
+                                            {" "}
+                                            Profile{" "}
+                                        </Link>
+                                    </div>
+                                    <div
+                                        className="dropdown-tab"
+                                        onClick={handleSignOut}
+                                    >
+                                        <Link to="/"> Sign Out </Link>
+                                    </div>
+                                </div>
+                            </li>
+                        )}
+                        <li>
+                            <Link to="/"> Home </Link>
+                        </li>
+                        <li>
+                            <Link to="/films"> Films </Link>
+                        </li>
+                        <li>
+                            <Link to="/members"> members </Link>
+                        </li>
+                        <li>
+                            <div className="search">
+                                <input
+                                    type="text"
+                                    value={search}
+                                    onChange={handleSearch}
+                                />
+                                <button
+                                    onClick={handleClick}
+                                    className="searchBtn"
+                                >
+                                    {" "}
+                                    <i className="fa-solid fa-magnifying-glass"></i>{" "}
+                                </button>
+                            </div>
+                        </li>
+                        {user !== null ? (
+                            <li className="logBtnContainer">
+                                <button
+                                    onClick={() => setFindMovieModalOpen(true)}
+                                    className="logBtn"
+                                >
+                                    {" "}
+                                    <i className="fa-solid fa-plus"></i> LOG{" "}
+                                </button>
+                            </li>
+                        ) : null}
+                    </ul>
+                </div>
+            )}
 
             {registerModalOpen && (
                 <RegisterModal closeRegisterModal={setRegisterModalOpen} />

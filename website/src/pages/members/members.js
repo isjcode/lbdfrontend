@@ -27,7 +27,7 @@ function Members() {
                     <img
                         onClick={handleUserClick}
                         data-username={item.UserName}
-                        src={`http://mackenzythorpe-001-site1.btempurl.com/images/users/${item.Image}`}
+                        src={`http://destroyer123-001-site1.btempurl.com/images/users/${item.Image}`}
                     />
                     <div 
                         className="member-body">
@@ -48,7 +48,7 @@ function Members() {
 
     const requestPages = (index = 1) => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/Members/getpaginatedusers?i=${index}`,
+            `http://destroyer123-001-site1.btempurl.com/api/Members/getpaginatedusers?i=${index}`,
             {
                 method: "GET",
                 headers: {
@@ -71,7 +71,7 @@ function Members() {
 
     useEffect(() => {
         requestPages();
-        fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/members`, {
+        fetch(`http://destroyer123-001-site1.btempurl.com/api/members`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -94,7 +94,7 @@ function Members() {
             membersPage.recentMembers.map((m) => (
                 <div key={nanoid()} className="recent-member">
                     <img
-                        src={`http://mackenzythorpe-001-site1.btempurl.com/images/users/${m.Image}`}
+                        src={`http://destroyer123-001-site1.btempurl.com/images/users/${m.Image}`}
                     />
                     <h4> {m.UserName} </h4>
                     <h6> {m.ReviewCount} reviews </h6>

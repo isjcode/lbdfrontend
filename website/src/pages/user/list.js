@@ -28,7 +28,7 @@ function List() {
 
     useEffect(() => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/lists/getlistmovies?id=${id}`,
+            `http://destroyer123-001-site1.btempurl.com/api/lists/getlistmovies?id=${id}`,
             {
                 method: "GET",
                 headers: {
@@ -78,7 +78,7 @@ function List() {
                                   >
                                       <img
                                         data-id={m.ID}
-                                          src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${m.PosterImage}`}
+                                          src={`http://destroyer123-001-site1.btempurl.com/images/movies/posterimages/${m.PosterImage}`}
                                       />
                                       <h1 data-id={m.ID}>
                                           {" "}

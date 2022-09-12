@@ -188,4 +188,24 @@
   margin: auto;
   margin-left: 70%;
 }
+
+@media only screen and (max-width: 700px) {
+  .mainModal .mainContainerLog {
+    z-index: 78324643782674326867423646832;
+    width: 90%;
+    text-align: center;
+  }
+  .mainModal .mainContainerLog .left {
+    display: none;
+  }
+  .mainModal .mainContainerLog .right {
+    width: 90%;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  .mainModal .mainContainerLog .right .rate {
+    margin-left: 20%;
+  }
+}
 /*# sourceMappingURL=logMovieModal.css.map */

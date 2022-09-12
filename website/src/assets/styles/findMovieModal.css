@@ -104,4 +104,11 @@
 .mainModal .mainContainerFind .modalTextInput .findmovie-movies .find-movie:hover, .mainModal .mainContainerFind .modalTextInput .findmovie-movies .find-movie:focus, .mainModal .mainContainerFind .modalTextInput .findmovie-movies .find-movie:active {
   background-color: #00B020;
 }
+
+@media only screen and (max-width: 700px) {
+  .mainModal .mainContainerFind {
+    width: 90%;
+    z-index: 4623642378643246236842636423674326462364327;
+  }
+}
 /*# sourceMappingURL=findMovieModal.css.map */

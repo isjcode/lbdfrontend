@@ -38,7 +38,7 @@ function Followers() {
 
     const requestPages = (index = 1) => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/getuserfollowers?userName=${userName}&i=${index}`,
+            `http://destroyer123-001-site1.btempurl.com/api/accounts/getuserfollowers?userName=${userName}&i=${index}`,
             {
                 method: "GET",
                 headers: {

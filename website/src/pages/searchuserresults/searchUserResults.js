@@ -45,7 +45,7 @@ function SearchUserResults() {
                             <img
                                 onClick={handleClick}
                                 data-username={item.UserName}
-                                src={`http://mackenzythorpe-001-site1.btempurl.com/images/users/${item.Image}`}
+                                src={`http://destroyer123-001-site1.btempurl.com/images/users/${item.Image}`}
                             />
                             <h1  onClick={handleClick} data-username={item.UserName}>
                                 {item && item.UserName}
@@ -70,7 +70,7 @@ function SearchUserResults() {
     const requestUserPages = (index = 1) => {
         const str = searchParams.get("str");
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/getusersbystring?s=${str}&i=${index}`,
+            `http://destroyer123-001-site1.btempurl.com/api/accounts/getusersbystring?s=${str}&i=${index}`,
             {
                 method: "GET",
                 headers: {

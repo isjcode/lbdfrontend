@@ -50,7 +50,7 @@ function UserSettings() {
 
         axios({
             method: "post",
-            url: "http://mackenzythorpe-001-site1.btempurl.com/api/accounts/changeuseravatar",
+            url: "http://destroyer123-001-site1.btempurl.com/api/accounts/changeuseravatar",
             data: formData,
             headers: {
                 "Content-Type": "multipart/form-data",
@@ -74,7 +74,7 @@ function UserSettings() {
             Password: password,
         };
         fetch(
-            "http://mackenzythorpe-001-site1.btempurl.com/api/accounts/login",
+            "http://destroyer123-001-site1.btempurl.com/api/accounts/login",
             {
                 method: "POST",
                 headers: {
@@ -104,7 +104,7 @@ function UserSettings() {
             Email: email,
         };
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/changeusercredentials?userName=${user.username}`,
+            `http://destroyer123-001-site1.btempurl.com/api/accounts/changeusercredentials?userName=${user.username}`,
             {
                 method: "POST",
                 headers: {

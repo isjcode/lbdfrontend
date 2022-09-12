@@ -28,7 +28,7 @@ function News() {
 
     useEffect(() => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/news/getbyid?id=${id}`,
+            `http://destroyer123-001-site1.btempurl.com/api/news/getbyid?id=${id}`,
             {
                 method: "GET",
                 headers: {
@@ -58,7 +58,7 @@ function News() {
             <Header />
             <div className="article">
                 <h1> {news && news.Title} </h1>
-                <img src={news && `http://mackenzythorpe-001-site1.btempurl.com/images/news/${news.Image}`} />
+                <img src={news && `http://destroyer123-001-site1.btempurl.com/images/news/${news.Image}`} />
                 <p> {news && news.Body} </p>
                 <p onClick={handleAuthorClick} className="author"> By {news && news.OwnerUsername} </p>
             </div>

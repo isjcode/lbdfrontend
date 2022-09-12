@@ -29,7 +29,7 @@ function User() {
     useEffect(() => {
         console.log("hre");
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/getuser?userName=${userName}`,
+            `http://destroyer123-001-site1.btempurl.com/api/accounts/getuser?userName=${userName}`,
             {
                 method: "GET",
                 headers: {
@@ -48,7 +48,7 @@ function User() {
                 console.error("Error:", error);
             });
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/reviews/getrecentreviews?userName=${userName}`,
+            `http://destroyer123-001-site1.btempurl.com/api/reviews/getrecentreviews?userName=${userName}`,
             {
                 method: "GET",
                 headers: {
@@ -71,7 +71,7 @@ function User() {
         }
         if (user.username !== userName) {
             fetch(
-                `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/checkfollow?followerUsername=${
+                `http://destroyer123-001-site1.btempurl.com/api/accounts/checkfollow?followerUsername=${
                     user && user.username
                 }&followeeUsername=${userName}`,
                 {
@@ -97,7 +97,7 @@ function User() {
     const handleFollow = (e) => {
         e.preventDefault();
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/follow?followerUsername=${user.username}&followeeUsername=${userName}`,
+            `http://destroyer123-001-site1.btempurl.com/api/accounts/follow?followerUsername=${user.username}&followeeUsername=${userName}`,
             {
                 method: "POST",
                 headers: {
@@ -149,7 +149,7 @@ function User() {
                         <img
                             src={
                                 userStats &&
-                                `http://mackenzythorpe-001-site1.btempurl.com/images/users/${userStats.Image}`
+                                `http://destroyer123-001-site1.btempurl.com/images/users/${userStats.Image}`
                             }
                         />
                         <div>
@@ -206,7 +206,7 @@ function User() {
                                 <img
                                     data-id={r.Id}
                                     onClick={handleReviewClick}
-                                    src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${r.Image}`}
+                                    src={`http://destroyer123-001-site1.btempurl.com/images/movies/posterimages/${r.Image}`}
                                 />
                                 <ul
                                     className="rating-score"

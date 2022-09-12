@@ -181,4 +181,24 @@
 .mainContainer .films-container .recent-reviews-films .film-recent-review .film-review-body .film-review-text p {
   width: 80%;
 }
+
+@media only screen and (max-width: 700px) {
+  .mainContainer .films-container {
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  .mainContainer .films-container .recent-movies {
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    text-align: center;
+  }
+  .mainContainer .films-container .recent-movies .recent-movie {
+    text-align: center;
+    width: 90%;
+  }
+}
 /*# sourceMappingURL=films.css.map */

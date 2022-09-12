@@ -49,7 +49,7 @@ function Movie() {
                                     <img
                                         onClick={handleUserClick}
                                         data-id={item.Id}
-                                        src={`http://mackenzythorpe-001-site1.btempurl.com/images/users/${item.OwnerImage}`}
+                                        src={`http://destroyer123-001-site1.btempurl.com/images/users/${item.OwnerImage}`}
                                     />
                                     <p>
                                         Review by <span> {item.Username} </span>
@@ -93,7 +93,7 @@ function Movie() {
 
     useEffect(() => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/movies/getbyid?id=${searchParams.get(
+            `http://destroyer123-001-site1.btempurl.com/api/movies/getbyid?id=${searchParams.get(
                 "id"
             )}`,
             {
@@ -113,7 +113,7 @@ function Movie() {
                 console.error("Error:", error);
             });
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/people/getmoviepeople?id=${searchParams.get(
+            `http://destroyer123-001-site1.btempurl.com/api/people/getmoviepeople?id=${searchParams.get(
                 "id"
             )}`,
             {
@@ -133,7 +133,7 @@ function Movie() {
                 console.error("Error:", error);
             });
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/movies/getmoviegenres?id=${searchParams.get(
+            `http://destroyer123-001-site1.btempurl.com/api/movies/getmoviegenres?id=${searchParams.get(
                 "id"
             )}`,
             {
@@ -177,7 +177,7 @@ function Movie() {
     const requestPages = (index = 1) => {
         console.log(index);
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/reviews/getmoviereviews?movieID=${searchParams.get(
+            `http://destroyer123-001-site1.btempurl.com/api/reviews/getmoviereviews?movieID=${searchParams.get(
                 "id"
             )}&i=${index}`,
             {
@@ -215,7 +215,7 @@ function Movie() {
                     className="movie-poster"
                     src={
                         movie &&
-                        `http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${movie.PosterImage}`
+                        `http://destroyer123-001-site1.btempurl.com/images/movies/posterimages/${movie.PosterImage}`
                     }
                 />
                 <div className="inner-page-wrapper">

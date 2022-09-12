@@ -37,7 +37,7 @@ function NewNews() {
         formData.append("Title", title);
         formData.append("OwnerUserName", user.username);
 
-        fetch("http://mackenzythorpe-001-site1.btempurl.com/api/news/createnews", {
+        fetch("http://destroyer123-001-site1.btempurl.com/api/news/createnews", {
             method: "PUT",
             headers: {
                 // "Content-Type": "multipart/form-data",

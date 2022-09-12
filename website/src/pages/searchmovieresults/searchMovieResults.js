@@ -51,8 +51,8 @@ function SearchMovieResults() {
                                 data-id={item.ID}
                                 src={
                                     isUsers
-                                        ? `http://mackenzythorpe-001-site1.btempurl.com/images/users/${item.Image}`
-                                        : `http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${item.PosterImage}`
+                                        ? `http://destroyer123-001-site1.btempurl.com/images/users/${item.Image}`
+                                        : `http://destroyer123-001-site1.btempurl.com/images/movies/posterimages/${item.PosterImage}`
                                 }
                             />
                             <h1 onClick={handleClick} data-id={item.ID}>
@@ -67,7 +67,7 @@ function SearchMovieResults() {
     }
     const requestMoviePages = (index = 1) => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/movies/searchmovies?s=${searchParams.get(
+            `http://destroyer123-001-site1.btempurl.com/api/movies/searchmovies?s=${searchParams.get(
                 "str"
             )}&i=${index}`,
             {
@@ -93,7 +93,7 @@ function SearchMovieResults() {
     useEffect(() => {
         requestMoviePages();
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/movies/getyears`,
+            `http://destroyer123-001-site1.btempurl.com/api/movies/getyears`,
             {
                 method: "GET",
                 headers: {
@@ -121,7 +121,7 @@ function SearchMovieResults() {
     const requestUserPages = (e, index = 1) => {
         const str = searchParams.get("str");
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/accounts/getusersbystring?s=${str}&i=${index}`,
+            `http://destroyer123-001-site1.btempurl.com/api/accounts/getusersbystring?s=${str}&i=${index}`,
             {
                 method: "GET",
                 headers: {

@@ -69,7 +69,7 @@ function UserLists() {
         e.stopPropagation();
         const id = e.target.getAttribute("data-id");
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/lists?id=${id}`,
+            `http://destroyer123-001-site1.btempurl.com/api/lists?id=${id}`,
             {
                 method: "DELETE",
                 headers: {
@@ -101,7 +101,7 @@ function UserLists() {
 
     const requestPages = (index = 1) => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/lists/getuserlists?userName=${userName}&i=${index}`,
+            `http://destroyer123-001-site1.btempurl.com/api/lists/getuserlists?userName=${userName}&i=${index}`,
             {
                 method: "GET",
                 headers: {

@@ -13,7 +13,7 @@ function Home() {
 
     useEffect(() => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/home`,
+            `http://destroyer123-001-site1.btempurl.com/api/home`,
             // `http://localhost:64531/api/home`,
             {
                 method: "GET",
@@ -81,7 +81,7 @@ function Home() {
                             <img
                                 data-id={r.Id}
                                 onClick={handleReviewClick}
-                                src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${r.Image}`}
+                                src={`http://destroyer123-001-site1.btempurl.com/images/movies/posterimages/${r.Image}`}
                             />
                             <p className="review-by">
                                 {" "}
@@ -150,7 +150,7 @@ function Home() {
     const RecentNews = () => {
         return home && home.recentNews.map(n =>
                 <div key={nanoid()} className="recent-news-single">
-                    <img src={`http://mackenzythorpe-001-site1.btempurl.com/images/news/${n.Image}`} />
+                    <img src={`http://destroyer123-001-site1.btempurl.com/images/news/${n.Image}`} />
                     <h1 onClick={handleNewsClick} data-id={n.Id}> {n.Title} </h1>
                     <p> {n.Body} </p>
                 </div>
@@ -160,7 +160,7 @@ function Home() {
     return (
         <div className="mainContainer">
             <Header />
-            {/* <div className="home-container">
+            <div className="home-container">
                 <div className="recent-reviews">
                     <h1> Here are some recent reviews from our members... </h1>
                     <RecentReviews />
@@ -170,7 +170,7 @@ function Home() {
                     <div className="inner-container">
                         {home && (
                             <img
-                                src={`http://mackenzythorpe-001-site1.btempurl.com/images/news/${home.latestNews.Image}`}
+                                src={`http://destroyer123-001-site1.btempurl.com/images/news/${home.latestNews.Image}`}
                             />
                         )}
                         <div className="inner-text">
@@ -188,7 +188,7 @@ function Home() {
                     <RecentNews />
                 </div>
             </div>
-            <Footer /> */}
+            <Footer />
         </div>
     );
 }

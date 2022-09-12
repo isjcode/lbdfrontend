@@ -12,7 +12,7 @@ function Films() {
 
     useEffect(() => {
         fetch(
-            `http://mackenzythorpe-001-site1.btempurl.com/api/film`,
+            `http://destroyer123-001-site1.btempurl.com/api/film`,
             // `http://localhost:64531/api/film`,
             {
                 method: "GET",
@@ -40,7 +40,7 @@ function Films() {
                 <div onClick={handleMovieClick} data-id={f.ID} key={nanoid()} className="recent-movie">
                     <img
                         data-id={f.ID}
-                        src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${f.PosterImage}`}
+                        src={`http://destroyer123-001-site1.btempurl.com/images/movies/posterimages/${f.PosterImage}`}
                     />
                 </div>
             ))
@@ -56,7 +56,7 @@ function Films() {
                         onClick={handleMovieClick}
                         data-id={r.MovieID}
                         className="review-movie-image"
-                        src={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${r.Image}`}
+                        src={`http://destroyer123-001-site1.btempurl.com/images/movies/posterimages/${r.Image}`}
                     />
                     <div className="film-review-body">
                         <h1> {r.MovieName} </h1>
@@ -64,7 +64,7 @@ function Films() {
                             <img
                                 onClick={handleUserClick}
                                 data-username={r.Username}
-                                src={`http://mackenzythorpe-001-site1.btempurl.com/images/users/${r.OwnerImage}`}
+                                src={`http://destroyer123-001-site1.btempurl.com/images/users/${r.OwnerImage}`}
                             />
                             <p onClick={handleUserClick} data-username={r.Username}> {r.Username} </p>
                             <ul
