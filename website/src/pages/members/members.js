@@ -92,11 +92,12 @@ function Members() {
         return (
             membersPage &&
             membersPage.recentMembers.map((m) => (
-                <div key={nanoid()} className="recent-member">
+                <div onClick={handleUserClick} data-username={m.UserName} key={nanoid()} className="recent-member">
                     <img
+                        data-username={m.UserName}
                         src={`http://destroyer123-001-site1.btempurl.com/images/users/${m.Image}`}
                     />
-                    <h4> {m.UserName} </h4>
+                    <h4 data-username={m.UserName}> {m.UserName} </h4>
                     <h6> {m.ReviewCount} reviews </h6>
                 </div>
             ))

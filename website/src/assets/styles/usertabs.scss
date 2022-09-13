@@ -23,3 +23,12 @@ $hoverColor: #15BC31;
         }
     }
 }
+
+@media only screen and (max-width: 700px) { 
+    .tabs {
+        display: none;
+        .tab {
+            color: red;
+        }
+    }
+}

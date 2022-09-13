@@ -313,3 +313,22 @@ $star-background: #fc0;
         }
     }
 }
+
+@media only screen and (max-width: 700px) {
+    .mainContainer {
+        .movie-page-wrapper {
+            .inner-page-wrapper {
+                .descriptionandbox {
+                    .description {
+                        width: 90%;
+                    }
+                }
+
+                .reviews {
+                    .review {
+                    }
+                }
+            }
+        }
+    }
+}

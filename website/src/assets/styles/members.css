@@ -28,6 +28,7 @@
 
 .mainContainer .members-container .recent-members .recent-member {
   width: 18%;
+  cursor: pointer;
 }
 
 .mainContainer .members-container .recent-members .recent-member img {
@@ -70,6 +71,7 @@
   margin: 10px 0;
   padding: 20px 0;
   border-top: 1px solid #99AABB;
+  cursor: pointer;
 }
 
 .mainContainer .members-container .members-members .member img {
@@ -92,5 +94,24 @@
 .mainContainer .members-container .members-members .member .member-body h1:hover {
   color: #15BC31;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+  .mainContainer .members-container .recent-members {
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .mainContainer .members-container .recent-members .recent-member {
+    width: 90%;
+  }
+  .mainContainer .members-container .members-members .member img {
+    width: 20%;
+  }
 }
 /*# sourceMappingURL=members.css.map */

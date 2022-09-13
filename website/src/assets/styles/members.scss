@@ -22,6 +22,7 @@ $hoverColor: #15BC31;
             padding-top: 5%;
             .recent-member {
                 width: 18%;
+                cursor: pointer;
                 img {
                     width: 100%;
                     height: 80%;
@@ -53,6 +54,7 @@ $hoverColor: #15BC31;
                 margin: 10px 0;
                 padding: 20px 0;
                 border-top: 1px solid $letterColor;
+                cursor: pointer;
                 img {
                     width: 10%;
                     height: 70px;
@@ -75,6 +77,29 @@ $hoverColor: #15BC31;
                     }
                 }
             }
+        }
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .mainContainer {
+        .members-container {
+            .recent-members {
+                height: max-content;
+                flex-wrap: wrap;
+                justify-content: center;
+                .recent-member {
+                    width: 90%;
+                }
+            }
+            .members-members {
+                .member {
+                    img {
+                        width: 20%;
+                    }
+                }
+            }
+
         }
     }
 }

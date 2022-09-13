@@ -200,5 +200,13 @@
     text-align: center;
     width: 90%;
   }
+  .mainContainer .films-container .recent-reviews-films {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .mainContainer .films-container .recent-reviews-films .film-recent-review {
+    width: 95%;
+  }
 }
 /*# sourceMappingURL=films.css.map */

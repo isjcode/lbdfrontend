@@ -236,7 +236,7 @@ function User() {
                             </div>
                         );
                     })}
-                </div>
+                </div> 
             </div>
             <Footer />
         </div>

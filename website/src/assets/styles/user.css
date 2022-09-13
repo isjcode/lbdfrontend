@@ -194,4 +194,48 @@
   margin: 0;
   padding: 0;
 }
+
+@media only screen and (max-width: 700px) {
+  .mainContainer .profile-container {
+    width: 100%;
+  }
+  .mainContainer .profile-container .first {
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+    width: 100vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .mainContainer .profile-container .first .left, .mainContainer .profile-container .first .right {
+    text-align: center;
+    padding: 10%;
+    width: 100%;
+  }
+  .mainContainer .profile-container .first .left img, .mainContainer .profile-container .first .right img {
+    width: 30%;
+  }
+  .mainContainer .profile-container .tabs .tab {
+    padding: 1%;
+  }
+  .mainContainer .profile-container .recent-activity {
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .mainContainer .profile-container .recent-activity .review-card {
+    width: 90%;
+  }
+  .mainContainer .profile-container .recent-activity .review-card img {
+    width: 90%;
+  }
+}
 /*# sourceMappingURL=user.css.map */

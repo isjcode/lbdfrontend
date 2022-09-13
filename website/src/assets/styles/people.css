@@ -70,4 +70,38 @@
   width: 100%;
   margin-top: 5%;
 }
+
+@media only screen and (max-width: 700px) {
+  .mainContainer .people-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    text-align: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .mainContainer .people-container .person-info {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  .mainContainer .people-container .person-info img {
+    margin: auto;
+    display: block;
+  }
+  .mainContainer .people-container .person-movies {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  .mainContainer .people-container .person-movies .person-movie {
+    width: 90%;
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+  }
+}
 /*# sourceMappingURL=people.css.map */

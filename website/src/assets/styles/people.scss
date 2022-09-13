@@ -59,3 +59,33 @@ $hoverColor: #15BC31;
         }
     }
 }
+
+@media only screen and (max-width: 700px) {
+    .mainContainer {
+        .people-container {
+            flex-direction: column-reverse;
+            text-align: center;
+            justify-content: center;
+            .person-info {
+                width: 90%;
+                margin: auto;
+                margin-bottom: 30px;
+                img {
+                    margin: auto;
+                    display: block;
+                }
+            }
+
+            .person-movies {
+                justify-content: center;
+                text-align: center;
+                .person-movie {
+                    width: 90%;
+                    display: block;
+                    text-align: center;
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+}
