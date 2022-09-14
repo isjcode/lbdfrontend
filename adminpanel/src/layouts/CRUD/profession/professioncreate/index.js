@@ -45,7 +45,7 @@ function ProfessionCreate() {
 
       console.log(JSON.stringify(sendData));
 
-      fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/Professions/Create`, {
+      fetch(`http://destroyer123-001-site1.btempurl.com/api/admin/Professions/Create`, {
         method: "PUT",
         headers: myHeaders,
         body: JSON.stringify(sendData),

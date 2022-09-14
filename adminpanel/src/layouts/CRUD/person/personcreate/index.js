@@ -36,7 +36,7 @@ function PersonCreate() {
   myHeaders.append("Content-Type", "application/json");
 
   useEffect(() => {
-    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Professions/GetAll", {
+    fetch("http://destroyer123-001-site1.btempurl.com/api/admin/Professions/GetAll", {
       headers: myHeaders,
     })
       .then((response) => response.json())
@@ -83,7 +83,7 @@ function PersonCreate() {
       };
       axios({
         method: "put",
-        url: "http://mackenzythorpe-001-site1.btempurl.com/api/admin/People/Create",
+        url: "http://destroyer123-001-site1.btempurl.com/api/admin/People/Create",
         data: formData,
         headers: { "Content-Type": "multipart/form-data" ,
                    "Authorization": "Bearer " + token,

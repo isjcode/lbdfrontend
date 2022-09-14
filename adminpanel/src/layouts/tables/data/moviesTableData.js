@@ -30,7 +30,7 @@ export default function data() {
   }, []);
 
   const placeMovies = () => {
-    fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/Movies/GetAll`, {
+    fetch(`http://destroyer123-001-site1.btempurl.com/api/admin/Movies/GetAll`, {
       headers: myHeaders,
     })
       .then((response) => response.json())
@@ -52,7 +52,7 @@ export default function data() {
 
   const deleteOrRestore = (id) => {
     fetch(
-      `http://mackenzythorpe-001-site1.btempurl.com/api/admin/Movies/DeleteOrRestore?id=${id}`,
+      `http://destroyer123-001-site1.btempurl.com/api/admin/Movies/DeleteOrRestore?id=${id}`,
       {
         method: "POST",
         headers: myHeaders,
@@ -74,7 +74,7 @@ export default function data() {
       rows.push({
         movie: (
           <Movie
-            image={`http://mackenzythorpe-001-site1.btempurl.com/images/movies/posterimages/${element.PosterImage}`}
+            image={`http://destroyer123-001-site1.btempurl.com/images/movies/posterimages/${element.PosterImage}`}
             name={element.Name}
           />
         ),

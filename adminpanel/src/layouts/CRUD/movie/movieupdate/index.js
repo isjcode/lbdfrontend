@@ -44,7 +44,7 @@ function MovieUpdate() {
   const navigate = useNavigate(); 
   const id = searchParams.get("id");
   useEffect(() => {
-    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Movies/GetYears", {
+    fetch("http://destroyer123-001-site1.btempurl.com/api/admin/Movies/GetYears", {
       headers: myHeaders,
     })
     .then((response) => response.json())
@@ -52,21 +52,21 @@ function MovieUpdate() {
         setYears(d);
         setNewYearID(d[0].id);
       });
-    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/People/GetAll", {
+    fetch("http://destroyer123-001-site1.btempurl.com/api/admin/People/GetAll", {
       headers: myHeaders,
     })
       .then((response) => response.json())
       .then((d) => {
         setPeople(d);
       });
-    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Professions/GetAll", {
+    fetch("http://destroyer123-001-site1.btempurl.com/api/admin/Professions/GetAll", {
       headers: myHeaders,
     })
       .then((response) => response.json())
       .then((d) => {
           setProfessions(d);
       });
-    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Genres/GetAll", {
+    fetch("http://destroyer123-001-site1.btempurl.com/api/admin/Genres/GetAll", {
       headers: myHeaders,
     })
       .then((response) => response.json())
@@ -115,7 +115,7 @@ function MovieUpdate() {
 
       axios({
         method: "post",
-        url: `http://mackenzythorpe-001-site1.btempurl.com/api/admin/Movies/update?id=${id}`,
+        url: `http://destroyer123-001-site1.btempurl.com/api/admin/Movies/update?id=${id}`,
         data: formData,
         headers: { "Content-Type": "multipart/form-data" ,
                    "Authorization": "Bearer " + token,

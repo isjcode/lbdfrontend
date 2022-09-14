@@ -45,7 +45,7 @@ function MovieCreate() {
   const navigate = useNavigate(); 
   const id = searchParams.get("id");
   useEffect(() => {
-    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Movies/GetYears", {
+    fetch("http://destroyer123-001-site1.btempurl.com/api/admin/Movies/GetYears", {
     // fetch("http://localhost:64531/api/admin/Movies/GetYears", {
       headers: myHeaders,
     })
@@ -54,7 +54,7 @@ function MovieCreate() {
         setYears(d);
         setNewYearID(d[0].id);
       });
-    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/People/GetAll", {
+    fetch("http://destroyer123-001-site1.btempurl.com/api/admin/People/GetAll", {
     // fetch("http://localhost:64531/api/admin/People/GetAll", {
       headers: myHeaders,
     })
@@ -62,7 +62,7 @@ function MovieCreate() {
       .then((d) => {
         setPeople(d);
       });
-    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Professions/GetAll", {
+    fetch("http://destroyer123-001-site1.btempurl.com/api/admin/Professions/GetAll", {
     // fetch("http://localhost:64531/api/admin/Professions/GetAll", {
       headers: myHeaders,
     })
@@ -70,7 +70,7 @@ function MovieCreate() {
       .then((d) => {
           setProfessions(d);
       });
-    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Genres/GetAll", {
+    fetch("http://destroyer123-001-site1.btempurl.com/api/admin/Genres/GetAll", {
     // fetch("http://localhost:64531/api/admin/Genres/GetAll", {
       headers: myHeaders,
     })
@@ -129,7 +129,7 @@ function MovieCreate() {
 
       axios({
         method: "put",
-        url: "http://mackenzythorpe-001-site1.btempurl.com/api/admin/Movies/Create",
+        url: "http://destroyer123-001-site1.btempurl.com/api/admin/Movies/Create",
         // url: "http://localhost:64531/api/admin/Movies/Create",
         data: formData,
         headers: { "Content-Type": "multipart/form-data",

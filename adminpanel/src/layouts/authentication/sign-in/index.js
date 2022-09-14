@@ -53,7 +53,7 @@ function Basic() {
       "EmailOrUsername": emailOrUserName,
       "Password": password
     };
-    fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/Accounts/Login`, {
+    fetch(`http://destroyer123-001-site1.btempurl.com/api/admin/Accounts/Login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

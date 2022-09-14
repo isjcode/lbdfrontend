@@ -33,7 +33,7 @@ function ProfessionUpdate() {
 
       console.log(JSON.stringify(sendData));
 
-      fetch(`http://mackenzythorpe-001-site1.btempurl.com/api/admin/Professions/Update?id=${id}`, {
+      fetch(`http://destroyer123-001-site1.btempurl.com/api/admin/Professions/Update?id=${id}`, {
         method: "POST",
         headers: myHeaders,
         body: JSON.stringify(sendData),

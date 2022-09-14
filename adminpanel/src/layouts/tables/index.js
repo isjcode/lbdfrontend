@@ -49,7 +49,7 @@ function Tables() {
     }
     const myHeaders = new Headers();
     myHeaders.append('Authorization', "Bearer " + token);
-    fetch("http://mackenzythorpe-001-site1.btempurl.com/api/admin/Accounts/CheckToken", {
+    fetch("http://destroyer123-001-site1.btempurl.com/api/admin/Accounts/CheckToken", {
       headers: myHeaders,
     })
       .then((response) => {
